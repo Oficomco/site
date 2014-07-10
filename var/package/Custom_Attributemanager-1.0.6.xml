@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package>
+    <name>Custom_Attributemanager</name>
+    <version>1.0.6</version>
+    <stability>stable</stability>
+    <license uri="http://www.opensource.org/licenses/osl-3.0.php">OSL</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Get more information from customers.</summary>
+    <description>Create and manage attributes of customers.&#xD;&#xD;
+&lt;br&gt;&#xD;&#xD;
+An admin interface to create/manage customer attributes. &#xD;&#xD;
+&lt;br&gt;&#xD;&#xD;
+Frontend register and account edit pages will automatically reflect attributes.</description>
+    <notes>Manage customer attributes and collect more information from customers.&#xD;
+&lt;br&gt;&#xD;
+Create fields for&#xD;
+- Registration form&#xD;
+- Account edit form&#xD;
+- Admin -&gt; customer account information form</notes>
+    <authors><author><name>Ankit</name><user>auto-converted</user><email>ankitce9@gmail.com</email></author></authors>
+    <date>2013-06-28</date>
+    <time>11:32:20</time>
+    <contents><target name="magecommunity"><dir name="Custom"><dir name="Attributemanager"><dir name="Block"><dir name="Edit"><dir name="Tab"><file name="Front.php" hash="2c99f0056100d663694e918655ba1a6e"/><file name="Main.php" hash="e54f6c7e1e963108b3879add105615af"/><file name="Options.php" hash="0cf9bb8dd3fc7a5a7ef61af260d206f1"/><file name="System.php" hash="7886c85dbfe78489d288781c06ed15ab"/></dir><file name="Form.php" hash="2d46039a5e9cdcd35541c836e24c81a8"/><file name="Tabs.php" hash="9dd66b4e1f960fa408e3699ef26cb0d0"/></dir><file name="Attributemanager.php" hash="f6aca64ddea7819205ffee10a36b3838"/><file name="Edit.php" hash="062fde1fa1675fe8e82a38ff63066bf9"/><file name="Grid.php" hash="40707645de55c57292a3906ccd9b41b4"/></dir><dir name="Helper"><file name="Data.php" hash="7c6b17fec5f73bbdba0c7ff74d552275"/></dir><dir name="Model"><file name="Attributemanager.php" hash="4427e20ae7614042d3ae9186a6f9f22f"/></dir><dir name="controllers"><file name="IndexController.php" hash="fea2517def42ad42604cd45c9a03a3bf"/></dir><dir name="etc"><file name="config.xml" hash="e9e0cc9ec8d6d3f8e3bb87e00341484d"/></dir></dir></dir></target><target name="magedesign"><dir name="frontend"><dir name="default"><dir name="default"><dir name="template"><dir name="attributemanager"><dir name="customer"><dir name="form"><file name="edit.phtml" hash="edf5ade055e29e2a7132e2cd8e70fd92"/><file name="register.phtml" hash="3f6773f6e6c4b9a5cdbcdf7fefcaccda"/></dir></dir><dir name="persistent"><dir name="customer"><dir name="form"><file name="edit.phtml" hash="019fceb526338efea9280f191db6de14"/><file name="register.phtml" hash="190b79a8e917a03c3a2505f46855c582"/></dir></dir></dir></dir></dir><dir name="layout"><file name="attributemanager.xml" hash="849a3fa1c10129370600da32ddd8e7e3"/></dir></dir></dir></dir><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="template"><dir name="attributemanager"><dir name="new"><file name="created.phtml" hash="6221466a0afd2af66521244391f000d1"/></dir><file name="grid.phtml" hash="64f9821b3a83a80f0c4df62b1dcdac2d"/><file name="index.phtml" hash="f132317f55eb66a3a8f2062b1b570a1b"/><file name="js.phtml" hash="ceaf55fd2d77b197df0e4205e0cd7b14"/><file name="options.phtml" hash="9b11cf8e72e7675c8edf8c6028c19467"/></dir></dir><dir name="layout"><file name="attributemanager.xml" hash="9def95e84fc5df62f16f45d112ba7029"/></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Custom_Attributemanager.xml" hash="138221f47562aaeca52becccadbc99d9"/></dir></target></contents>
+    <compatible/>
+    <dependencies/>
+</package>

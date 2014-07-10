@@ -1,0 +1,44 @@
+<!-- List all categories and their second level subcategories -->
+	<div class="block block-list block-categories">
+	    <div id="block-categories" class="block-title active">
+	        <strong><span>Categories </span></strong>
+	    </div>
+	 
+	<div id="leftnav" class="block-content" style="display:block">
+	    <?php $helper = $this->helper('catalog/category') ?>
+	    <?php $categories = $this->getStoreCategories() ?>
+	    <?php if (count($categories) > 0): ?>
+	        <ul id="leftnav-tree" class="level0">
+	            <?php foreach($categories as $category): ?>
+	                <li class="level0<?php if ($this->isCategoryActive($category)): ?> active<?php endif; ?>">
+	                    <a href="<?php echo $helper->getCategoryUrl($category) ?>"><span><?php echo $this->escapeHtml($category->getName()) ?></span></a>
+	                    <?php //if ($this->isCategoryActive($category)): ?>
+	                        <?php $subcategories = $category->getChildren() ?>
+	                        <?php if (count($subcategories) > 0): ?>
+	                            <ul id="leftnav-tree-<?php echo $category->getId() ?>" class="level1">
+	                                <?php foreach($subcategories as $subcategory): ?>
+                                      <li class="level1<?php if ($this->isCategoryActive($subcategory)): ?> active<?php endif; ?>">
+	                                        <a href="<?php echo $helper->getCategoryUrl($subcategory) ?>"><?php echo $this->escapeHtml(trim($subcategory->getName(), '- ')) ?></a>
+	                                         <?php $secondLevelSubcategories = $subcategory->getChildren() ?>
+	                                         <?php if (count($secondLevelSubcategories ) > 0): ?>
+	                            <ul id="leftnav-tree-<?php echo $subcategory->getId() ?>" class="level2">
+	                                <?php foreach($secondLevelSubcategories as $secondLevelSubcategory ): ?>
+	                                    <li class="level2<?php if ($this->isCategoryActive($secondLevelSubcategory )): ?> active<?php endif; ?>">
+	                                        <a href="<?php echo $helper->getCategoryUrl($secondLevelSubcategory ) ?>"><?php echo $this->escapeHtml(trim($secondLevelSubcategory ->getName(), '- ')) ?></a>
+	                                    </li>
+	                                    <?php endforeach; ?>
+	                            </ul>
+	                            <script type="text/javascript">decorateList('leftnav-tree-<?php echo $category->getId() ?>', 'recursive')</script>
+	                        <?php endif; ?>
+	                                <?php endforeach; ?>
+	                            </ul>
+	                            <script type="text/javascript">decorateList('leftnav-tree-<?php echo $category->getId() ?>', 'recursive')</script>
+	                        <?php endif; ?>
+	                    <?php //endif; ?>
+	                </li>
+	            <?php endforeach; ?>
+	        </ul>
+	        <script type="text/javascript">decorateList('leftnav-tree', 'recursive')</script>
+	    <?php endif; ?>
+	</div>
+	</div>

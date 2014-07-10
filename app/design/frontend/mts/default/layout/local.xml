@@ -1,0 +1,6 @@
+<layout version="0.1.0">
+    <default>
+        <!-- remove compare products -->
+        <remove name="catalog.compare.sidebar" />
+    </default>
+</layout>

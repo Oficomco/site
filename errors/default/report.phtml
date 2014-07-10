@@ -1,0 +1,28 @@
+
+            <h1 class="logo-wrapper">
+              <span class="ir ofi-logo-main">OFI.com.co</span>
+              <p>&nbsp;</p>
+              <span class="tagline">- Ocurrió un error procesando su solicitud -</span>
+            </h1>
+
+            <div class="main-message bordered-box">
+                <?php if ($this->showSendForm): ?>
+                    <h2 class="main-copy">
+                        Estamos experimentando algunos problemas técnicos. Pedimos disculpas por los inconvenientes.
+                    </h2>
+        
+                <?php elseif ('' == $this->reportAction): ?>
+                    <p><em>El reporte de errores esta deshabilitado por seguridad.</em></p>
+                <?php endif; ?>
+
+                <?php if ($this->reportAction == 'print'): ?>
+                    <pre><?php echo $this->reportData[0] ?><br />
+                        <strong>Trace:</strong>
+                        <?php echo htmlspecialchars($this->reportData[1]) ?><br />
+                    </pre>
+                <?php endif; ?>
+
+                <?php if ($this->reportId && $this->reportUrl): ?>
+                    <p>Número de error: <a href="<?php echo htmlspecialchars($this->reportUrl) ?>"><?php echo $this->reportId ?></a></p>
+                <?php endif; ?>
+            </div>

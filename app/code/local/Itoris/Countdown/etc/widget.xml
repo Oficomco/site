@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets>
+	<itoris_countdown type="itoris_countdown/countdownWidget" translate="name description" module="itoris_countdown">
+		<name>IToris Countdown anywhere</name>
+		<description>Adds a countdown block</description>
+		<parameters>
+			<counter_type translate="label" module="itoris_countdown">
+				<label>Counter Type</label>
+				<visible>1</visible>
+				<type>select</type>
+				<required>1</required>
+				<source_model>itoris_countdown/widget_options_counterType</source_model>
+			</counter_type>
+			<color_scheme translate="label" module="itoris_countdown">
+				<label>Color Scheme</label>
+				<visible>1</visible>
+				<type>select</type>
+				<required>1</required>
+				<source_model>itoris_countdown/widget_options_colorScheme</source_model>
+			</color_scheme>
+			<format translate="label" module="itoris_countdown">
+				<label>Format</label>
+				<visible>1</visible>
+				<type>select</type>
+				<required>1</required>
+				<source_model>itoris_countdown/widget_options_format</source_model>
+			</format>
+			<counter_size translate="label" module="itoris_countdown">
+				<label>Counter Size</label>
+				<visible>1</visible>
+				<type>select</type>
+				<required>1</required>
+				<source_model>itoris_countdown/widget_options_counterSize</source_model>
+			</counter_size>
+		</parameters>
+	</itoris_countdown>
+</widgets>

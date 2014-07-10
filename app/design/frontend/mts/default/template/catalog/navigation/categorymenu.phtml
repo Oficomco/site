@@ -1,0 +1,113 @@
+<?php $sidebarmenu = Mage::helper("ExtraConfig")->themeOptions('sidebarmenu'); ?>
+<?php if($sidebarmenu == '1') { ?>
+<div class="block block-category-nav">
+	<div class="block-title">
+		<strong><span><?php echo $this->__('Categorias') ?></span></strong>
+	</div>
+	<div class="block-content">
+		<ul id="sidenav">
+			<?php 
+            $_current_category = $this->getCurrentCategory();
+            $children = Mage::getModel('catalog/category')->getCategories($_current_category->getId());
+
+            //foreach ($this->getStoreCategories() as $_category): 
+            foreach ($children as $_category) :
+            ?>
+				<?php if ($_category->getIsActive()): ?>
+					<?php $isactive		= $this->isCategoryActive($_category); ?>
+					<?php $hasChildren	= $_category->hasChildren(); ?>
+					<li class="level0 <?php if($isactive){ ?>active<?php } ?>">
+						<a href="<?php echo $this->getCategoryUrl($_category)?>" >
+                                                        <span class="errow"></span>
+							<span><?php echo $_category->getName();?></span>
+						</a>
+                                            <?php if($isactive){ ?>   
+                                                <a class='full right show-cat active' href='javascript://'><span class='plus'>+</span><span class='minus'>_</span></a>
+                                            <?php } else { ?>
+                                                <a class='full right show-cat' href='javascript://'><span class='plus'>+</span><span class='minus'>_</span></a>
+                                            <?php } ?>
+					
+					<?php if($hasChildren): ?>
+					
+						<ul class="level0">
+							<?php foreach (Mage::getModel('catalog/category')->load($_category->getId())->getChildrenCategories() as $childCategory):?>
+								<?php $isactive			= $this->isCategoryActive($childCategory); ?>
+								<?php $hasmoreChildren	= $childCategory->hasChildren(); ?>
+								<li class="level1 <?php if($isactive){ ?>active<?php } ?>">
+									<a href="<?php echo $childCategory->getUrl($_childCategory); ?>" >
+                                                                                <span class="errow"></span>
+										<span><?php echo $childCategory->getName(); ?></span>
+									</a>
+									<?php if($hasmoreChildren) { ?>
+                                                                            
+                                                                            <?php if($isactive){ ?>   
+                                                                                <a class='full right show-cat active' href='javascript://'><span class='plus'>+</span><span class='minus'>_</span></a>
+                                                                            <?php } else { ?>
+                                                                                <a class='full right show-cat' href='javascript://'><span class='plus'>+</span><span class='minus'>_</span></a>
+                                                                            <?php } ?>
+                                                                            
+                                                                        <?php } ?>
+								<?php if($hasmoreChildren): ?>
+																
+									<ul class="level1">
+										<?php foreach (Mage::getModel('catalog/category')->load($childCategory->getId())->getChildrenCategories() as $_childCategory):?>
+											<?php $isactive	= $this->isCategoryActive($_childCategory);?>
+											<li class="level2 <?php if($isactive){ ?>active<?php } ?>">
+												<a href="<?php echo $_childCategory->getUrl(); ?>">
+                                                                                                <span class="errow"></span>
+													<span><?php echo $_childCategory->getName(); ?></span>
+												</a>
+											</li>
+										<?php endforeach; ?>
+									</ul>
+								</li>
+								<?php endif ?>
+							<?php endforeach;?>
+						</ul>
+					<?php endif ?>
+					</li>
+				<?php endif ?>
+			<?php endforeach ?>
+		</ul>
+	</div>
+</div>
+
+<script type="text/javascript">
+			var $j = jQuery.noConflict(); 
+			$j(document).ready(function () {
+			  $j('#sidenav > li > a.show-cat').click(function(){
+				$j('#sidenav li ul').slideUp();
+				if (!$j(this).hasClass('active')){				  
+				  $j(this).next().slideToggle();
+				  $j('#sidenav li a.show-cat').removeClass('active');
+				  $j(this).addClass('active');
+				}
+				else if ($j(this).hasClass('active')) {
+					$j(this).removeClass('active');
+				}
+			  });
+			  $j('#sidenav > li > ul > li > a.show-cat').click(function(){
+				$j('#sidenav li ul li ul').slideUp();
+				if (!$j(this).hasClass('active')){
+				  $j(this).next().slideToggle();
+				  $j('#sidenav li ul li a.show-cat').removeClass('active');
+				  $j(this).addClass('active');
+				}
+				else if ($j(this).hasClass('active')) {
+					$j(this).removeClass('active');
+				}
+			  });
+                          $j('#sidenav > li > ul > li > ul > li > a.show-cat').click(function(){
+				$j('#sidenav li ul li ul li ul').slideUp();
+				if (!$j(this).hasClass('active')){
+				  $j(this).next().slideToggle();
+				  $j('#sidenav li ul li ul li a.show-cat').removeClass('active');
+				  $j(this).addClass('active');
+				}
+				else if ($j(this).hasClass('active')) {
+					$j(this).removeClass('active');
+				}
+			  });
+			});
+		</script>
+<?php } ?>

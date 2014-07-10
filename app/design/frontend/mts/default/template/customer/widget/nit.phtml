@@ -1,0 +1,29 @@
+
+<li class="fields">
+  <?php if(!$this->helper('customer')->isLoggedIn()): ?>
+          <div class="field">
+                <label for="<?php echo $this->getFieldId('document_type')?>"<?php if ($this->isRequired()) echo ' class="required"' ?>><?php if ($this->isRequired()) echo '<em>*</em>' ?><?php echo $this->__('Document Type') ?></label>
+               <div class="input-box">
+                   <select id="<?php echo $this->getFieldId('document_type')?>" name="<?php echo $this->getFieldName('document_type')?>" title="<?php echo $this->__('Document Type') ?>"<?php if ($this->isRequired()):?> class="validate-select"<?php endif; ?> <?php echo $this->getFieldParams() ?>>
+                       <?php $options = Mage::getResourceSingleton('customer/customer')->getAttribute('document_type')->getSource()->getAllOptions();?>
+                       <?php $value = $this->getDocument_type();?>
+                       <?php foreach ($options as $option):?>
+                           <option value="<?php echo $option['value'] ?>"<?php if ($option['value'] == $value) echo ' selected="selected"' ?>><?php echo $option['label'] ?></option>
+                       <?php endforeach;?>
+                   </select>
+               </div>
+         </div>
+
+        <div class="field">
+          <label for="<?php echo $this->getFieldId('nit')?>"<?php if ($this->isRequired()) echo ' class="required"' ?>><?php if ($this->isRequired()) echo '<em>*</em>' ?><?php echo $this->__('Cédula/NIT') ?></label>
+          <div class="input-box">
+            <input type="text" id="<?php echo $this->getFieldId('nit')?>" name="<?php echo $this->getFieldName('nit')?>" value="<?php echo $name = Mage::getSingleton('customer/session')->getCustomer()->getNit(); ?>" title="<?php echo $this->__('Cédula/NIT') ?>" class="input-text required-entry validate-digits" <?php echo $this->getFieldParams() ?> />
+          </div>
+        </div>
+  <?php endif; ?>
+</li>
+
+
+
+
+

@@ -1,0 +1,55 @@
+<?php $page = Mage::app()->getLayout()->getBlock('root')->getTemplate();
+    if($page == 'page/3columns.phtml' || $page == 'page/2columns-left.phtml' || $page == 'page/2columns-right.phtml' ){ ?>
+    <style>
+	.popular-product{margin-top: 0px; margin-bottom: 20px; width: 100%;}
+	.col-main .popular-product{display: none;}
+    </style>
+    <?php } ?>
+    <?php if($page == 'page/3columns.phtml') { ?>
+	<style>
+	    .col-left .popular-product{display: none;}
+	</style>
+    <?php } ?>
+    
+<div class="popular-product">
+<div class="new-arrow1">
+    <h2 class="page-title subtitle"><?php echo $this->__('Productos Populares') ?></h2>
+</div>
+
+<?php if (($_products = $this->getProductCollection()) && $_products->getSize()): ?>
+
+<ul class="products-grid slider3">
+<?php $i=1; foreach ($_products->getItems() as $_product): ?>
+    <li class="slides">
+               
+            <a class="product-image" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>">
+                <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(106,100); ?>" width="106" height="100" alt="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" title="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" />
+            </a>
+	    <div class="popular-content">
+		<?php
+		$productname = $this->htmlEscape($_product->getName());
+			if(strlen($productname) > 20) {
+			//$productname = mb_strimwidth($productname,0,20,"...",'utf-8');
+		} ?>
+            <h3 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><?php echo $productname; ?></a></h3>
+			
+		<?php
+		$productdesc = $_product->_data['short_description'];
+			if(strlen($productdesc) > 40) {
+			$productdesc = mb_strimwidth($productdesc,0,40,"...",'utf-8');
+		} ?>
+		<div class="desc"><?php //echo $productdesc; ?></div>
+		
+		<?php if ($_product->getResource()->getAttribute('units')->getFrontend()->getValue($_product) != "") echo "<div class='units'>". $_product->getResource()->getAttribute('units')->getFrontend()->getValue($_product) ."</div>";?>
+		
+        <?php echo $this->getPriceHtml($_product, true) ?>
+
+	    </div>
+	
+    </li>
+<?php $i++; endforeach; $kol = $_collectionSize; ?>
+</ul>
+<?php endif; ?>
+</div>
+
+

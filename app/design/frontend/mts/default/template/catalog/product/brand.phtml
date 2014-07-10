@@ -1,0 +1,24 @@
+
+<div class="manufacturer-list brand">
+    
+    <div class="new-arrow">
+		<h2 class="page-title subtitle"><?php echo $this->__('Brands') ?></h2>
+    </div>
+<?php
+$product = Mage::getModel('catalog/product');
+$attributes = Mage::getResourceModel('eav/entity_attribute_collection')->setEntityTypeFilter($product->getResource()->getTypeId())->addFieldToFilter('attribute_code', 'manufacturer');
+$attribute = $attributes->getFirstItem()->setEntity($product->getResource());
+$manufacturers = $attribute->getSource()->getAllOptions(false);
+?>
+    <ul class="slider7">
+	<?php foreach ($manufacturers as $manufacturer): ?>
+	    <li>
+		<a href="<?php Mage::getURL() ?>catalogsearch/advanced/result/?manufacturer[]=<?php echo $manufacturer['value'] ?>">
+		    <?php $brandname = $manufacturer['label'] ?>
+		    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . "brandlogo/" .$brandname . ".png"; ?>" alt="<?php echo $brandname ;?>" width="150" height="60" /> 
+		    <?php // echo $manufacturer['label'] ?>
+		</a>
+	    </li>
+	<?php endforeach; ?>
+    </ul>
+</div>

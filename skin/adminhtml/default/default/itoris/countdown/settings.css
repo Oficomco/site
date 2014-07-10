@@ -1,0 +1,15 @@
+.itoris_use_scope {
+	margin-left: 50px;
+}
+.form-list td.label {
+	width: 200px;
+}
+.form-list td.label label {
+	width: 200px;
+}
+.columns .form-list td.value, .form-list td.itoris-value {
+	width: 350px;
+}
+.form-list td.value textarea {
+	width: 350px;
+}

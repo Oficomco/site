@@ -1,0 +1,4 @@
+<?php $_product = $this->getProduct(); ?>
+<?php if($_product->getVideo()): ?>
+       <iframe width="560" height="315" src="http://www.youtube.com/embed/<?php echo $_product->getVideo() ?>" frameborder="0" allowfullscreen></iframe>
+<?php endif; ?>

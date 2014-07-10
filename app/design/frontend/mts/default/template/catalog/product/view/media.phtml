@@ -1,0 +1,489 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ */
+?>
+
+
+
+
+
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+    $m = Mage::getModel('catalog/resource_eav_attribute')->loadByCode('catalog_product','productlayout');
+?>
+
+<?php $pagelayout = $this->htmlEscape($_product->getPageLayout()); ?>
+<?php if($pagelayout == '' || $pagelayout == 'one_column'){ ?>
+
+<!--Start theme layout-->
+
+<?php
+if(Mage::helper("ExtraConfig")->is_mobile() == true) {
+    $layout = 'vertical';
+} else {
+    $layout = Mage::helper("ExtraConfig")->themeOptions('productlayout');
+    
+    if($m->getId() != null) {
+	$lyt = $_product->getAttributeText('productlayout');
+	if($lyt != null){ $layout = $lyt; }
+    }
+}
+if ($layout == 'default')
+{ ?>
+
+
+<?php if (count($this->getGalleryImages()) > 1) { ?>
+
+
+<div class="default-views detail-carousel">
+    <div id="carousel" class="flexslider">       
+    <?php $_iterator = 0; ?>
+         <ul class="slides">
+         <?php foreach ($this->getGalleryImages() as $_image): ?>
+           <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+             <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(352,360); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+           </li>
+         <?php endforeach; ?>'
+         </ul>
+     </div>
+   <div id="slider" class="flexslider">
+    <h2>More Views</h2>
+    <?php $_iterator = 0; ?>
+          <ul class="slides">
+          <?php foreach ($this->getGalleryImages() as $_image): ?>
+             <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+               <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(78,98); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+             </li>
+          <?php endforeach; ?>
+          </ul>
+     </div>
+</div>
+<?php } else { ?>
+
+<div class="default-views detail-carousel">
+      
+    <ul class="default-noimage">
+    <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+            <?php
+        $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(352,360).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+    ?>
+        </li>
+    </ul>
+     
+</div>
+				
+<?php } ?>
+<script>
+  j$('#slider').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    directionNav: false,
+    itemWidth: 90,
+    itemMargin: 10,
+    asNavFor: '#carousel'
+  });
+   
+  j$('#carousel').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    itemWidth: 374,
+    sync: "#slider"
+  });
+</script>
+
+
+<?php
+}
+elseif ($layout == 'horizontal')
+{ ?>
+
+
+<?php if (count($this->getGalleryImages()) > 1) { ?>
+
+
+<div class="horizontal-views detail-carousel">
+    <div id="carousel" class="flexslider">       
+    <?php $_iterator = 0; ?>
+         <ul class="slides">
+         <?php foreach ($this->getGalleryImages() as $_image): ?>
+           <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+             <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(478,360); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+           </li>
+         <?php endforeach; ?>
+         </ul>
+     </div>
+   <div id="slider" class="flexslider">
+    <h2>More Views</h2>
+    <?php $_iterator = 0; ?>
+          <ul class="slides">
+          <?php foreach ($this->getGalleryImages() as $_image): ?>
+             <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+               <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(78,98); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+             </li>
+          <?php endforeach; ?>
+          </ul>
+     </div>
+</div>
+<?php } else { ?>
+
+<div class="horizontal-views detail-carousel">
+      
+    <ul class="horizontal-noimage">
+    
+        <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+            <?php
+        $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(478,360).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+    ?>
+        </li>
+    
+    </ul>
+     
+</div>
+				
+<?php } ?>
+<script>
+  j$('#slider').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    directionNav: false,
+    itemWidth: 90,
+    itemMargin: 10,
+    asNavFor: '#carousel'
+  });
+   
+  j$('#carousel').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    itemWidth: 500,
+    sync: "#slider"
+  });
+</script>
+
+
+<?php
+}
+elseif ($layout == 'vertical')
+{ ?>
+
+<?php if (count($this->getGalleryImages()) > 1) { ?>
+
+
+<div class="vertical-views detail-carousel">
+    <div id="carousel" class="flexslider">       
+    <?php $_iterator = 0; ?>
+         <ul class="slides">
+         <?php foreach ($this->getGalleryImages() as $_image): ?>
+           <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+             <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(278,360); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+           </li>
+         <?php endforeach; ?>
+         </ul>
+     </div>
+    
+   <div id="slider" class="flexslider">
+    <h2>More Views</h2>
+    <?php $_iterator = 0; ?>
+          <ul class="slides">
+          <?php foreach ($this->getGalleryImages() as $_image): ?>
+             <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+               <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(78,98); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+             </li>
+          <?php endforeach; ?>
+          </ul>
+     </div>
+</div>
+<?php } else { ?>
+
+<div class="vertical-views detail-carousel">
+      
+    <ul class="vertical-noimage">
+    <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+            <?php
+        $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(278,360).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+    ?>
+        </li>
+    </ul>
+     
+</div>
+				
+<?php } ?>
+<script>
+  j$('#slider').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    directionNav: false,
+    itemWidth: 90,
+    itemMargin: 10,
+    asNavFor: '#carousel'
+  });
+   
+  j$('#carousel').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    itemWidth: 300,
+    sync: "#slider"
+  });
+</script>
+
+
+<?php
+}
+elseif ($layout == 'custom1')
+{ ?>
+
+
+<?php if (count($this->getGalleryImages()) > 1) { ?>
+
+
+<div class="custom1-views detail-carousel">
+    <div id="carousel" class="flexslider">       
+    <?php $_iterator = 0; ?>
+         <ul class="slides">
+         <?php foreach ($this->getGalleryImages() as $_image): ?>
+           <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+             <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(879,500); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+           </li>
+         <?php endforeach; ?>
+         </ul>
+     </div>
+    
+   <div id="slider" class="flexslider">
+    <h2>More Views</h2>
+    <?php $_iterator = 0; ?>
+          <ul class="slides">
+          <?php foreach ($this->getGalleryImages() as $_image): ?>
+             <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+               <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(78,98); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+             </li>
+          <?php endforeach; ?>
+          </ul>
+     </div>
+</div>
+
+<?php } else { ?>
+
+<div class="custom1-views detail-carousel">
+      
+    <ul class="noimage">
+    <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+            <?php
+        $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(879,500).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+    ?>
+        </li>
+    </ul>
+     
+</div>
+				
+<?php } ?>
+<script>
+  j$('#slider').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    directionNav: false,
+    itemWidth: 90,
+    itemMargin: 10,
+    asNavFor: '#carousel'
+  });
+   
+  j$('#carousel').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    itemWidth: 901,
+    sync: "#slider"
+  });
+</script>
+<?php
+}
+elseif ($layout == 'custom2')
+{ ?>
+
+
+
+<?php if (count($this->getGalleryImages()) > 1) { ?>
+
+
+<div class="custom2-views detail-carousel">
+      
+   
+    <div id="carousel1" class="flexslider">       
+    <?php $_iterator = 0; ?>
+    <ul class="slides">
+    <?php foreach ($this->getGalleryImages() as $_image): ?>
+        <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+            <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(63,63); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+        </li>
+    <?php endforeach; ?>
+    </ul>
+     </div>
+    
+    <div id="slider1" class="flexslider">       
+    <?php $_iterator = 0; ?>
+    <ul class="slides">
+    <?php foreach ($this->getGalleryImages() as $_image): ?>
+        <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+            <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(397,360); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+        </li>
+    <?php endforeach; ?>
+    </ul>
+     </div>
+</div>
+<?php } else { ?>
+
+<div class="custom2-views detail-carousel">
+      
+    <ul class="noimage">
+    <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+            <?php
+        $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(502,360).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+    ?>
+        </li>
+    </ul>
+     
+</div>
+				
+<?php } ?>
+<script>
+
+  // The slider being synced must be initialized first
+  j$('#carousel1').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    direction: "vertical",
+    directionNav: false,
+    slideshow: false,
+    itemWidth: 75,
+    itemMargin: 0,
+    asNavFor: '#slider1'
+  });
+   
+  j$('#slider1').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    itemWidth: 419,
+    sync: "#carousel1"
+  });
+</script>
+<?php } ?>
+
+<!--End theme layout-->
+
+<?php } else { ?>
+
+<?php if (count($this->getGalleryImages()) > 1) { ?>
+
+
+<div class="default-views detail-carousel">
+    <div id="carousel" class="flexslider">       
+    <?php $_iterator = 0; ?>
+         <ul class="slides">
+         <?php foreach ($this->getGalleryImages() as $_image): ?>
+           <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+             <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(352,360); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+           </li>
+         <?php endforeach; ?>'
+         </ul>
+     </div>
+   <div id="slider" class="flexslider">
+    <h2>More Views</h2>
+    <?php $_iterator = 0; ?>
+          <ul class="slides">
+          <?php foreach ($this->getGalleryImages() as $_image): ?>
+             <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+               <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(78,98); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+             </li>
+          <?php endforeach; ?>
+          </ul>
+     </div>
+</div>
+<?php } else { ?>
+
+<div class="default-views detail-carousel">
+      
+    <ul class="default-noimage">
+    <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+            <?php
+        $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(352,360).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+    ?>
+        </li>
+    </ul>
+     
+</div>
+				
+<?php } ?>
+<script>
+  j$('#slider').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    directionNav: false,
+    itemWidth: 90,
+    itemMargin: 10,
+    asNavFor: '#carousel'
+  });
+   
+  j$('#carousel').flexslider({
+    animation: "slide",
+    controlNav: false,
+    animationLoop: false,
+    slideshow: false,
+    itemWidth: 374,
+    sync: "#slider"
+  });
+</script>
+
+<?php } ?>

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title><?php echo $this->pageTitle?></title>
+    <base href="<?php echo $this->getSkinUrl()?>" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="robots" content="*" />
+    <link rel="stylesheet" href="css/styles.css" type="text/css" />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,300italic,700,500' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div id="site-container">
+      <div class="slide-container">
+        <section class="hero-section clearfix darker-bg jsMoveBg">
+          <div class="wrapper-960">
+            <?php require_once $contentTemplate; ?>
+          </div>
+        </section>
+
+        <section class="footer-section clearfix dark-bg">
+          <div class="wrapper-960">
+            <footer>
+              
+              <div class="contact-container">
+                <table class="share-bar" style="display: inline-table;" align="left" border="0" cellpadding="0" cellspacing="0" width="160">
+                  <tr>
+                    <td width="45" height="40"><a href="mailto:soporte@ofi.com.co" class="share-icon ir icon-email">email</a> </td>
+                    <td width="40" height="40"><a href="http://www.facebook.com/oficomco" class="share-icon ir icon-fb" target="_blank">facebook</a></td>
+                    <td width="41" height="40"><a href="http://www.linkedin.com/company/oficomco" class="share-icon ir icon-li" target="_blank">linkedin</a></td>
+                  </tr>
+                </table>
+              </div>
+              
+              <div class="footer-copyright">Ofi.com.co - Bogotá D.C. Colombia © Todos los derechos reservados, 2014</div>
+            </footer>
+          </div>
+        </section>
+
+      </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+05-20-2014 00:55:00 - ID: 216 - Inicio
+05-20-2014 00:55:00 - JSON:  {"records":[{"magentoid":"216","salutation":null,"firstname":"hugo","middlename":null,"lastname":"ortiz","gender":"1","email":"hugortiz4@hotmail.com","altemail":null,"dob":"04\/11\/1965","documentType":null,"nit":null,"title":null,"companyname":null,"companyurl":null,"sendemail":"F","unsubscribe":"T","customertype":"PROSPECT","isperson":"T","clientStatus":"CLIENTE POTENCIAL-Oportunidad identificada","addresses":""}],"recordType":"customer"}
+05-20-2014 00:55:33 - Customer record saved {"results":[{"email":"hugortiz4@hotmail.com","internalid":"67995"}],"status":"success","message":""}
+05-20-2014 00:55:33 - ID: 216 - Fin
+-----------------------------------------------------------------------------------------

@@ -1,0 +1,286 @@
+/**
+ * BxSlider v4.0 - Fully loaded, responsive content slider
+ * http://bxslider.com
+ *
+ * Written by: Steven Wanderski, 2012
+ * http://stevenwanderski.com
+ * (while drinking Belgian ales and listening to jazz)
+ *
+ * CEO and founder of bxCreative, LTD
+ * http://bxcreative.com
+ */
+
+
+/** RESET AND LAYOUT
+===================================*/
+.banner{
+	padding: 10px;
+	border: 1px solid #e5e5e5;
+}
+.bx-wrapper {
+	position: relative;
+	width:100%;
+	padding: 0;
+	*zoom: 1;
+	max-width: 100% !important;
+}
+
+.bx-wrapper img {
+	max-width: 100%;
+	display: block;
+}
+
+/** THEME
+===================================*/
+
+.bx-wrapper .bx-viewport {
+	
+}
+
+.bx-wrapper .bx-pager,
+.bx-wrapper .bx-controls-auto {
+	position: absolute;
+	bottom: -30px;
+	width: 100%;
+}
+
+/* LOADER */
+
+.bx-wrapper .bx-loading {
+	min-height: 50px;
+	background: url(../images/bx_loader.gif) center center no-repeat #fff;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2000;
+}
+
+/* PAGER */
+
+.bx-wrapper .bx-pager {
+	text-align: center;
+	font-size: .85em;
+	font-family: Arial;
+	font-weight: bold;
+	color: #666;
+	padding-top: 20px;
+}
+
+.bx-wrapper .bx-pager .bx-pager-item,
+.bx-wrapper .bx-controls-auto .bx-controls-auto-item {
+	display: inline-block;
+	*zoom: 1;
+	*display: inline;
+}
+
+.bx-wrapper .bx-pager.bx-default-pager a {
+	background: #666;
+	text-indent: -9999px;
+	display: block;
+	width: 10px;
+	height: 10px;
+	margin: 0 5px;
+	outline: 0;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.bx-wrapper .bx-pager.bx-default-pager a:hover,
+.bx-wrapper .bx-pager.bx-default-pager a.active {
+	background: #000;
+}
+
+/* DIRECTION CONTROLS (NEXT / PREV) */
+
+.bx-wrapper .bx-controls-direction a{
+	position: absolute;
+	outline: 0;
+	text-align:center;
+	display: block;
+	font-size:22px;
+	top: -52px;
+	width:21px;
+	background: #444444;
+	font-family: 'FontAwesome';
+	height:21px;
+	line-height:21px;
+	margin-top:0px;
+	text-decoration: none;
+	color:#FFF;
+}
+.bx-wrapper .bx-controls-direction a:hover{
+	background: #FF4629;
+}
+.bx-wrapper .bx-prev{
+	right:26px;
+	left:auto;
+}
+
+.bx-wrapper .bx-next {
+	right:0px;
+}
+.bx-wrapper .bx-controls-direction a.disabled {
+	filter:alpha(opacity=30);
+	opacity: 0.3;
+}
+/*banner control*/
+.banner .bx-wrapper .bx-controls-direction a {
+	top: 50%;
+	margin-top: -16px;
+	width: 57px;
+	height: 57px;
+	font-size: 47px;
+	line-height: 57px;
+}
+.banner .bx-wrapper .bx-prev {
+	left: 20px;
+	
+}
+
+.banner .bx-wrapper .bx-next {
+	right: 20px;
+	
+}
+
+/*releated control*/
+.related .bx-wrapper .bx-controls-direction a{top:-78px;}
+
+
+/*.bx-wrapper .bx-controls-direction a.disabled {*/
+/*	display: none;*/
+/*}*/
+
+/* AUTO CONTROLS (START / STOP) */
+
+.bx-wrapper .bx-controls-auto {
+	text-align: center;
+}
+
+.bx-wrapper .bx-controls-auto .bx-start {
+	display: block;
+	text-indent: -9999px;
+	width: 10px;
+	height: 11px;
+	outline: 0;
+	background: url(../images/controls.png) -86px -11px no-repeat;
+	margin: 0 3px;
+}
+
+.bx-wrapper .bx-controls-auto .bx-start:hover,
+.bx-wrapper .bx-controls-auto .bx-start.active {
+	background-position: -86px 0;
+}
+
+.bx-wrapper .bx-controls-auto .bx-stop {
+	display: block;
+	text-indent: -9999px;
+	width: 9px;
+	height: 11px;
+	outline: 0;
+	background: url(../images/controls.png) -86px -44px no-repeat;
+	margin: 0 3px;
+}
+
+.bx-wrapper .bx-controls-auto .bx-stop:hover,
+.bx-wrapper .bx-controls-auto .bx-stop.active {
+	background-position: -86px -33px;
+}
+
+/* PAGER WITH AUTO-CONTROLS HYBRID LAYOUT */
+
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager {
+	text-align: left;
+	width: 80%;
+}
+
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-controls-auto {
+	right: 0;
+	width: 35px;
+}
+
+/* IMAGE CAPTIONS */
+
+.bx-wrapper .bx-caption {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background: #666\9;
+	background: rgba(80, 80, 80, 0.75);
+	width: 100%;
+}
+
+.bx-wrapper .bx-caption span {
+	color: #fff;
+	font-family: Arial;
+	display: block;
+	font-size: .85em;
+	padding: 10px;
+}
+
+.banner .flex-container {opacity:0;transition:opacity 300ms ease;-webkit-transition:opacity 300ms ease;-moz-transition:opacity 300ms ease;}
+.banner .flex-container.active{opacity:1;}
+.banner .flex-container.active .container{left:125px;}
+.banner .container {
+	bottom: 0;
+	display: block;
+	left: 0;
+	margin: auto;
+	overflow: auto;
+	position: absolute;
+	top: 0;
+	-webkit-transition: all 300ms ease;
+	-moz-transition: all 300ms ease;
+	transition: all 300ms ease;
+	width: 395px;
+}
+
+.banner .container h2{
+	color: #000;
+	margin-bottom: 10PX;
+	font-family: 'oswaldbold';
+	font-size: 35px;
+}
+
+.banner .container p{
+	
+	padding:0px 10px 0px 0px;
+	margin:0px;
+	line-height:19px;
+}
+.banner .container a{
+	color: #FFF;
+	text-decoration: none;
+	padding: 0 30px;
+	height: 30px;
+	line-height: 36px;
+	background: #FF4629;
+	display: inline-block;
+	margin-top: 20px;
+	padding-bottom: 5px;
+	font-size: 12px;
+	text-transform:uppercase;
+	font-family:'oswaldregular';
+}
+.banner .container a:hover{
+	background:#444444;
+}
+.banner .container a span{
+	font-family: 'FontAwesome' !important;
+	font-size: 24px;
+	float: right;
+	padding-left: 15px;
+	margin-top: -5px;
+}
+.banner .container a:hover{
+
+}
+.banner .summer_box{
+	bottom: 0;
+	height: 169px;
+	margin: auto;
+	position: absolute;
+	top: 0;
+}

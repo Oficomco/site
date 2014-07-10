@@ -1,0 +1,17 @@
+< ?xml version="1.0"?>
+<config>
+  <modules>
+    <Ofi_Adminhtml>
+      <version>1.0.0</version>
+    </Ofi_Adminhtml>
+  </modules>
+  <global>
+      <models>            
+          <adminhtml>
+            <rewrite>
+                <sales_ordercontroller>Ofi_Adminhtml_Sales_OrderController</sales_ordercontroller>
+            </rewrite>
+          </adminhtml>
+      </models>
+  </global>
+</config>

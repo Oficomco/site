@@ -1,0 +1,93 @@
+<?php
+/**
+ * ITORIS
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the ITORIS's Magento Extensions License Agreement
+ * which is available through the world-wide-web at this URL:
+ * http://www.itoris.com/magento-extensions-license.html
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to sales@itoris.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade the extensions to newer
+ * versions in the future. If you wish to customize the extension for your
+ * needs please refer to the license agreement or contact sales@itoris.com for more information.
+ *
+ * @category   ITORIS
+ * @package	   ITORIS_COUNTDOWN
+ * @copyright  Copyright (c) 2012 ITORIS INC. (http://www.itoris.com)
+ * @license	   http://www.itoris.com/magento-extensions-license.html  Commercial License
+ */
+?>
+<?php /** @var $this Itoris_Countdown_Block_Countdown_Inventory */ ?>
+<?php
+	$template = $this->getDataHelper()->getSettings()->getInventoryFormat();
+	$template = str_replace('{qty}', '#{qty}', $template);
+	$options = $this->getConfigurableOptions();
+?>
+<div id="itoris_countdown_inventory"></div>';
+<script type="text/javascript">
+	document.observe("dom:loaded", function() {
+		var availabilityText = $$('p.availability.in-stock');
+		if (availabilityText.length) {
+			availabilityText.each(function(elm) {
+				itorisInventoryMessageUpdater.defaultContent = elm.innerHTML;
+				elm.update();
+				elm.appendChild($('itoris_countdown_inventory'));
+			});
+		}
+		itorisInventoryMessageUpdater.initialize();
+	});
+	var itorisInventoryMessageUpdater = {
+		template   : new Template('<?php echo addslashes($template) ?>'),
+		defaultContent : '',
+		attributes : <?php echo Zend_Json::encode($options['attributes']) ?>,
+		products   : <?php echo Zend_Json::encode($options['products']) ?>,
+		qtyBlock   : $('itoris_countdown_inventory'),
+		initialize : function() {
+			this.addEvents();
+			this.qtyBlockUpdate();
+		},
+		qtyBlockUpdate : function() {
+			this.qtyBlock.update(this.defaultContent);
+			var values = [];
+			for (var i = 0; i < this.attributes.length; i++) {
+				if (this.getAttributeElement(this.attributes[i].attribute_id)) {
+					values.push({
+						'attribute' : this.attributes[i].attribute_code,
+						'value'     : this.getAttributeElement(this.attributes[i].attribute_id).value
+					});
+				}
+			}
+			for (var i = 0; i < this.products.length; i++) {
+				var canShow = true;
+				for (var j =0; j < values.length; j++) {
+					if (this.products[i][values[j].attribute] != values[j].value) {
+						canShow = false;
+						break;
+					}
+				}
+				if (canShow) {
+					this.qtyBlock.update(this.template.evaluate({qty: this.products[i].qty}));
+					break;
+				}
+			}
+		},
+		getAttributeElement : function(attributeId) {
+			return $('attribute' + attributeId)
+		},
+		addEvents : function() {
+			for (var i = 0; i < this.attributes.length; i++) {
+				if (this.getAttributeElement(this.attributes[i].attribute_id)) {
+					Event.observe(this.getAttributeElement(this.attributes[i].attribute_id), 'change', function() {itorisInventoryMessageUpdater.qtyBlockUpdate();});
+				}
+			}
+		}
+	};
+</script>
+
+

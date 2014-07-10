@@ -1,0 +1,24 @@
+<?php $_manufacturersCollection = $this->getManufacturersCollection(); ?>
+<div classs="test">
+<div class="manufacturer-list brand">
+    <div class="new-arrow">
+		<h2 class="page-title subtitle"><?php echo $this->__('Brands') ?></h2>
+    </div>
+    <div class="block-content">
+    <form id="pollForm" action="<?php echo $this->getUrl('manufacturers') ?>" method="post" >
+	<?php $_iterator = 0; ?>
+	    <ul class="slider7">
+	    <?php foreach ($_manufacturersCollection as $_manufacturer): ?>
+	        <li>
+	            <a class="product-images" href="<?php echo $this->getUrl($_manufacturer->getIdentifier()) ?>" title="<?php echo $_manufacturer->getManufacturer() ?>">
+	            	<img alt="<?php echo $_manufacturer->getManufacturer() ?>" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'manufacturer' . '/' . $_manufacturer->getManufacturerLogo() ?>" width="150" height="60">
+	            </a>
+	            
+	        </li>
+	    <?php endforeach; ?>
+	    </ul>
+        
+    </form>
+    </div>
+</div>
+</div>

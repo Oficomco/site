@@ -1,0 +1,700 @@
+2014-07-09T15:17:13+00:00 DEBUG (7): Array
+(
+    [0] => http://mandrillapp.com/api/1.0/messages/send.json
+    [__pid] => 6333
+)
+
+2014-07-09T15:17:13+00:00 DEBUG (7): Array
+(
+    [message] => Array
+        (
+            [subject] => Bienvenido, lina marcela  ardila ramirez!
+            [from_name] => Soporte | Ofi.com.co
+            [from_email] => soporte@ofi.com.co
+            [headers] => Array
+                (
+                    [Reply-To] => 
+                )
+
+            [html] =>     <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="font-family:Verdana; font-size:14px; margin:0;" bgcolor="#EEEEEE">
+	    <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#EEEEEE">
+			<tr>
+				<td align="center" valign="top" bgcolor="#5d3d42" style="background: url('http://cdn.ofi.com.co/mail/bg_header.jpg') no-repeat top center;">
+					
+					<table border="0" cellpadding="0" cellspacing="0" width="600">
+						<tr>
+							<td>
+								<!--HEADER-->
+								<table height="113" cellpadding="0" cellspacing="0" border="0" width="100%">
+									<tr height="16">
+										<td align="center">
+											<!--<p style="color: #999999; font-size: 11px; margin:6px 0;">¿No puede ver este correo correctamente? <a href="#" style="color: #C73700; text-decoration: none;">Clic para visualizar en su navegador web</a></p>-->
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<a href="http://www.ofi.com.co"><img src="http://cdn.ofi.com.co/mail/logo_header.jpg" width="169" height="40" alt="" hspace="30" /></a>
+										</td>
+									</tr>
+								</table>
+								<!--/HEADER-->
+							</td>
+						</tr>
+						<tr>
+							<td bgcolor="#FFFFFF">
+
+                <!--CONTENT-->
+                <table style="display: inline-table;" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="599">
+                   <tr>
+                     <td height="86" valign="middle">
+
+                       <p style="color: #444444; font-family: Arial; font-size: 24px; font-weight: bold; text-align: left; height: 20px;">
+                       &nbsp; &nbsp; &nbsp; Hola lina marcela  ardila ramirez,
+                       </p>
+
+                     </td>
+                   </tr>
+                   <tr>
+                     <td bgcolor="#FFFFFF" width="599" height="119" align="center" valign="middle">
+
+                       <p style="color: #666666; line-height: 20px; text-align: left; width: 515px; display: block; margin:0;">
+                            Bienvenido a OFI.com.co. Para iniciar la sesión cuando visite nuestro sitio, haga clic en <a href="http://www.ofi.com.co/customer/account/" style="color:#1E7EC8;">Mi Cuenta</a> e ingrese su correo electrónico y contraseña.
+                            </p><br />
+
+                            <p style="color: #666666; line-height: 20px; text-align: left; width: 515px; display: block; margin:0;">
+                            Con su cuenta usted podrá:
+                            </p>
+                            <ul style="font-size:12px; line-height:16px; margin:0 0 16px 0; padding-left:80px; text-align:left">
+                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Comprobar el estado de sus pedidos</li>
+                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Ver pedidos anteriores</li>
+                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Realizar cambios en la información de su cuenta </li>
+                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Cambiar su contraseña</li>
+                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Almacenar multiples direcciones</li>
+                            </ul>
+                            <p style="color: #666666; line-height: 20px; text-align: left; width: 515px; display: block; margin:0;">
+                            Si tiene alguna pregunta acerca de su cuenta, no dude en ponerse en contacto con nuestro equipo en <a href="mailto:soporte@ofi.com.co" style="color:#1E7EC8;">soporte@ofi.com.co</a>.
+                            </p>
+
+                     </td>
+                   </tr>
+
+                   <!--<tr>
+                     <td bgcolor="#FFFFFF" width="599" height="95" align="center" valign="middle">
+                       <p style="font-size:16px; text-align:center; line-height:24px; width:560px; height:65px; border-bottom:1px #EEEEEE solid;">Obtenga más información en<br/> nuestra línea de servicio <a style="color:#FF4601; font-size:16px; text-decoration:none;">(1)  4000-107</a></p>
+                     </td>
+                   </tr>-->
+
+                   <tr>
+                     <td bgcolor="#FFFFFF" width="599" height="60" align="center" valign="top">
+                      <br /><br />
+                      <p style="color: #666666; line-height: 20px; text-align: left; width: 515px; display: block; margin:0;">
+                       Cordialmente,<br/> Equipo <a style="color:#FF4601; text-decoration:none;">OFI.com.co</a>.</p>
+                       <br /><br />
+                     </td>
+                   </tr>
+
+                   <!--<tr>
+                     <td bgcolor="#FFFFFF" width="599" height="84" align="center" valign="middle">
+                        <p style="font-size:12px;">Está recibiendo este correo porque registró su dirección de correo electrónico en <a href="#" style="color:#FF4601;">OFI.com.co</a>.<br/> Para dejar de recibir nuestras comunicaciones, <a href="#" style="color:#999999;">cancele su suscripción aquí</a>.</p>
+                     </td>
+                   </tr>-->
+
+                 </table>
+                <!--/CONTENT-->
+
+
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			
+			<tr>
+				<td align="center" bgcolor="#2A2B2C">
+				<!--FOOTER-->
+					<table border="0" cellpadding="0" cellspacing="0" width="600" height="181">
+						<tr>
+							<td style="padding-top:30px;">
+								<img src="http://cdn.ofi.com.co/mail/logo_footer_1.jpg" width="104" height="92" id="template_2_r9_c4" alt="" hspace="30" />
+							</td>
+							<td align="right" width="293" valign="top" style="padding-top:30px;">
+								 <table align="left" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="293">
+			                          <tr>
+			                            <td width="45" height="40">
+			                            	<a href="mailto:soporte@ofi.com.co"><img style="display:block;" src="http://cdn.ofi.com.co/mail/template_2_r10_c8.jpg" width="45" height="40" alt="" /></a>
+			                            </td>
+			                            <td width="40" height="40">
+			                            	<a href="https://www.facebook.com/oficomco"><img style="display:block;" src="http://cdn.ofi.com.co/mail/template_2_r10_c9.jpg" width="40" height="40" alt="" /></a>
+			                            </td>
+			                            <td width="41" height="40">
+			                            	<a href="http://www.linkedin.com/company/oficomco"><img style="display:block;" src="http://cdn.ofi.com.co/mail/template_2_r10_c10.jpg" width="41" height="40" alt="" /></a>
+			                            </td>
+			                            <td bgcolor="#2A2B2C" width="6" height="40"></td>
+			                            <td width="161" height="40">
+			                            	<a href="http://www.ofi.com.co"><img style="display:block;"src="http://cdn.ofi.com.co/mail/template_2_r10_c12.jpg" width="161" height="40" alt="" /></a>
+			                            </td>
+			                          </tr>
+		                        </table>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center" style="padding-bottom:15px;">
+								<p style="color:#777777; font-size:12px;border-top:1px solid #444;padding-top:15px;margin:0;"><a style="color:#777777; font-size:12px; text-decoration:none;">OFI.com.co</a> - Bogotá D.C. Colombia &copy; Todos los derechos reservados, 2014</p>
+							</td>
+						</tr>
+					</table>
+				<!--/FOOTER-->
+				</td>
+			</tr>
+		</table>
+	</body>
+
+            [tags] => Array
+                (
+                    [0] => Nueva Cuenta Bienvenido
+                )
+
+            [to] => Array
+                (
+                    [0] => Array
+                        (
+                            [email] => typsuministros.ventas8@gmail.com
+                            [name] => lina marcela  ardila ramirez
+                            [type] => to
+                        )
+
+                )
+
+        )
+
+    [key] => 3RnG-RHIpHAbEWQ0uvbDiA
+    [__pid] => 6333
+)
+
+2014-07-09T15:17:13+00:00 DEBUG (7): Array
+(
+    [0] => stdClass Object
+        (
+            [email] => typsuministros.ventas8@gmail.com
+            [status] => sent
+            [_id] => 75ed8ec629d34a0a822984669f541770
+            [reject_reason] => 
+        )
+
+    [__pid] => 6333
+)
+
+2014-07-09T20:56:39+00:00 DEBUG (7): Array
+(
+    [0] => http://mandrillapp.com/api/1.0/messages/send.json
+    [__pid] => 7956
+)
+
+2014-07-09T20:56:39+00:00 DEBUG (7): Array
+(
+    [message] => Array
+        (
+            [subject] => Bienvenido, ana milena navarro ortiz!
+            [from_name] => Soporte | Ofi.com.co
+            [from_email] => soporte@ofi.com.co
+            [headers] => Array
+                (
+                    [Reply-To] => 
+                )
+
+            [html] =>     <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="font-family:Verdana; font-size:14px; margin:0;" bgcolor="#EEEEEE">
+	    <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#EEEEEE">
+			<tr>
+				<td align="center" valign="top" bgcolor="#5d3d42" style="background: url('http://cdn.ofi.com.co/mail/bg_header.jpg') no-repeat top center;">
+					
+					<table border="0" cellpadding="0" cellspacing="0" width="600">
+						<tr>
+							<td>
+								<!--HEADER-->
+								<table height="113" cellpadding="0" cellspacing="0" border="0" width="100%">
+									<tr height="16">
+										<td align="center">
+											<!--<p style="color: #999999; font-size: 11px; margin:6px 0;">¿No puede ver este correo correctamente? <a href="#" style="color: #C73700; text-decoration: none;">Clic para visualizar en su navegador web</a></p>-->
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<a href="http://www.ofi.com.co"><img src="http://cdn.ofi.com.co/mail/logo_header.jpg" width="169" height="40" alt="" hspace="30" /></a>
+										</td>
+									</tr>
+								</table>
+								<!--/HEADER-->
+							</td>
+						</tr>
+						<tr>
+							<td bgcolor="#FFFFFF">
+
+                <!--CONTENT-->
+                <table style="display: inline-table;" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="599">
+                   <tr>
+                     <td height="86" valign="middle">
+
+                       <p style="color: #444444; font-family: Arial; font-size: 24px; font-weight: bold; text-align: left; height: 20px;">
+                       &nbsp; &nbsp; &nbsp; Hola ana milena navarro ortiz,
+                       </p>
+
+                     </td>
+                   </tr>
+                   <tr>
+                     <td bgcolor="#FFFFFF" width="599" height="119" align="center" valign="middle">
+
+                       <p style="color: #666666; line-height: 20px; text-align: left; width: 515px; display: block; margin:0;">
+                            Bienvenido a OFI.com.co. Para iniciar la sesión cuando visite nuestro sitio, haga clic en <a href="http://www.ofi.com.co/customer/account/" style="color:#1E7EC8;">Mi Cuenta</a> e ingrese su correo electrónico y contraseña.
+                            </p><br />
+
+                            <p style="color: #666666; line-height: 20px; text-align: left; width: 515px; display: block; margin:0;">
+                            Con su cuenta usted podrá:
+                            </p>
+                            <ul style="font-size:12px; line-height:16px; margin:0 0 16px 0; padding-left:80px; text-align:left">
+                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Comprobar el estado de sus pedidos</li>
+                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Ver pedidos anteriores</li>
+                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Realizar cambios en la información de su cuenta </li>
+                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Cambiar su contraseña</li>
+                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Almacenar multiples direcciones</li>
+                            </ul>
+                            <p style="color: #666666; line-height: 20px; text-align: left; width: 515px; display: block; margin:0;">
+                            Si tiene alguna pregunta acerca de su cuenta, no dude en ponerse en contacto con nuestro equipo en <a href="mailto:soporte@ofi.com.co" style="color:#1E7EC8;">soporte@ofi.com.co</a>.
+                            </p>
+
+                     </td>
+                   </tr>
+
+                   <!--<tr>
+                     <td bgcolor="#FFFFFF" width="599" height="95" align="center" valign="middle">
+                       <p style="font-size:16px; text-align:center; line-height:24px; width:560px; height:65px; border-bottom:1px #EEEEEE solid;">Obtenga más información en<br/> nuestra línea de servicio <a style="color:#FF4601; font-size:16px; text-decoration:none;">(1)  4000-107</a></p>
+                     </td>
+                   </tr>-->
+
+                   <tr>
+                     <td bgcolor="#FFFFFF" width="599" height="60" align="center" valign="top">
+                      <br /><br />
+                      <p style="color: #666666; line-height: 20px; text-align: left; width: 515px; display: block; margin:0;">
+                       Cordialmente,<br/> Equipo <a style="color:#FF4601; text-decoration:none;">OFI.com.co</a>.</p>
+                       <br /><br />
+                     </td>
+                   </tr>
+
+                   <!--<tr>
+                     <td bgcolor="#FFFFFF" width="599" height="84" align="center" valign="middle">
+                        <p style="font-size:12px;">Está recibiendo este correo porque registró su dirección de correo electrónico en <a href="#" style="color:#FF4601;">OFI.com.co</a>.<br/> Para dejar de recibir nuestras comunicaciones, <a href="#" style="color:#999999;">cancele su suscripción aquí</a>.</p>
+                     </td>
+                   </tr>-->
+
+                 </table>
+                <!--/CONTENT-->
+
+
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			
+			<tr>
+				<td align="center" bgcolor="#2A2B2C">
+				<!--FOOTER-->
+					<table border="0" cellpadding="0" cellspacing="0" width="600" height="181">
+						<tr>
+							<td style="padding-top:30px;">
+								<img src="http://cdn.ofi.com.co/mail/logo_footer_1.jpg" width="104" height="92" id="template_2_r9_c4" alt="" hspace="30" />
+							</td>
+							<td align="right" width="293" valign="top" style="padding-top:30px;">
+								 <table align="left" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="293">
+			                          <tr>
+			                            <td width="45" height="40">
+			                            	<a href="mailto:soporte@ofi.com.co"><img style="display:block;" src="http://cdn.ofi.com.co/mail/template_2_r10_c8.jpg" width="45" height="40" alt="" /></a>
+			                            </td>
+			                            <td width="40" height="40">
+			                            	<a href="https://www.facebook.com/oficomco"><img style="display:block;" src="http://cdn.ofi.com.co/mail/template_2_r10_c9.jpg" width="40" height="40" alt="" /></a>
+			                            </td>
+			                            <td width="41" height="40">
+			                            	<a href="http://www.linkedin.com/company/oficomco"><img style="display:block;" src="http://cdn.ofi.com.co/mail/template_2_r10_c10.jpg" width="41" height="40" alt="" /></a>
+			                            </td>
+			                            <td bgcolor="#2A2B2C" width="6" height="40"></td>
+			                            <td width="161" height="40">
+			                            	<a href="http://www.ofi.com.co"><img style="display:block;"src="http://cdn.ofi.com.co/mail/template_2_r10_c12.jpg" width="161" height="40" alt="" /></a>
+			                            </td>
+			                          </tr>
+		                        </table>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center" style="padding-bottom:15px;">
+								<p style="color:#777777; font-size:12px;border-top:1px solid #444;padding-top:15px;margin:0;"><a style="color:#777777; font-size:12px; text-decoration:none;">OFI.com.co</a> - Bogotá D.C. Colombia &copy; Todos los derechos reservados, 2014</p>
+							</td>
+						</tr>
+					</table>
+				<!--/FOOTER-->
+				</td>
+			</tr>
+		</table>
+	</body>
+
+            [tags] => Array
+                (
+                    [0] => Nueva Cuenta Bienvenido
+                )
+
+            [to] => Array
+                (
+                    [0] => Array
+                        (
+                            [email] => anminaor22@hotmail.com
+                            [name] => ana milena navarro ortiz
+                            [type] => to
+                        )
+
+                )
+
+        )
+
+    [key] => 3RnG-RHIpHAbEWQ0uvbDiA
+    [__pid] => 7956
+)
+
+2014-07-09T20:56:39+00:00 DEBUG (7): Array
+(
+    [0] => stdClass Object
+        (
+            [email] => anminaor22@hotmail.com
+            [status] => sent
+            [_id] => 48caedb55ad64f96ba15bf568153c52c
+            [reject_reason] => 
+        )
+
+    [__pid] => 7956
+)
+
+2014-07-09T21:08:31+00:00 DEBUG (7): Array
+(
+    [0] => http://mandrillapp.com/api/1.0/messages/send.json
+    [__pid] => 7358
+)
+
+2014-07-09T21:08:31+00:00 DEBUG (7): Array
+(
+    [message] => Array
+        (
+            [subject] => OFI.com.co: Nuevo Pedido # 100000188
+            [from_name] => Pedidos | Ofi.com.co
+            [from_email] => pedidos@ofi.com.co
+            [headers] => Array
+                (
+                    [Reply-To] => 
+                )
+
+            [html] =>     <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="font-family:Verdana; font-size:14px; margin:0;" bgcolor="#EEEEEE">
+	    <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#EEEEEE">
+			<tr>
+				<td align="center" valign="top" bgcolor="#5d3d42" style="background: url('http://cdn.ofi.com.co/mail/bg_header.jpg') no-repeat top center;">
+					
+					<table border="0" cellpadding="0" cellspacing="0" width="600">
+						<tr>
+							<td>
+								<!--HEADER-->
+								<table height="113" cellpadding="0" cellspacing="0" border="0" width="100%">
+									<tr height="16">
+										<td align="center">
+											<!--<p style="color: #999999; font-size: 11px; margin:6px 0;">¿No puede ver este correo correctamente? <a href="#" style="color: #C73700; text-decoration: none;">Clic para visualizar en su navegador web</a></p>-->
+									</tr>
+									<tr>
+										<td>
+											<a href="http://www.ofi.com.co"><img src="http://cdn.ofi.com.co/mail/logo_header.jpg" width="169" height="40" alt="" hspace="30" /></a>
+										</td>
+									</tr>
+								</table>
+								<!--/HEADER-->
+							</td>
+						</tr>
+						<tr>
+							<td bgcolor="#FFFFFF">
+
+                <!--CONTENT-->
+                <table style="display: inline-table;" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="599">
+                   <tr>
+                     <td height="86" valign="middle">
+
+                       <p style="color: #444444; font-family: Arial; font-size: 24px; font-weight: bold; text-align: left; height: 20px;">
+                       	&nbsp; &nbsp; &nbsp; Hola ana milena navarro ortiz,
+                       </p>
+
+                     </td>
+                   </tr>
+                   <tr>
+                     <td bgcolor="#FFFFFF" width="599" height="119" align="center" valign="middle">
+
+                       	<p style="color: #666666; line-height: 20px; text-align: left; width: 515px; display: block; margin:0;">
+                        	Gracias por comprar en OFI.com.co.
+                        	Una vez su paquete esté listo, le enviaremos un correo electrónico con un vínculo para hacer seguimiento a su pedido.
+                        	También puede verificar el estado del pedido <a href="http://www.ofi.com.co/customer/account/" style="color:#1E7EC8;"> ingresando a su cuenta</a>.
+                        	Si tiene alguna pregunta sobre su pedido, por favor contáctenos en <a href="mailto:soporte@ofi.com.co" style="color:#1E7EC8;">soporte@ofi.com.co</a>
+                    	</p>
+<br>
+                        <p style="color: #666666; line-height: 20px; text-align: left; width: 515px; display: block; margin:0;">
+                        	La confirmación de su pedido se encuentra a continuación.
+                        </p>
+
+                        <p style="color: #666666; line-height: 20px; text-align: left; width: 515px; display: block; margin:0;">
+                        	Su pedido #100000188 <small>(hecho el 9 de julio de 2014 16:03:29 COT)</small>
+                        </p>
+                        <br>
+                        <table cellspacing="0" cellpadding="0" border="0" width="520">
+                        <thead>
+                        <tr>
+                            <th align="left" width="325" bgcolor="#EAEAEA" style="font-size:13px; padding:5px 9px 6px 9px; line-height:1em;">Información de cobro:</th>
+                            <th width="10"></th>
+                            <th align="left" width="325" bgcolor="#EAEAEA" style="font-size:13px; padding:5px 9px 6px 9px; line-height:1em;">Método de pago:</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td valign="top" style="font-size:12px; padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;">
+                                ana milena navarro ortiz<br/>
+
+calle 12  No. 17-32 segundo piso Barrio La Popa<br />
+
+
+
+OCAÑA,  NORTE DE SANTANDER, <br/>
+Colombia<br/>
+T: 5624571
+
+
+                            </td>
+                            <td>&nbsp;</td>
+                            <td valign="top" style="font-size:12px; padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;">
+                                <p><strong>PayU</strong></p>
+
+
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <br/>
+                    
+                    
+                    
+                    <table cellspacing="0" cellpadding="0" border="0" width="520">
+                        <thead>
+                        <tr>
+                            <th align="left" width="325" bgcolor="#EAEAEA" style="font-size:13px; padding:5px 9px 6px 9px; line-height:1em;">Información de envío:</th>
+                            <th width="10"></th>
+                            <th align="left" width="325" bgcolor="#EAEAEA" style="font-size:13px; padding:5px 9px 6px 9px; line-height:1em;">Método de envío:</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td valign="top" style="font-size:12px; padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;">
+                                ana milena navarro ortiz<br/>
+
+calle 12  No. 17-32 segundo piso Barrio La Popa<br />
+
+
+
+OCAÑA,  NORTE DE SANTANDER, <br/>
+Colombia<br/>
+T: 5624571
+
+
+                                &nbsp;
+                            </td>
+                            <td>&nbsp;</td>
+                            <td valign="top" style="font-size:12px; padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;">
+                                Servientrega
+                                &nbsp;
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    
+                    <br/>
+                    
+                    <table cellspacing="0" cellpadding="0" border="0" width="520" style="border:1px solid #EAEAEA;">
+    <thead>
+        <tr>
+            <th align="left" bgcolor="#EAEAEA" style="font-size:13px; padding:3px 9px">Artículo</th>
+            <th align="left" bgcolor="#EAEAEA" style="font-size:13px; padding:3px 9px">Código</th>
+            <th align="center" bgcolor="#EAEAEA" style="font-size:13px; padding:3px 9px">Cantidad</th>
+            <th align="right" bgcolor="#EAEAEA" style="font-size:13px; padding:3px 9px">Subtotal</th>
+        </tr>
+    </thead>
+
+            <tbody bgcolor="#F6F6F6">
+        <tr>
+    <td align="left" valign="top" style="font-size:11px; padding:3px 9px; border-bottom:1px dotted #CCCCCC;">
+        <strong style="font-size:11px;">Impresora HP Deskjet Ink Adv 2545 Multifuncional</strong>
+                                                        </td>
+    <td align="left" valign="top" style="font-size:11px; padding:3px 9px; border-bottom:1px dotted #CCCCCC;">A9U23A#AKY</td>
+    <td align="center" valign="top" style="font-size:11px; padding:3px 9px; border-bottom:1px dotted #CCCCCC;">1</td>
+    <td align="right" valign="top" style="font-size:11px; padding:3px 9px; border-bottom:1px dotted #CCCCCC;">
+                                                <span class="price">$ 139.990</span>            
+
+                    
+
+            </td>
+</tr>
+    </tbody>
+    
+    <tbody>
+                <tr class="subtotal">
+        <td colspan="3" align="right" style="padding:3px 9px">
+                        Subtotal                    </td>
+        <td align="right" style="padding:3px 9px">
+                        <span class="price">$ 139.990</span>                    </td>
+    </tr>
+            <tr class="shipping">
+        <td colspan="3" align="right" style="padding:3px 9px">
+                        Manipulación y Envío                    </td>
+        <td align="right" style="padding:3px 9px">
+                        <span class="price">$ 0</span>                    </td>
+    </tr>
+                
+
+<tr>
+    <td colspan="3" align="right" style="padding:3px 9px">
+                    Impuestos            </td>
+    <td align="right" style="padding:3px 9px"><span class="price">$ 22.398</span></td>
+</tr>
+            <tr class="grand_total">
+        <td colspan="3" align="right" style="padding:3px 9px">
+                        <strong>Total general</strong>
+                    </td>
+        <td align="right" style="padding:3px 9px">
+                        <strong><span class="price">$ 162.388</span></strong>
+                    </td>
+    </tr>
+        </tbody>
+</table>
+
+                        
+                        <p style="color: #666666; line-height: 20px; text-align: left; width: 515px; display: block; margin:0;">
+                        	
+                        </p>
+                     </td>
+                   </tr>
+
+                   <!--<tr>
+                     <td bgcolor="#FFFFFF" width="599" height="95" align="center" valign="middle">
+                       <p style="font-size:16px; text-align:center; line-height:24px; width:560px; height:65px; border-bottom:1px #EEEEEE solid;">Obtenga más información y ayuda en<br/> nuestra línea de servicio <a style="color:#FF4601; font-size:16px; text-decoration:none;">1 (234) 56 78 901</a></p>
+                     </td>
+                   </tr>-->
+
+                   <tr>
+                     <td bgcolor="#FFFFFF" width="599" height="60" align="center" valign="top">
+                      <br /><br />
+                      <p style="color: #666666; line-height: 20px; text-align: left; width: 515px; display: block; margin:0;">
+                       Cordialmente,<br/> Equipo <a style="color:#FF4601; text-decoration:none;">OFI.com.co</a>.</p>
+                       <br /><br />
+                     </td>
+                   </tr>
+
+                   <!--<tr>
+                     <td bgcolor="#FFFFFF" width="599" height="84" align="center" valign="middle">
+                      <p style="font-size:12px;">Está recibiendo este correo porque registró su dirección de correo electrónico en <a href="#" style="color:#FF4601;">OFI.com.co</a>.<br/> Para dejar de recibir nuestras comunicaciones, <a href="#" style="color:#999999;">cancele su suscripción aquí</a>.</p>
+                     </td>
+                   </tr>-->
+
+                 </table>
+                <!--/CONTENT-->
+
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			
+			<tr>
+				<td align="center" bgcolor="#2A2B2C">
+				<!--FOOTER-->
+					<table border="0" cellpadding="0" cellspacing="0" width="600" height="181">
+						<tr>
+							<td style="padding-top:30px;">
+								<img src="http://cdn.ofi.com.co/mail/logo_footer_1.jpg" width="104" height="92" id="template_2_r9_c4" alt="" hspace="30" />
+							</td>
+							<td align="right" width="293" valign="top" style="padding-top:30px;">
+								 <table align="left" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="293">
+			                          <tr>
+			                            <td width="45" height="40">
+			                            	<a href="mailto:soporte@ofi.com.co"><img style="display:block;" src="http://cdn.ofi.com.co/mail/template_2_r10_c8.jpg" width="45" height="40" alt="" /></a>
+			                            </td>
+			                            <td width="40" height="40">
+			                            	<a href="https://www.facebook.com/oficomco"><img style="display:block;" src="http://cdn.ofi.com.co/mail/template_2_r10_c9.jpg" width="40" height="40" alt="" /></a>
+			                            </td>
+			                            <td width="41" height="40">
+			                            	<a href="http://www.linkedin.com/company/oficomco"><img style="display:block;" src="http://cdn.ofi.com.co/mail/template_2_r10_c10.jpg" width="41" height="40" alt="" /></a>
+			                            </td>
+			                            <td bgcolor="#2A2B2C" width="6" height="40"></td>
+			                            <td width="161" height="40">
+			                            	<a href="http://www.ofi.com.co"><img style="display:block;"src="http://cdn.ofi.com.co/mail/template_2_r10_c12.jpg" width="161" height="40" alt="" /></a>
+			                            </td>
+			                          </tr>
+		                        </table>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center" style="padding-bottom:15px;">
+								<p style="color:#777777; font-size:12px;border-top:1px solid #444;padding-top:15px;margin:0;"><a style="color:#777777; font-size:12px; text-decoration:none;">OFI.com.co</a> - Bogotá D.C. Colombia &copy; Todos los derechos reservados, 2014</p>
+							</td>
+						</tr>
+					</table>
+				<!--/FOOTER-->
+				</td>
+			</tr>
+		</table>
+	</body>
+            [tags] => Array
+                (
+                    [0] => Nuevo Pedido
+                )
+
+            [to] => Array
+                (
+                    [0] => Array
+                        (
+                            [email] => anminaor22@hotmail.com
+                            [name] => ana milena navarro ortiz
+                            [type] => to
+                        )
+
+                    [1] => Array
+                        (
+                            [email] => steven.garavito@ofi.com.co
+                            [type] => bcc
+                        )
+
+                )
+
+        )
+
+    [key] => 3RnG-RHIpHAbEWQ0uvbDiA
+    [__pid] => 7358
+)
+
+2014-07-09T21:08:32+00:00 DEBUG (7): Array
+(
+    [0] => stdClass Object
+        (
+            [email] => anminaor22@hotmail.com
+            [status] => sent
+            [_id] => 33c02265fc274814a4c1d1852d931791
+            [reject_reason] => 
+        )
+
+    [1] => stdClass Object
+        (
+            [email] => steven.garavito@ofi.com.co
+            [status] => sent
+            [_id] => 934fa7cda22f4179a59cf8cb92c8242d
+            [reject_reason] => 
+        )
+
+    [__pid] => 7358
+)
+

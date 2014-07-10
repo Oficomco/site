@@ -1,0 +1,457 @@
+/* countdown styles (start) */
+.itoris_countdown_time {
+	margin: 5px auto;
+}
+.itoris_countdown_time * {
+	float: left;
+}
+.itoris_countdown_digit_large_graphical, .itoris_countdown_digit_medium_graphical, .itoris_countdown_digit_small_graphical {
+	background-repeat: repeat-y;
+}
+/* large digits */
+.itoris_countdown_digit_large_graphical, .itoris_countdown_digit_large_textual {
+	width: 27px;
+	height: 49px;
+}
+.itoris_countdown_digit_large_graphical {
+	margin-top: 5px;
+}
+.itoris_countdown_digit_large_textual, .itoris_countdown_time_background_after_time_large_textual {
+	margin-top: 2px;
+}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_blue {background-image: url(large/blue.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_blue2 {background-image: url(large/blue2.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_blue5 {background-image: url(large/blue5.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_deep_black {background-image: url(large/deep_black.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_deep_black2 {background-image: url(large/deep_black2.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_deep_black5 {background-image: url(large/deep_black5.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_glossy_black {background-image: url(large/glossy_black.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_glossy_black2 {background-image: url(large/glossy_black2.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_glossy_black5 {background-image: url(large/glossy_black5.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_gray {background-image: url(large/gray.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_gray2 {background-image: url(large/gray2.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_gray5 {background-image: url(large/gray5.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_lime {background-image: url(large/lime.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_lime2 {background-image: url(large/lime2.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_lime5 {background-image: url(large/lime5.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_mat_black {background-image: url(large/mat_black.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_mat_black2 {background-image: url(large/mat_black2.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_mat_black5 {background-image: url(large/mat_black5.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_mint {background-image: url(large/mint.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_mint2 {background-image: url(large/mint2.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_mint5 {background-image: url(large/mint5.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_orange {background-image: url(large/orange.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_orange2 {background-image: url(large/orange2.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_orange5 {background-image: url(large/orange5.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_red_black {background-image: url(large/red_black.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_red_black2 {background-image: url(large/red_black2.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_red_black5 {background-image: url(large/red_black5.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_red_white {background-image: url(large/red_white.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_red_white2 {background-image: url(large/red_white2.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_red_white5 {background-image: url(large/red_white5.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_sunny_orange {background-image: url(large/sunny_orange.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_sunny_orange2 {background-image: url(large/sunny_orange2.gif);}
+.itoris_countdown_digit_large_graphical.itoris_countdown_digit_large_sunny_orange5 {background-image: url(large/sunny_orange5.gif);}
+
+/* medium digits */
+.itoris_countdown_digit_medium_graphical, .itoris_countdown_digit_medium_textual {
+	width: 20px;
+	height: 40px;
+}
+.itoris_countdown_digit_medium_graphical, .itoris_countdown_digit_medium_textual, .itoris_countdown_time_background_after_time_medium_textual {
+	margin-top: 3px;
+}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_blue {background-image: url(medium/blue.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_blue2 {background-image: url(medium/blue2.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_blue5 {background-image: url(medium/blue5.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_deep_black {background-image: url(medium/deep_black.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_deep_black2 {background-image: url(medium/deep_black2.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_deep_black5 {background-image: url(medium/deep_black5.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_glossy_black {background-image: url(medium/glossy_black.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_glossy_black2 {background-image: url(medium/glossy_black2.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_glossy_black5 {background-image: url(medium/glossy_black5.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_gray {background-image: url(medium/gray.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_gray2 {background-image: url(medium/gray2.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_gray5 {background-image: url(medium/gray5.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_lime {background-image: url(medium/lime.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_lime2 {background-image: url(medium/lime2.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_lime5 {background-image: url(medium/lime5.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_mat_black {background-image: url(medium/mat_black.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_mat_black2 {background-image: url(medium/mat_black2.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_mat_black5 {background-image: url(medium/mat_black5.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_mint {background-image: url(medium/mint.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_mint2 {background-image: url(medium/mint2.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_mint5 {background-image: url(medium/mint5.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_orange {background-image: url(medium/orange.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_orange2 {background-image: url(medium/orange2.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_orange5 {background-image: url(medium/orange5.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_red_black {background-image: url(medium/red_black.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_red_black2 {background-image: url(medium/red_black2.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_red_black5 {background-image: url(medium/red_black5.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_red_white {background-image: url(medium/red_white.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_red_white2 {background-image: url(medium/red_white2.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_red_white5 {background-image: url(medium/red_white5.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_sunny_orange {background-image: url(medium/sunny_orange.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_sunny_orange2 {background-image: url(medium/sunny_orange2.gif);}
+.itoris_countdown_digit_medium_graphical.itoris_countdown_digit_medium_sunny_orange5 {background-image: url(medium/sunny_orange5.gif);}
+
+/* small digits */
+.itoris_countdown_digit_small_graphical, .itoris_countdown_digit_small_textual {
+	width: 18px;
+	height: 25px;
+	margin-top: 5px;
+}
+.itoris_countdown_digit_small_textual, .itoris_countdown_time_background_after_time_small_textual {
+	margin-top: 0;
+}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_blue {background-image: url(small/blue.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_blue2 {background-image: url(small/blue2.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_blue5 {background-image: url(small/blue5.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_deep_black {background-image: url(small/deep_black.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_deep_black2 {background-image: url(small/deep_black2.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_deep_black5 {background-image: url(small/deep_black5.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_glossy_black {background-image: url(small/glossy_black.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_glossy_black2 {background-image: url(small/glossy_black2.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_glossy_black5 {background-image: url(small/glossy_black5.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_gray {background-image: url(small/gray.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_gray2 {background-image: url(small/gray2.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_gray5 {background-image: url(small/gray5.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_lime {background-image: url(small/lime.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_lime2 {background-image: url(small/lime2.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_lime5 {background-image: url(small/lime5.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_mat_black {background-image: url(small/mat_black.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_mat_black2 {background-image: url(small/mat_black2.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_mat_black5 {background-image: url(small/mat_black5.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_mint {background-image: url(small/mint.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_mint2 {background-image: url(small/mint2.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_mint5 {background-image: url(small/mint5.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_orange {background-image: url(small/orange.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_orange2 {background-image: url(small/orange2.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_orange5 {background-image: url(small/orange5.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_red_black {background-image: url(small/red_black.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_red_black2 {background-image: url(small/red_black2.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_red_black5 {background-image: url(small/red_black5.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_red_white {background-image: url(small/red_white.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_red_white2 {background-image: url(small/red_white2.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_red_white5 {background-image: url(small/red_white5.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_sunny_orange {background-image: url(small/sunny_orange.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_sunny_orange2 {background-image: url(small/sunny_orange2.gif);}
+.itoris_countdown_digit_small_graphical.itoris_countdown_digit_small_sunny_orange5 {background-image: url(small/sunny_orange5.gif);}
+
+/* textual color schemes */
+.itoris_countdown_digit_days_textual_blue {background-color: #3698cc; color: #ffffff; border: 2px solid #9dcae5;}
+.itoris_countdown_digit_time_textual_blue {background-color: #ffffff; border: 2px solid #e7f2f7;}
+.itoris_countdown_digit_time_textual_blue, .itoris_countdown_after_time_textual_blue {color: #71bcdc;}
+
+.itoris_countdown_digit_days_textual_deep_black {background-color: #000000; color: #eed548; border: 2px solid #ffffff;}
+.itoris_countdown_digit_time_textual_deep_black {background-color: #000000; border: 2px solid #ffffff;}
+.itoris_countdown_digit_time_textual_deep_black, .itoris_countdown_after_time_textual_deep_black {color: #ffffff;}
+
+.itoris_countdown_digit_days_textual_glossy_black {background-color: #666666; color: #eed548; border: 2px solid #ffffff;}
+.itoris_countdown_digit_time_textual_glossy_black {background-color: #666666; border: 2px solid #ffffff;}
+.itoris_countdown_digit_time_textual_glossy_black, .itoris_countdown_after_time_textual_glossy_black {color: #ffffff;}
+
+.itoris_countdown_digit_days_textual_gray {background-color: #666666; color: #ffffff; border: 2px solid #cccccc;}
+.itoris_countdown_digit_time_textual_gray {background-color: #cccccc; border: 2px solid #666666;}
+.itoris_countdown_digit_time_textual_gray, .itoris_countdown_after_time_textual_gray {color: #666666;}
+
+.itoris_countdown_digit_days_textual_lime {background-color: #ffcc00; color: #ffffff; border: 2px solid #e0ae00;}
+.itoris_countdown_digit_time_textual_lime {background-color: #ffffff; border: 2px solid #ffcc00;}
+.itoris_countdown_digit_time_textual_lime, .itoris_countdown_after_time_textual_lime {color: #333333;}
+
+.itoris_countdown_digit_days_textual_mat_black {background-color: #00cccc; color: #666666; border: 2px solid #666666;}
+.itoris_countdown_digit_time_textual_mat_black {background-color: #666666; border: 2px solid #00cccc;}
+.itoris_countdown_digit_time_textual_mat_black, .itoris_countdown_after_time_textual_mat_black {color: #ffffff;}
+
+.itoris_countdown_digit_days_textual_mint {background-color: #669933; color: #ffffff; border: 2px solid #cccc99;}
+.itoris_countdown_digit_time_textual_mint {background-color: #cccc99; border: 2px solid #669933;}
+.itoris_countdown_digit_time_textual_mint, .itoris_countdown_after_time_textual_mint {color: #669933;}
+
+.itoris_countdown_digit_days_textual_orange {background-color: #ff9933; color: #ffffff; border: 2px solid #666666;}
+.itoris_countdown_digit_time_textual_orange {background-color: #333333; border: 2px solid #ff9933;}
+.itoris_countdown_digit_time_textual_orange, .itoris_countdown_after_time_textual_orange {color: #ff9933;}
+
+.itoris_countdown_digit_days_textual_red_black {background-color: #000000; color: #999999; border: 2px solid #ff3333;}
+.itoris_countdown_digit_time_textual_red_black {background-color: #000000; border: 2px solid #333333;}
+.itoris_countdown_digit_time_textual_red_black, .itoris_countdown_after_time_textual_red_black {color: #999999;}
+
+.itoris_countdown_digit_days_textual_red_white {background-color: #990000; color: #666666; border: 2px solid #666666;}
+.itoris_countdown_digit_time_textual_red_white {background-color: #666666; border: 2px solid #990000;}
+.itoris_countdown_digit_time_textual_red_white, .itoris_countdown_after_time_textual_red_white {color: #ffffff;}
+
+.itoris_countdown_digit_days_textual_sunny_orange {background-color: #cc6600; color: #ffffff; border: 2px solid #e4e4e4;}
+.itoris_countdown_digit_time_textual_sunny_orange {background-color: #f6f6f6; border: 2px solid #e4e4e4;}
+.itoris_countdown_digit_time_textual_sunny_orange, .itoris_countdown_after_time_textual_sunny_orange {color: #cc6600;}
+
+/* large */
+.itoris_countdown_time_background_left_large_graphical, .itoris_countdown_time_background_right_large_graphical,
+.itoris_countdown_time_background_left_large_textual, .itoris_countdown_time_background_right_large_textual {
+	width: 9px;
+	height: 58px;
+}
+.itoris_countdown_time_background_left_large_graphical {
+	background-image: url(large/box_left.png);
+}
+.itoris_countdown_time_background_right_large_graphical {
+	background-image: url(large/box_right.png);
+}
+.itoris_countdown_time_background_after_time_large_graphical, .itoris_countdown_time_background_after_time_large_textual {
+	width: 8px;
+	height: 58px;
+}
+.itoris_countdown_time_background_after_time_large_graphical {
+	background-image: url(large/box_after_time.png);
+}
+
+.itoris_countdown_time_background_after_days_large_graphical, .itoris_countdown_time_background_after_days_large_textual {
+	width: 18px;
+	height: 58px;
+}
+.itoris_countdown_time_background_after_days_large_graphical {
+	background-image: url(large/box_after_days.png);
+}
+.itoris_countdown_digit_background_large_textual {
+	height: 48px;
+}
+.itoris_countdown_digit_background_large_textual, .itoris_countdown_time_background_after_time_large_textual {
+	font-size: 28px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.itoris_countdown_digit_background_large_graphical {
+	background: url(large/box_digit.png) repeat-x;
+	height: 58px;
+}
+
+/* medium */
+.itoris_countdown_time_background_left_medium_graphical, .itoris_countdown_time_background_right_medium_graphical,
+.itoris_countdown_time_background_left_medium_textual, .itoris_countdown_time_background_right_medium_textual {
+	width: 8px;
+	height: 46px;
+}
+.itoris_countdown_time_background_left_medium_graphical {
+	background-image: url(medium/box_left.png);
+}
+.itoris_countdown_time_background_right_medium_graphical {
+	background-image: url(medium/box_right.png);
+	width: 7px;
+}
+.itoris_countdown_time_background_after_time_medium_graphical, .itoris_countdown_time_background_after_time_medium_textual {
+	width: 6px;
+	height: 46px;
+}
+.itoris_countdown_time_background_after_time_medium_graphical {
+	background-image: url(medium/box_after_time.png);
+}
+.itoris_countdown_time_background_after_days_medium_graphical, .itoris_countdown_time_background_after_days_medium_textual {
+	width: 12px;
+	height: 46px;
+}
+.itoris_countdown_time_background_after_days_medium_graphical {
+	background-image: url(medium/box_after_days.png);
+}
+.itoris_countdown_digit_background_medium_graphical {
+	background: url(medium/box_digit.png) repeat-x;
+	height: 46px;
+}
+.itoris_countdown_digit_background_medium_textual {
+	height: 36px;
+}
+.itoris_countdown_digit_background_medium_textual, .itoris_countdown_time_background_after_time_medium_textual {
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+
+/* small */
+.itoris_countdown_time_background_left_small_graphical, .itoris_countdown_time_background_right_small_graphical,
+.itoris_countdown_time_background_left_small_textual, .itoris_countdown_time_background_right_small_textual {
+	width: 6px;
+	height: 36px;
+}
+.itoris_countdown_time_background_left_small_graphical {
+	background-image: url(small/box_left.png);
+}
+.itoris_countdown_time_background_right_small_graphical {
+	background-image: url(small/box_right.png);
+}
+.itoris_countdown_time_background_after_time_small_graphical, .itoris_countdown_time_background_after_time_small_textual {
+	width: 6px;
+	height: 36px;
+}
+.itoris_countdown_time_background_after_time_small_graphical {
+	background-image: url(small/box_after_time.png);
+}
+.itoris_countdown_time_background_after_days_small_graphical, .itoris_countdown_time_background_after_days_small_textual {
+	width: 14px;
+	height: 36px;
+}
+.itoris_countdown_time_background_after_days_small_graphical {
+	background-image: url(small/box_after_days.png);
+}
+.itoris_countdown_digit_background_small_textual {
+	height: 26px;
+}
+.itoris_countdown_digit_background_small_graphical {
+	background: url(small/box_digit.png) repeat-x;
+	height: 36px;
+}
+.itoris_countdown_digit_background_small_textual, .itoris_countdown_time_background_after_time_small_textual {
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+}
+/* countdown styles (end) */
+
+/* site launch */
+.itoris_countdown_sitelaunch_background {
+	/*background: url(site_launch_background.jpg) no-repeat center #0d0d0f;*/
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 0;
+	top:0;
+	left:0;
+}
+#itoris_countdown_container {position:absolute; left:0px; top:0px; right:0px; bottom:0px; z-index: 1;}
+#itoris_countdown_header {padding:10px; text-align: center;}
+#itoris_countdown_footer {
+	position:relative;
+	padding:30px 10px 10px 10px;
+	margin-top:10px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	background: url(site_launch_line.png) no-repeat center top;
+	color: #333333;
+	text-align: center;
+}
+#itoris_countdown_counter_container {position:relative; margin-top:10px; left:0px; right:0px;}
+#itoris_countdown_subscribe_container {position:relative; margin-top:10px; left:0px; right:0px;}
+.itoris_countdown_sitelaunch_subscribing {
+	width: 510px;
+	height: 100px;
+	margin: 0 auto;
+	text-align: left;
+}
+.itoris_countdown_sitelaunch_subscribing_input {
+	background-image: url(site_launch_subscribe_input.png);
+	width: 357px;
+	height: 49px;
+	float: left;
+	position:relative;
+}
+.itoris_countdown_sitelaunch_subscribing_input .validation-advice {
+	text-align: left;
+}
+.itoris_countdown_sitelaunch_subscribing_input input, .itoris_countdown_sitelaunch_subscribing_input input.validation-failed {
+	margin: 5px 10px;
+	padding: 0;
+	border: none !important;
+	background: none !important;
+	width: 337px;
+	height: 39px;
+	color: white;
+}
+.itoris_countdown_sitelaunch_subscribing_button {
+	background: url(subscribing_button_bg.png) 0px 0px repeat-x;
+	height: 49px;
+	cursor: pointer;
+	float: left;
+	margin: 0 3px;
+	position: absolute;
+	top:0;
+	left: 357px;
+}
+#itoris_countdown_subscribing_form .itoris_countdown_sitelaunch_subscribing_button p {
+	color: #9c4600;
+	font-weight: bold;
+	font-size: 24px;
+	padding: 6px 20px;
+}
+#itoris_countdown_subscribing_form .itoris_countdown_sitelaunch_subscribing_button:hover p {
+	color: #8d2400;
+}
+.itoris_countdown_sitelaunch_subscribing_button:hover, .itoris_countdown_sitelaunch_subscribing_button:hover .itoris_countdown_sitelaunch_subscribing_button_bg_left,
+.itoris_countdown_sitelaunch_subscribing_button:hover .itoris_countdown_sitelaunch_subscribing_button_bg_right{
+	background-position: 0 -49px;
+	color: #8d2400;
+}
+.itoris_countdown_sitelaunch_subscribing_button_bg_left, .itoris_countdown_sitelaunch_subscribing_button_bg_right {
+	width: 3px;
+	height: 49px;
+	position: absolute;
+	top: 0;
+}
+.itoris_countdown_sitelaunch_subscribing_button_bg_left {
+	background: url(subscribing_button_bg_left.png) 0 0;
+	left: -3px;
+}
+.itoris_countdown_sitelaunch_subscribing_button_bg_right {
+	background: url(subscribing_button_bg_right.png) 0 0;
+	right: -3px;
+}
+.itoris_countdown_sitelaunch_logo {
+	background-image: url(site_launch_logo.png);
+	width: 90px;
+	height: 104px;
+	margin: 100px auto;
+}
+#itoris_countdown_subscribing_form span {
+	font-size: 16px;
+	color: #666666;
+}
+input.itoris_countdown_email_default {
+	color: #000000 !important;
+	font-style: italic;
+}
+.itoris_countdown_sitelaunch_subscribing .success-msg, .itoris_countdown_sitelaunch_subscribing .error-msg, .itoris_countdown_sitelaunch_subscribing .note-msg {
+	background-color: #333333 !important;
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+.itoris_countdown_sitelaunch_subscribing .success-msg {
+	background-image: url(msg-success.gif);
+}
+.itoris_countdown_sitelaunch_subscribing .error-msg {
+	background-image: url(msg-error.gif);
+	color: #e95b44;
+}
+.itoris_countdown_sitelaunch_subscribing .note-msg {
+	background-image: url(msg-note.gif);
+}
+
+.itoris_countdown_time_labels_large, .itoris_countdown_time_labels_medium, .itoris_countdown_time_labels_small {
+	position: relative;
+	clear: both;
+	float: none;
+	margin: 0 auto;
+}
+.itoris_countdown_time_labels_large {
+	height: 14px;
+	font-size: 12px;
+}
+.itoris_countdown_time_labels_medium {
+	height: 14px;
+	font-size: 11px;
+}
+.itoris_countdown_time_labels_small {
+	height: 12px;
+	font-size: 10px;
+	margin-bottom: -1px;
+}
+.itoris_countdown_time_labels div {
+	float: left;
+}
+.itoris_countdown_time_labels_blue {color: #3698cc;}
+.itoris_countdown_time_labels_deep_black {color: #eed548;}
+.itoris_countdown_time_labels_glossy_black {color: #eed548;}
+.itoris_countdown_time_labels_gray {color: #666666;}
+.itoris_countdown_time_labels_lime {color: #e0ae00;}
+.itoris_countdown_time_labels_mat_black {color: #ffffff;}
+.itoris_countdown_time_labels_mint {color: #669933;}
+.itoris_countdown_time_labels_orange {color: #ff9933;}
+.itoris_countdown_time_labels_red_black {color: #ff3333;}
+.itoris_countdown_time_labels_red_white {color: #990000;}
+.itoris_countdown_time_labels_sunny_orange {color: #cc6600;}

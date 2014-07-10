@@ -1,0 +1,145 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * @var $this Mage_Page_Block_Html_Notices
+ */
+?>
+<div class="page-title">
+    <h1><?php echo $this->__('Cálculo de envios') ?></h1>
+</div>
+
+<div class="calculo-envios">
+	
+
+	<div class="calculo-destino">
+		<h2 class="heading">Destino de envío</h2>
+		<div class="box">
+			<p>
+				Para consultar el tiempo de entrega de los destinos nacionales,  seleccione los siguientes datos:
+			</p>
+			<?php
+
+			/**
+			 * $countryId = '';
+			$countryCollection = Mage::getModel('directory/country')->getCollection();
+			foreach ($countryCollection as $country) {
+			    echo $country->getName().$country->getId().'<br />';
+			    
+			}
+			echo 'test'.$countryId;
+			 * 
+			 */
+			 
+			$collection = Mage::getModel('directory/region')->getCollection()->addCountryFilter('CO');
+
+
+			?>
+
+			<div class="form-item calculo-depto">
+				<div class="inner">
+					<label>
+						Departamento:
+					</label>
+					<select name="region" id="region" class="region">
+						<option value=" " selected="selected">Seleccione</option>
+						<?php foreach($collection as $region) { ?>
+				         
+				        <option value="<?php echo $region->getId();?>"><?php echo $region->getName() ;?></option>
+				         
+				        <?php } ?>
+				    </select>	
+			    </div>
+			</div>
+			<div class="form-item calculo-ciudad" id="ciudades">
+				<!-- <label>
+					Ciudad:	
+				</label>
+				<select id="city" name="city" class="city">
+					    <option value=" " selected="selected">Seleccione</option>				   
+		  		</select> -->
+			</div>
+			<div class="form-buttons">
+				 <button class="button" id="calculo-button" onclick="calcular()">Calcular</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="calculo_flete" class="calculo-info">
+	</div>
+</div>
+
+ <script type="text/javascript">
+ 
+        
+   	function calcular(){
+   		
+   		var region = jQuery("#region").val();
+   		//var ciudad= document.getElementById('city').value;
+   		var ciudad = jQuery("#city").val();
+
+		if(region == ' '){
+			
+			alert("Seleccione el departamento");
+			return false;
+		}
+		if(ciudad == ' '){
+			
+			alert("Seleccione la ciudad");
+			return false;
+		}
+		
+		
+		
+   		jQuery.ajax({
+  		  url: '<?php echo Mage::getBaseUrl();?>ajax/flete.php?region='+region+'&city='+ciudad,
+  		  context: document.body,
+  		  success: function(data) {
+  			jQuery('#calculo_flete').html(data);
+  		  }
+  		});
+
+  		jQuery("#calculo_flete").fadeIn().css("display","inline-block");
+   	   
+		
+	}	
+	
+              
+	jQuery(document).ready(function (){
+
+			jQuery('.region').change(function() {
+				var id= jQuery("#region").val();
+				  jQuery.ajax({
+			  		  url: '<?php echo Mage::getBaseUrl();?>ajax/city.php?id='+id,
+			  		  context: document.body,
+			  		  success: function(data) {
+			  			jQuery('#ciudades').html(data);
+			  		  }
+			  		});
+			});
+        });
+  </script>

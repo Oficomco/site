@@ -1,0 +1,54 @@
+<?php
+/**
+ * ITORIS
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the ITORIS's Magento Extensions License Agreement
+ * which is available through the world-wide-web at this URL:
+ * http://www.itoris.com/magento-extensions-license.html
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to sales@itoris.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade the extensions to newer
+ * versions in the future. If you wish to customize the extension for your
+ * needs please refer to the license agreement or contact sales@itoris.com for more information.
+ *
+ * @category   ITORIS
+ * @package	   ITORIS_COUNTDOWN
+ * @copyright  Copyright (c) 2012 ITORIS INC. (http://www.itoris.com)
+ * @license	   http://www.itoris.com/magento-extensions-license.html  Commercial License
+ */
+?>
+<?php /** @var $this Itoris_Countdown_Block_Countdown */ ?>
+<?php if ($this->canShowCountdown()): ?>
+	<div id="<?php echo $this->getBoxId() ?>" style="position:absolute; left:-10000px;<?php if (!$this->getVisibleByDefault()): ?>display:none<?php endif; ?>">
+		<div class="itoris_countdown_intro_text"><?php echo $this->getConfig()->getIntroText() ?></div>
+		<div class="itoris_countdown_time">
+			<div class="itoris_countdown_time_background_left"></div>
+			<div class="itoris_countdown_days"></div>
+			<div class="itoris_countdown_time_background_after_days"></div>
+			<div class="itoris_countdown_hours"></div>
+			<div class="itoris_countdown_time_background_after_time"></div>
+			<div class="itoris_countdown_minutes"></div>
+			<div class="itoris_countdown_time_background_after_time"></div>
+			<div class="itoris_countdown_seconds"></div>
+			<div class="itoris_countdown_time_background_right"></div>
+		</div>
+		<div class="itoris_countdown_time_labels itoris_countdown_time_labels_<?php echo $this->getConfig()->getCounterSize() ?> itoris_countdown_time_labels_<?php echo $this->getConfig()->getColorScheme() ?>">
+			<div style="display:none;"><?php echo $this->__('Days') ?></div>
+			<div style="display:none;"><?php echo $this->__('Hours') ?></div>
+			<div style="display:none;"><?php echo $this->__('Mins') ?></div>
+			<div style="display:none;"><?php echo $this->__('Secs') ?></div>
+		</div>
+		<div></div>
+	</div>
+	<script type="text/javascript">
+		<?php echo $this->getAdditionalJs() ?>
+		var <?php echo $this->getBoxId() ?> = new Itoris.Countdown('<?php echo $this->getBoxId() ?>', <?php echo $this->getSeconds() ?>, <?php echo $this->getConfigJson() ?>);
+	</script>
+<?php endif; ?>
+

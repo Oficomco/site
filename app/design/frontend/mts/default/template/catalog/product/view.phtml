@@ -1,0 +1,1829 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+
+?>
+
+<script src="<?php echo $this->getSkinUrl('modal/js/jquery-ui.js') ?>"></script>
+
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<?PHP
+$ajaxcart = Mage::helper("ExtraConfig")->themeOptions('ajaxcart');
+$sharingicon = Mage::helper("ExtraConfig")->themeOptions('sharingicon');
+$brandlogo = Mage::helper("ExtraConfig")->themeOptions('brandlogo');
+?>
+
+<?php $pagelayout = $this->htmlEscape($_product->getPageLayout()); ?>
+<?php if($pagelayout == '' || $pagelayout == 'one_column'){ ?>
+
+<!--Start theme layout-->
+<?php
+$m = Mage::getModel('catalog/resource_eav_attribute')->loadByCode('catalog_product','productlayout');
+
+if(Mage::helper("ExtraConfig")->is_mobile() == true) {
+    $layout = 'vertical';
+} else {
+    $layout = Mage::helper("ExtraConfig")->themeOptions('productlayout'); 
+    
+    if($m->getId() != null) {
+    $lyt = $_product->getAttributeText('productlayout');
+    if($lyt != null){ $layout = $lyt; }
+    }
+}
+
+if ($layout == 'default'){ ?>
+
+<div class="product-view">
+    <div class="product-essential" itemscope itemtype="http://schema.org/Product">
+        <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+            <div class="no-display">
+                <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+                <input type="hidden" name="related_product" id="related-products-field" value="" />
+            </div>
+
+            <div class="default-image product-img-box">
+                <?php echo $this->getChildHtml('media') ?>
+            </div>
+
+            <div class="default-shop product-shop">
+                <div class="share-rating-bar">
+
+                    <?php if ($sharingicon == '1') { ?>
+                    <div class="sharing-button">
+                        <!-- AddThis Button BEGIN -->
+                        <div class="addthis_toolbox addthis_default_style ">
+                            <a class="addthis_button_preferred_1"></a>
+                            <a class="addthis_button_preferred_2"></a>
+                            <a class="addthis_button_preferred_3"></a>
+                            <a class="addthis_button_preferred_4"></a>
+                            <a class="addthis_button_compact"></a>
+                            <a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-523bf1bc5cd59274"></script>
+                        <!-- AddThis Button END -->
+                    </div>
+                    <?php } ?>
+
+                    <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+                </div>
+                
+                <div class="view-name">
+                    <div class="product-name" itemprop="name">
+                        <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                    </div>
+                </div>
+                            
+                <?php echo $this->getChildHtml('alert_urls') ?>
+                <?php echo $this->getChildHtml('product_type_data') ?>
+                <?php echo $this->getTierPriceHtml() ?>
+                <?php echo $this->getChildHtml('extrahint') ?>
+            
+                <div class="product_sku">
+                    <label>SKU :</label>
+                    <?php echo $this->htmlEscape($_product->getSku()) ?>
+                </div>
+            
+                <?php if ($brandlogo == '1') { ?>
+                    <?php
+                    $attributes = Mage::getResourceModel('eav/entity_attribute_collection')->setEntityTypeFilter($_product->getResource()->getTypeId())->addFieldToFilter('attribute_code', 'manufacturer');
+                    $attribute = $attributes->getFirstItem()->setEntity($_product->getResource());
+                    $manufacturers = $attribute->getSource()->getAllOptions(false); ?>
+                    <?php $brandlogo = $_product->getAttributeText('manufacturer') ?>
+                    
+                    <?php foreach ($manufacturers as $manufacturer): ?>
+                        <?php if ($manufacturer['label'] == $brandlogo){ ?>
+                            
+
+                            <?php 
+                                $url = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . "manufacturer/" .$brandlogo . ".png"; 
+                                $ch = curl_init();
+                                curl_setopt($ch, CURLOPT_URL,$url);
+                                // don't download content
+                                curl_setopt($ch, CURLOPT_NOBODY, 1);
+                                curl_setopt($ch, CURLOPT_FAILONERROR, 1);
+                                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                                
+                                if(curl_exec($ch)!==FALSE){
+                            ?>
+
+                            <div class="brand-logo">
+                                <a href="<?php Mage::getURL() ?>manufacturers/<?php echo strtolower($manufacturer['label']) ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . "manufacturer/" .$brandlogo . ".png"; ?>" alt="<?php echo $brandlogo; ?>" /></a>
+                            </div>
+                            
+                            <?php
+                                } 
+                            } 
+                            ?>
+                    <?php endforeach; ?>
+                <?php } ?>
+
+                <?php if (!$this->hasOptions()):?>
+                    <div class="add-to-box">
+                        <?php if($_product->isSaleable()): ?>
+                            <?php echo $this->getChildHtml('addtocart') ?>
+                            <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                                <span class="or"><?php echo $this->__('OR') ?></span>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                        <?php echo $this->getChildHtml('addto') ?>
+                    </div>
+            
+                    <?php echo $this->getChildHtml('extra_buttons') ?>
+                <?php elseif (!$_product->isSaleable()): ?>
+                    <div class="add-to-box">
+                        <?php echo $this->getChilzdHtml('addto') ?>
+                        <?php if ($sharingicon == '1') { ?>
+                            <div class="sharing-button">
+                                <!-- AddThis Button BEGIN -->
+                                <div class="addthis_toolbox addthis_default_style ">
+                                    <a class="addthis_button_preferred_1"></a>
+                                    <a class="addthis_button_preferred_2"></a>
+                                    <a class="addthis_button_preferred_3"></a>
+                                    <a class="addthis_button_preferred_4"></a>
+                                    <a class="addthis_button_compact"></a>
+                                    <a class="addthis_counter addthis_bubble_style"></a>
+                                </div>
+                                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-523bf1bc5cd59274"></script>
+                                <!-- AddThis Button END -->
+                            </div>
+                        <?php } ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                    <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+                    <?php // echo $this->getChildHtml('addto') ?>
+                <?php endif;?>
+                
+                <?php echo $this->getChildHtml('other');?>
+
+                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                    <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+                <?php endif;?>
+
+                <!-- FLETES LINK-->          
+                <div id="pdetail-fletes-link">
+                    <p>
+                      <a href="javascript:void(0)">
+                        <strong>Calcular</strong> tiempo y precios de env&iacute;o
+                      </a>
+                    </p>
+                </div>
+                <div id="pdetail-fletes-resum" style="display:none;">
+                    <p>
+                      <a href="javascript:void(0)">
+                        Cálculo de envío para <?php echo Mage::getSingleton('customer/session')->getMyValue("$nameciudad"); 
+                        Mage::getSingleton('core/session')->unsMyValue();
+                        ?>
+                         <strong>Editar</strong>
+                      </a>
+                    </p>
+                </div>
+                <div id="calculo_frete">
+                </div>
+
+                <div id="dialog-form" title="Calcular">
+                  <?php echo $this->getLayout()->createBlock('page/html')->setTemplate('page/html/calculo.phtml')->toHtml() ; ?>
+                </div>
+ 
+                 
+                <?php if($_product->getCustomtext()): ?>
+                    <div class="short-description">
+                        <?php echo $_product->getCustomtext() ?>
+                    </div>
+                <?php endif; ?>
+                
+                <?php if ($_product->getShortDescription()):?>
+                    <div class="short-description">
+                        <h2><?php echo $this->__('Quick Overview') ?></h2>
+                        <div class="std" itemprop="description">
+                            <?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?>
+                        </div>
+                    </div>
+                <?php endif;?>
+            </div>
+            
+            <div class="product-right">
+                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('Empresas_promo_side')->toHtml() ?>
+            </div>
+
+            <div class="clearer"></div>
+        </form>
+
+        <script type="text/javascript">
+        //<![CDATA[
+        <?php if($ajaxcart == '1' || $ajaxcart == '2') { ?>
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(button, url) {
+            if (this.validator.validate()) {
+                var form = this.form;
+                var oldUrl = form.action;
+                if (url) {
+                    form.action = url;
+                }
+                var e = null;
+                // Start of our new ajax code
+                if (!url) {
+                    url = jQuery('#product_addtocart_form').attr('action');
+                }
+                url = url.replace("checkout/cart","ajax/index"); // New Code
+                var data = jQuery('#product_addtocart_form').serialize();
+                data += '&isAjax=1';
+                
+                jQuery('#ajax_loader').show();
+                try {
+                    jQuery.ajax( {
+                        url : url,
+                        dataType : 'json',
+                        type : 'post',
+                        data : data,
+                        
+                        success : function(data) {
+                            //alert("dd");
+                            jQuery('#ajax_loader').hide();
+                            if(data.status == 'ERROR'){
+                                alert(data.message);
+                            }else{
+                                successMessage(data.message);
+                                if(jQuery('.block-cart')){
+                                jQuery('.block-cart').replaceWith(data.sidebar);
+                                }
+                                if(jQuery('.header .links')){
+                                jQuery('.header .links').replaceWith(data.toplink);
+                                }
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            alert("Error posting Data");
+                        }
+                    });
+                } catch (e) {
+                }
+                // End of our new ajax code
+                this.form.action = oldUrl;
+                if (e) {
+                    throw e;
+                }
+            }
+        }.bind(productAddToCartForm);
+        
+        productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+        
+        <?php } else { ?>
+        
+        var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(button, url) {
+                if (this.validator.validate()) {
+                    var form = this.form;
+                    var oldUrl = form.action;
+
+                    if (url) {
+                       form.action = url;
+                    }
+                    var e = null;
+                    try {
+                        this.form.submit();
+                    } catch (e) {
+                    }
+                    this.form.action = oldUrl;
+                    if (e) {
+                        throw e;
+                    }
+
+                    if (button && button != 'undefined') {
+                        button.disabled = true;
+                    }
+                }
+            }.bind(productAddToCartForm);
+
+            productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    // Remove custom datetime validators
+                    for (var methodName in Validation.methods) {
+                        if (methodName.match(/^validate-datetime-.*/i)) {
+                            delete Validation.methods[methodName];
+                        }
+                    }
+
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+        
+        <?php } ?>
+        //]]>
+        </script>
+    </div>
+        
+    <div class="product-collateral">
+        <div class="tab">
+             <?php echo $this->getChildHtml('info_tabs') ?>
+
+             <div class="popular-product"> 
+                <?php echo $this->getChildHtml('related'); ?>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+             
+        <?php echo $this->getChildHtml('upsell_products') ?>
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail-block2')->toHtml() ?>     
+    </div>
+</div>
+
+
+<?php }elseif ($layout == 'horizontal'){ ?>
+
+
+<div class="product-view">
+    <div class="product-essential">
+        <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+            <div class="no-display">
+                <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+                <input type="hidden" name="related_product" id="related-products-field" value="" />
+            </div>
+
+            <div class="horizontal-image product-img-box">
+                <?php echo $this->getChildHtml('media') ?>
+            </div>
+
+            <div class="horizontal-shop product-shop">
+                <div class="view-name">
+                    <div class="product-name">
+                        <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+
+                        </h1>
+                    </div>
+                </div>            
+
+                <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+                
+                <?php echo $this->getChildHtml('alert_urls') ?>
+                <?php echo $this->getChildHtml('product_type_data') ?>
+                <?php echo $this->getTierPriceHtml() ?>
+                <?php echo $this->getChildHtml('extrahint') ?>
+                
+                <div class="product_sku">
+                    <label>SKU :</label>
+                    <?php echo $this->htmlEscape($_product->getSku()) ?>
+                </div>
+            
+                <?php if ($brandlogo == '1') { ?>
+                    <?php
+                    $attributes = Mage::getResourceModel('eav/entity_attribute_collection')->setEntityTypeFilter($_product->getResource()->getTypeId())->addFieldToFilter('attribute_code', 'manufacturer');
+                    $attribute = $attributes->getFirstItem()->setEntity($_product->getResource());
+                    $manufacturers = $attribute->getSource()->getAllOptions(false); ?>
+                    <?php $brandlogo = $_product->getAttributeText('manufacturer') ?>
+                    <?php foreach ($manufacturers as $manufacturer): ?>
+                        <?php if ($manufacturer['label'] == $brandlogo){ ?>
+                            <!--
+                            <div class="brand-logo">
+                            
+                            <a href="<?php Mage::getURL() ?>catalogsearch/advanced/result/?manufacturer[]=<?php echo $manufacturer['value'] ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . "brandlogo/" .$brandlogo . ".jpg"; ?>" /></a>
+                            </div>
+                            -->
+                        <?php } ?>
+                    <?php endforeach; ?>
+                <?php } ?>
+            
+                <?php if($_product->getCustomtext()): ?>
+                    <div class="short-description">
+                        <?php echo $_product->getCustomtext() ?>
+                    </div>
+                <?php endif; ?>
+                
+                <?php if ($_product->getShortDescription()):?>
+                    <div class="short-description">
+                        <h2><?php echo $this->__('Quick Overview') ?></h2>
+                        <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                    </div>
+                <?php endif;?>
+                
+                <?php if (!$this->hasOptions()):?>
+                    <div class="add-to-box">
+                        <?php if($_product->isSaleable()): ?>
+                            <?php echo $this->getChildHtml('addtocart') ?>
+                            <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                                <span class="or"><?php echo $this->__('OR') ?></span>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                
+                        <?php echo $this->getChildHtml('addto') ?>
+                        <?php if ($sharingicon == '1') { ?>
+                            <div class="sharing-button">
+                                <!-- AddThis Button BEGIN -->
+                                <div class="addthis_toolbox addthis_default_style ">
+                                <a class="addthis_button_preferred_1"></a>
+                                <a class="addthis_button_preferred_2"></a>
+                                <a class="addthis_button_preferred_3"></a>
+                                <a class="addthis_button_preferred_4"></a>
+                                <a class="addthis_button_compact"></a>
+                                <a class="addthis_counter addthis_bubble_style"></a>
+                                </div>
+                                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-523bf1bc5cd59274"></script>
+                                <!-- AddThis Button END -->
+                            </div>
+                        <?php } ?>
+                    </div>
+            
+                    <?php echo $this->getChildHtml('extra_buttons') ?>
+                <?php elseif (!$_product->isSaleable()): ?>
+                    <div class="add-to-box">
+                        <?php echo $this->getChildHtml('addto') ?>
+                        <?php if ($sharingicon == '1') { ?>
+                            <div class="sharing-button">
+                                <!-- AddThis Button BEGIN -->
+                                <div class="addthis_toolbox addthis_default_style ">
+                                <a class="addthis_button_preferred_1"></a>
+                                <a class="addthis_button_preferred_2"></a>
+                                <a class="addthis_button_preferred_3"></a>
+                                <a class="addthis_button_preferred_4"></a>
+                                <a class="addthis_button_compact"></a>
+                                <a class="addthis_counter addthis_bubble_style"></a>
+                                </div>
+                                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-523bf1bc5cd59274"></script>
+                                <!-- AddThis Button END -->
+                            </div>
+                        <?php } ?>
+                    </div>
+                <?php endif; ?>
+                
+                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                    <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+                    <?php // echo $this->getChildHtml('addto') ?>
+                <?php endif;?>
+                
+                <?php echo $this->getChildHtml('other');?>
+
+                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                    <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+                <?php endif;?>
+            </div>
+
+            <div class="clearer"></div>
+        </form>
+
+        <script type="text/javascript">
+        //<![CDATA[
+             <?php if($ajaxcart == '1' || $ajaxcart == '2') { ?>
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(button, url) {
+            if (this.validator.validate()) {
+                var form = this.form;
+                var oldUrl = form.action;
+                if (url) {
+                    form.action = url;
+                }
+                var e = null;
+                // Start of our new ajax code
+                if (!url) {
+                    url = jQuery('#product_addtocart_form').attr('action');
+                }
+                url = url.replace("checkout/cart","ajax/index"); // New Code
+                var data = jQuery('#product_addtocart_form').serialize();
+                data += '&isAjax=1';
+                
+                jQuery('#ajax_loader').show();
+                try {
+                    jQuery.ajax( {
+                        url : url,
+                        dataType : 'json',
+                        type : 'post',
+                        data : data,
+                        
+                        success : function(data) {
+                            //alert("dd");
+                            jQuery('#ajax_loader').hide();
+                            if(data.status == 'ERROR'){
+                                alert(data.message);
+                            }else{
+                                successMessage(data.message);
+                                if(jQuery('.block-cart')){
+                                jQuery('.block-cart').replaceWith(data.sidebar);
+                                }
+                                if(jQuery('.header .links')){
+                                jQuery('.header .links').replaceWith(data.toplink);
+                                }
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            alert("Error posting Data");
+                        }
+                    });
+                } catch (e) {
+                }
+                // End of our new ajax code
+                this.form.action = oldUrl;
+                if (e) {
+                    throw e;
+                }
+            }
+        }.bind(productAddToCartForm);
+        
+        productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+        
+        <?php } else { ?>
+        
+        var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(button, url) {
+                if (this.validator.validate()) {
+                    var form = this.form;
+                    var oldUrl = form.action;
+
+                    if (url) {
+                       form.action = url;
+                    }
+                    var e = null;
+                    try {
+                        this.form.submit();
+                    } catch (e) {
+                    }
+                    this.form.action = oldUrl;
+                    if (e) {
+                        throw e;
+                    }
+
+                    if (button && button != 'undefined') {
+                        button.disabled = true;
+                    }
+                }
+            }.bind(productAddToCartForm);
+
+            productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    // Remove custom datetime validators
+                    for (var methodName in Validation.methods) {
+                        if (methodName.match(/^validate-datetime-.*/i)) {
+                            delete Validation.methods[methodName];
+                        }
+                    }
+
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+        
+        <?php } ?>
+        //]]>
+        </script>
+    </div>
+
+    <div class="product-collateral">
+        <div class="tab">
+            <?php echo $this->getChildHtml('info_tabs') ?>
+        </div>
+        <div class="related"> 
+            <?php echo $this->getChildHtml('related'); ?>
+        </div>
+        <div class="clear"></div>
+        <?php echo $this->getChildHtml('upsell_products') ?>
+         <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail-block2')->toHtml() ?>
+    </div>
+</div>
+
+
+<?php }elseif ($layout == 'vertical'){ ?>
+
+
+<div class="product-view">
+    <div class="product-essential">
+        <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+            <div class="no-display">
+                <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+                <input type="hidden" name="related_product" id="related-products-field" value="" />
+            </div>
+
+            <div class="vertical-image product-img-box">
+                <?php echo $this->getChildHtml('media') ?>
+            </div>
+
+            <div class="vertical-shop product-shop">
+                <div class="view-name">
+                    <div class="product-name">
+                        <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                    </div>
+                </div>            
+            
+
+                <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+
+                <?php echo $this->getChildHtml('alert_urls') ?>
+                <?php echo $this->getChildHtml('product_type_data') ?>
+                <?php echo $this->getTierPriceHtml() ?>
+                <?php echo $this->getChildHtml('extrahint') ?>
+            
+                <div class="product_sku">
+                    <label>SKU :</label>
+                    <?php echo $this->htmlEscape($_product->getSku()) ?>
+                </div>            
+        
+                <?php if ($brandlogo == '1') { ?>
+                    <?php
+                    $attributes = Mage::getResourceModel('eav/entity_attribute_collection')->setEntityTypeFilter($_product->getResource()->getTypeId())->addFieldToFilter('attribute_code', 'manufacturer');
+                    $attribute = $attributes->getFirstItem()->setEntity($_product->getResource());
+                    $manufacturers = $attribute->getSource()->getAllOptions(false); ?>
+                    <?php $brandlogo = $_product->getAttributeText('manufacturer') ?>
+                    
+                    <?php foreach ($manufacturers as $manufacturer): ?>
+                        <?php if ($manufacturer['label'] == $brandlogo){ ?>
+                            <div class="brand-logo">
+                    
+                                <a href="<?php Mage::getURL() ?>catalogsearch/advanced/result/?manufacturer[]=<?php echo $manufacturer['value'] ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . "brandlogo/" .$brandlogo . ".jpg"; ?>" /></a>
+                            </div>
+                        <?php } ?>
+                    <?php endforeach; ?>
+                <?php } ?>
+        
+                <?php if($_product->getCustomtext()): ?>
+                    <div class="short-description">
+                        <?php echo $_product->getCustomtext() ?>
+                    </div>
+                <?php endif; ?>
+            
+                <?php if ($_product->getShortDescription()):?>
+                    <div class="short-description">
+                        <h2><?php echo $this->__('Quick Overview') ?></h2>
+                        <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                    </div>
+                <?php endif;?>
+            
+                <?php if (!$this->hasOptions()):?>
+                    <div class="add-to-box">
+                        <?php if($_product->isSaleable()): ?>
+                            <?php echo $this->getChildHtml('addtocart') ?>
+                            <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                                <span class="or"><?php echo $this->__('OR') ?></span>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                        <?php echo $this->getChildHtml('addto') ?>
+
+                        <?php if ($sharingicon == '1') { ?>
+                            <div class="sharing-button">
+                                <!-- AddThis Button BEGIN -->
+                                <div class="addthis_toolbox addthis_default_style ">
+                                <a class="addthis_button_preferred_1"></a>
+                                <a class="addthis_button_preferred_2"></a>
+                                <a class="addthis_button_preferred_3"></a>
+                                <a class="addthis_button_preferred_4"></a>
+                                <a class="addthis_button_compact"></a>
+                                <a class="addthis_counter addthis_bubble_style"></a>
+                                </div>
+                                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-523bf1bc5cd59274"></script>
+                                <!-- AddThis Button END -->
+                            </div>
+                        <?php } ?>
+                    </div>
+    
+                    <?php echo $this->getChildHtml('extra_buttons') ?>
+                <?php elseif (!$_product->isSaleable()): ?>
+                    <div class="add-to-box">
+                        <?php echo $this->getChildHtml('addto') ?>
+                        <?php if ($sharingicon == '1') { ?>
+                            <div class="sharing-button">
+                                <!-- AddThis Button BEGIN -->
+                                <div class="addthis_toolbox addthis_default_style ">
+                                <a class="addthis_button_preferred_1"></a>
+                                <a class="addthis_button_preferred_2"></a>
+                                <a class="addthis_button_preferred_3"></a>
+                                <a class="addthis_button_preferred_4"></a>
+                                <a class="addthis_button_compact"></a>
+                                <a class="addthis_counter addthis_bubble_style"></a>
+                                </div>
+                                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-523bf1bc5cd59274"></script>
+                                <!-- AddThis Button END -->
+                            </div>
+                        <?php } ?>
+                    </div>
+                <?php endif; ?>
+
+            
+                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                    <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+                    <?php // echo $this->getChildHtml('addto') ?>
+                <?php endif;?>
+            
+                <?php echo $this->getChildHtml('other');?>
+
+                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                    <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+                <?php endif;?>
+            </div>
+
+        
+            <div class="product-right">
+                <!--<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail-block1')->toHtml() ?>-->
+                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('Empresas_promo_side')->toHtml() ?>
+            </div>
+
+            <div class="clearer"></div>
+        </form>
+    
+        <script type="text/javascript">
+        //<![CDATA[
+             <?php if($ajaxcart == '1' || $ajaxcart == '2') { ?>
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(button, url) {
+            if (this.validator.validate()) {
+                var form = this.form;
+                var oldUrl = form.action;
+                if (url) {
+                    form.action = url;
+                }
+                var e = null;
+                // Start of our new ajax code
+                if (!url) {
+                    url = jQuery('#product_addtocart_form').attr('action');
+                }
+                url = url.replace("checkout/cart","ajax/index"); // New Code
+                var data = jQuery('#product_addtocart_form').serialize();
+                data += '&isAjax=1';
+                
+                jQuery('#ajax_loader').show();
+                try {
+                    jQuery.ajax( {
+                        url : url,
+                        dataType : 'json',
+                        type : 'post',
+                        data : data,
+                        
+                        success : function(data) {
+                            //alert("dd");
+                            jQuery('#ajax_loader').hide();
+                            if(data.status == 'ERROR'){
+                                alert(data.message);
+                            }else{
+                                successMessage(data.message);
+                                if(jQuery('.block-cart')){
+                                jQuery('.block-cart').replaceWith(data.sidebar);
+                                }
+                                if(jQuery('.header .links')){
+                                jQuery('.header .links').replaceWith(data.toplink);
+                                }
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            alert("Error posting Data");
+                        }
+                    });
+                } catch (e) {
+                }
+                // End of our new ajax code
+                this.form.action = oldUrl;
+                if (e) {
+                    throw e;
+                }
+            }
+        }.bind(productAddToCartForm);
+        
+        productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+        
+        <?php } else { ?>
+        
+        var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(button, url) {
+                if (this.validator.validate()) {
+                    var form = this.form;
+                    var oldUrl = form.action;
+
+                    if (url) {
+                       form.action = url;
+                    }
+                    var e = null;
+                    try {
+                        this.form.submit();
+                    } catch (e) {
+                    }
+                    this.form.action = oldUrl;
+                    if (e) {
+                        throw e;
+                    }
+
+                    if (button && button != 'undefined') {
+                        button.disabled = true;
+                    }
+                }
+            }.bind(productAddToCartForm);
+
+            productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    // Remove custom datetime validators
+                    for (var methodName in Validation.methods) {
+                        if (methodName.match(/^validate-datetime-.*/i)) {
+                            delete Validation.methods[methodName];
+                        }
+                    }
+
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+        
+        <?php } ?>
+        //]]>
+        </script>
+    </div>
+
+    <div class="product-collateral">
+        <div class="tab">
+            <?php echo $this->getChildHtml('info_tabs') ?>
+        </div>
+        <div class="related"> 
+            <?php echo $this->getChildHtml('related'); ?>
+        </div>
+        <div class="clear"></div>
+        <?php echo $this->getChildHtml('upsell_products') ?>
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail-block2')->toHtml() ?>
+    </div>
+</div>
+
+
+<?php }elseif ($layout == 'custom1'){ ?>
+
+<div class="product-view">
+    <div class="product-essential">
+        <div class="no-display">
+            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+            <input type="hidden" name="related_product" id="related-products-field" value="" />
+        </div>
+
+        <div class="custom1-image product-img-box">
+            <?php echo $this->getChildHtml('media') ?>
+        </div>
+
+        <div class="custom">
+            <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+                <div class="custom-shop product-shop">
+                    <div class="view-name">
+                        <div class="product-name">
+                            <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                        </div>
+                    </div>           
+        
+                    <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+                    <?php echo $this->getChildHtml('alert_urls') ?>
+                    <?php echo $this->getChildHtml('product_type_data') ?>
+                    <?php echo $this->getTierPriceHtml() ?>
+                    <?php echo $this->getChildHtml('extrahint') ?>
+            
+                    <div class="product_sku">
+                        <label>SKU :</label>
+                        <?php echo $this->htmlEscape($_product->getSku()) ?>
+                    </div>
+            
+                    <?php if ($brandlogo == '1') { ?>
+                        <?php
+                        $attributes = Mage::getResourceModel('eav/entity_attribute_collection')->setEntityTypeFilter($_product->getResource()->getTypeId())->addFieldToFilter('attribute_code', 'manufacturer');
+                        $attribute = $attributes->getFirstItem()->setEntity($_product->getResource());
+                        $manufacturers = $attribute->getSource()->getAllOptions(false); ?>
+                        <?php $brandlogo = $_product->getAttributeText('manufacturer') ?>
+                        
+                        <?php foreach ($manufacturers as $manufacturer): ?>
+                            <?php if ($manufacturer['label'] == $brandlogo){ ?>
+
+                                <!--
+                                <div class="brand-logo">
+                                
+                                <a href="<?php Mage::getURL() ?>catalogsearch/advanced/result/?manufacturer[]=<?php echo $manufacturer['value'] ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . "brandlogo/" .$brandlogo . ".jpg"; ?>" /></a>
+                                </div>
+                                -->
+                            <?php } ?>
+                        <?php endforeach; ?>
+                    <?php } ?>
+        
+                    <?php if($_product->getCustomtext()): ?>
+                        <div class="short-description">
+                            <?php echo $_product->getCustomtext() ?>
+                        </div>
+                    <?php endif; ?>
+            
+                    <?php if ($_product->getShortDescription()):?>
+                        <div class="short-description">
+                            <h2><?php echo $this->__('Quick Overview') ?></h2>
+                            <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                        </div>
+                    <?php endif;?>
+            
+                    <?php if (!$this->hasOptions()):?>
+                        <div class="add-to-box">
+                            <?php if($_product->isSaleable()): ?>
+                                <?php echo $this->getChildHtml('addtocart') ?>
+                                <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                                    <span class="or"><?php echo $this->__('OR') ?></span>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                            <?php echo $this->getChildHtml('addto') ?>
+
+                            <?php if ($sharingicon == '1') { ?>
+                                <div class="sharing-button">
+                                    <!-- AddThis Button BEGIN -->
+                                    <div class="addthis_toolbox addthis_default_style ">
+                                    <a class="addthis_button_preferred_1"></a>
+                                    <a class="addthis_button_preferred_2"></a>
+                                    <a class="addthis_button_preferred_3"></a>
+                                    <a class="addthis_button_preferred_4"></a>
+                                    <a class="addthis_button_compact"></a>
+                                    <a class="addthis_counter addthis_bubble_style"></a>
+                                    </div>
+                                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-523bf1bc5cd59274"></script>
+                                    <!-- AddThis Button END -->
+                                </div>
+                            <?php } ?>
+                        </div>
+        
+                        <?php echo $this->getChildHtml('extra_buttons') ?>
+                    <?php elseif (!$_product->isSaleable()): ?>
+                        <div class="add-to-box">
+                            <?php echo $this->getChildHtml('addto') ?>
+                            <?php if ($sharingicon == '1') { ?>
+                                <div class="sharing-button">
+                                    <!-- AddThis Button BEGIN -->
+                                    <div class="addthis_toolbox addthis_default_style ">
+                                    <a class="addthis_button_preferred_1"></a>
+                                    <a class="addthis_button_preferred_2"></a>
+                                    <a class="addthis_button_preferred_3"></a>
+                                    <a class="addthis_button_preferred_4"></a>
+                                    <a class="addthis_button_compact"></a>
+                                    <a class="addthis_counter addthis_bubble_style"></a>
+                                    </div>
+                                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-523bf1bc5cd59274"></script>
+                                    <!-- AddThis Button END -->
+                                </div>
+                            <?php } ?>
+                        </div>
+                    <?php endif; ?>
+            
+                    <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                        <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+                        <?php // echo $this->getChildHtml('addto') ?>
+                    <?php endif;?>
+            
+                    <?php echo $this->getChildHtml('other');?>
+
+                    <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                        <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+                    <?php endif;?>
+                </div>
+            </form>
+
+            <div class="custom-tab">
+                <div class="product-collateral">
+                <?php echo $this->getChildHtml('info_tabs') ?>
+                </div>
+            </div>
+        </div>
+        
+        <div class="clearer"></div>
+        
+        <script type="text/javascript">
+        //<![CDATA[
+             <?php if($ajaxcart == '1' || $ajaxcart == '2') { ?>
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(button, url) {
+            if (this.validator.validate()) {
+                var form = this.form;
+                var oldUrl = form.action;
+                if (url) {
+                    form.action = url;
+                }
+                var e = null;
+                // Start of our new ajax code
+                if (!url) {
+                    url = jQuery('#product_addtocart_form').attr('action');
+                }
+                url = url.replace("checkout/cart","ajax/index"); // New Code
+                var data = jQuery('#product_addtocart_form').serialize();
+                data += '&isAjax=1';
+                
+                jQuery('#ajax_loader').show();
+                try {
+                    jQuery.ajax( {
+                        url : url,
+                        dataType : 'json',
+                        type : 'post',
+                        data : data,
+                        
+                        success : function(data) {
+                            //alert("dd");
+                            jQuery('#ajax_loader').hide();
+                            if(data.status == 'ERROR'){
+                                alert(data.message);
+                            }else{
+                                successMessage(data.message);
+                                if(jQuery('.block-cart')){
+                                jQuery('.block-cart').replaceWith(data.sidebar);
+                                }
+                                if(jQuery('.header .links')){
+                                jQuery('.header .links').replaceWith(data.toplink);
+                                }
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            alert("Error posting Data");
+                        }
+                    });
+                } catch (e) {
+                }
+                // End of our new ajax code
+                this.form.action = oldUrl;
+                if (e) {
+                    throw e;
+                }
+            }
+        }.bind(productAddToCartForm);
+        
+        productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+        
+        <?php } else { ?>
+        
+        var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(button, url) {
+                if (this.validator.validate()) {
+                    var form = this.form;
+                    var oldUrl = form.action;
+
+                    if (url) {
+                       form.action = url;
+                    }
+                    var e = null;
+                    try {
+                        this.form.submit();
+                    } catch (e) {
+                    }
+                    this.form.action = oldUrl;
+                    if (e) {
+                        throw e;
+                    }
+
+                    if (button && button != 'undefined') {
+                        button.disabled = true;
+                    }
+                }
+            }.bind(productAddToCartForm);
+
+            productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    // Remove custom datetime validators
+                    for (var methodName in Validation.methods) {
+                        if (methodName.match(/^validate-datetime-.*/i)) {
+                            delete Validation.methods[methodName];
+                        }
+                    }
+
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+        
+        <?php } ?>
+        //]]>
+        </script>
+    </div>
+
+    <div class="related"> 
+        <?php echo $this->getChildHtml('related'); ?>
+    </div>
+         
+    <?php echo $this->getChildHtml('upsell_products') ?>
+</div>
+
+
+<?php }elseif ($layout == 'custom2'){ ?>
+
+
+<div class="product-view">
+    <div class="product-essential">
+        <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+            <div class="no-display">
+                <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+                <input type="hidden" name="related_product" id="related-products-field" value="" />
+            </div>
+            <div class="custom2-image product-img-box">
+                <?php echo $this->getChildHtml('media') ?>
+                <div style="clear: both;"></div>
+            </div>
+            
+            <div class="custom2-shop product-shop">
+                <div class="view-name">
+                    <div class="product-name">
+                        <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                    </div>
+                </div>
+
+                <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+            
+                <?php echo $this->getChildHtml('alert_urls') ?>
+                <?php echo $this->getChildHtml('product_type_data') ?>
+                <?php echo $this->getTierPriceHtml() ?>
+                <?php echo $this->getChildHtml('extrahint') ?>
+            
+                <div class="product_sku">
+                    <label>SKU :</label>
+                    <?php echo $this->htmlEscape($_product->getSku()) ?>
+                </div>
+        
+                <?php if ($brandlogo == '1') { ?>
+                    <?php
+                    $attributes = Mage::getResourceModel('eav/entity_attribute_collection')->setEntityTypeFilter($_product->getResource()->getTypeId())->addFieldToFilter('attribute_code', 'manufacturer');
+                    $attribute = $attributes->getFirstItem()->setEntity($_product->getResource());
+                    $manufacturers = $attribute->getSource()->getAllOptions(false); ?>
+                    <?php $brandlogo = $_product->getAttributeText('manufacturer') ?>
+                    
+                    <?php foreach ($manufacturers as $manufacturer): ?>
+                        <?php if ($manufacturer['label'] == $brandlogo){ ?>
+                            <!--
+                            <div class="brand-logo">
+                            
+                            <a href="<?php Mage::getURL() ?>catalogsearch/advanced/result/?manufacturer[]=<?php echo $manufacturer['value'] ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . "brandlogo/" .$brandlogo . ".jpg"; ?>" /></a>
+                            </div>
+                            -->
+                        <?php } ?>
+                    <?php endforeach; ?>
+                <?php } ?>
+            
+                <?php if($_product->getCustomtext()): ?>
+                    <div class="short-description">
+                        <?php echo $_product->getCustomtext() ?>
+                    </div>
+                <?php endif; ?>
+        
+                <?php if ($_product->getShortDescription()):?>
+                    <div class="short-description">
+                        <h2><?php echo $this->__('Quick Overview') ?></h2>
+                        <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                    </div>
+                <?php endif;?>
+            
+                <?php if (!$this->hasOptions()):?>
+                    <div class="add-to-box">
+                        <?php if($_product->isSaleable()): ?>
+                            <?php echo $this->getChildHtml('addtocart') ?>
+                            <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                                <span class="or"><?php echo $this->__('OR') ?></span>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                        <?php echo $this->getChildHtml('addto') ?>
+                        <?php if ($sharingicon == '1') { ?>
+                            <div class="sharing-button">
+                                <!-- AddThis Button BEGIN -->
+                                <div class="addthis_toolbox addthis_default_style ">
+                                <a class="addthis_button_preferred_1"></a>
+                                <a class="addthis_button_preferred_2"></a>
+                                <a class="addthis_button_preferred_3"></a>
+                                <a class="addthis_button_preferred_4"></a>
+                                <a class="addthis_button_compact"></a>
+                                <a class="addthis_counter addthis_bubble_style"></a>
+                            </div>
+                            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-523bf1bc5cd59274"></script>
+                            <!-- AddThis Button END -->
+                            </div>
+                        <?php } ?>
+                    </div>
+            
+                    <?php echo $this->getChildHtml('extra_buttons') ?>
+                <?php elseif (!$_product->isSaleable()): ?>
+                
+                    <div class="add-to-box">
+                        <?php echo $this->getChildHtml('addto') ?>
+
+                        <?php if ($sharingicon == '1') { ?>
+                            <div class="sharing-button">
+                                <!-- AddThis Button BEGIN -->
+                                <div class="addthis_toolbox addthis_default_style ">
+                                    <a class="addthis_button_preferred_1"></a>
+                                    <a class="addthis_button_preferred_2"></a>
+                                    <a class="addthis_button_preferred_3"></a>
+                                    <a class="addthis_button_preferred_4"></a>
+                                    <a class="addthis_button_compact"></a>
+                                    <a class="addthis_counter addthis_bubble_style"></a>
+                                </div>
+                                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-523bf1bc5cd59274"></script>
+                                <!-- AddThis Button END -->
+                            </div>
+                        <?php } ?>
+                    </div>
+
+                <?php endif; ?>
+
+            
+                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                    <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+                    <?php // echo $this->getChildHtml('addto') ?>
+                <?php endif;?>
+
+                <?php echo $this->getChildHtml('other');?>
+
+                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                    <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+                <?php endif;?>
+            </div>
+        
+            <div class="clearer"></div>
+        </form>
+
+        <script type="text/javascript">
+        //<![CDATA[
+              <?php if($ajaxcart == '1' || $ajaxcart == '2') { ?>
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(button, url) {
+            if (this.validator.validate()) {
+                var form = this.form;
+                var oldUrl = form.action;
+                if (url) {
+                    form.action = url;
+                }
+                var e = null;
+                // Start of our new ajax code
+                if (!url) {
+                    url = jQuery('#product_addtocart_form').attr('action');
+                }
+                url = url.replace("checkout/cart","ajax/index"); // New Code
+                var data = jQuery('#product_addtocart_form').serialize();
+                data += '&isAjax=1';
+                
+                jQuery('#ajax_loader').show();
+                try {
+                    jQuery.ajax( {
+                        url : url,
+                        dataType : 'json',
+                        type : 'post',
+                        data : data,
+                        
+                        success : function(data) {
+                            //alert("dd");
+                            jQuery('#ajax_loader').hide();
+                            if(data.status == 'ERROR'){
+                                alert(data.message);
+                            }else{
+                                successMessage(data.message);
+                                if(jQuery('.block-cart')){
+                                jQuery('.block-cart').replaceWith(data.sidebar);
+                                }
+                                if(jQuery('.header .links')){
+                                jQuery('.header .links').replaceWith(data.toplink);
+                                }
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            alert("Error posting Data");
+                        }
+                    });
+                } catch (e) {
+                }
+                // End of our new ajax code
+                this.form.action = oldUrl;
+                if (e) {
+                    throw e;
+                }
+            }
+        }.bind(productAddToCartForm);
+        
+        productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+        
+        <?php } else { ?>
+        
+        var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(button, url) {
+                if (this.validator.validate()) {
+                    var form = this.form;
+                    var oldUrl = form.action;
+
+                    if (url) {
+                       form.action = url;
+                    }
+                    var e = null;
+                    try {
+                        this.form.submit();
+                    } catch (e) {
+                    }
+                    this.form.action = oldUrl;
+                    if (e) {
+                        throw e;
+                    }
+
+                    if (button && button != 'undefined') {
+                        button.disabled = true;
+                    }
+                }
+            }.bind(productAddToCartForm);
+
+            productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    // Remove custom datetime validators
+                    for (var methodName in Validation.methods) {
+                        if (methodName.match(/^validate-datetime-.*/i)) {
+                            delete Validation.methods[methodName];
+                        }
+                    }
+
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+        
+        <?php } ?>
+        //]]>
+        </script>
+    </div>
+
+    <div class="product-collateral">
+        <div class="tab">
+            <?php echo $this->getChildHtml('info_tabs') ?>
+        </div>
+        <div class="related"> 
+            <?php echo $this->getChildHtml('related'); ?>
+        </div>
+        <div class="clear"></div>
+        <?php echo $this->getChildHtml('upsell_products') ?>
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail-block2')->toHtml() ?>
+    </div>
+</div>
+
+
+<?php } ?>
+<!--End theme layout-->
+<?php } else { ?>
+
+
+<div class="product-view layout-view">
+    <div class="product-essential">
+        <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+            <div class="no-display">
+                <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+                <input type="hidden" name="related_product" id="related-products-field" value="" />
+            </div>
+
+            <div class="layout-image product-img-box">
+                <?php echo $this->getChildHtml('media') ?>
+            </div>
+
+            <div class="layout-shop product-shop">
+                <div class="view-name">
+                    <div class="product-name">
+                        <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                    </div>
+                </div>
+            
+                <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+                <?php echo $this->getChildHtml('alert_urls') ?>
+                <?php echo $this->getChildHtml('product_type_data') ?>
+                <?php echo $this->getTierPriceHtml() ?>
+                <?php echo $this->getChildHtml('extrahint') ?>
+        
+                <div class="product_sku">
+                    <label>SKU :</label>
+                    <?php echo $this->htmlEscape($_product->getSku()) ?>
+                </div>
+            
+                <?php if ($brandlogo == '1') { ?>
+                    <?php
+                    $attributes = Mage::getResourceModel('eav/entity_attribute_collection')->setEntityTypeFilter($_product->getResource()->getTypeId())->addFieldToFilter('attribute_code', 'manufacturer');
+                    $attribute = $attributes->getFirstItem()->setEntity($_product->getResource());
+                    $manufacturers = $attribute->getSource()->getAllOptions(false); ?>
+                    <?php $brandlogo = $_product->getAttributeText('manufacturer') ?>
+                    
+                    <?php foreach ($manufacturers as $manufacturer): ?>
+                        <?php if ($manufacturer['label'] == $brandlogo){ ?>
+                            <!--
+                            <div class="brand-logo">
+                            
+                            <a href="<?php Mage::getURL() ?>catalogsearch/advanced/result/?manufacturer[]=<?php echo $manufacturer['value'] ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . "brandlogo/" .$brandlogo . ".jpg"; ?>" /></a>
+                            </div>
+                            -->
+                        <?php } ?>
+                    <?php endforeach; ?>
+                <?php } ?>
+                
+                <?php if($_product->getCustomtext()): ?>
+                    <div class="short-description">
+                        <?php echo $_product->getCustomtext() ?>
+                    </div>
+                <?php endif; ?>
+        
+                <?php if ($_product->getShortDescription()):?>
+                    <div class="short-description">
+                        <h2><?php echo $this->__('Quick Overview') ?></h2>
+                        <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                    </div>
+                <?php endif;?>
+        
+                <?php if (!$this->hasOptions()):?>
+                    <div class="add-to-box">
+                        <?php if($_product->isSaleable()): ?>
+                            <?php echo $this->getChildHtml('addtocart') ?>
+                            <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                                <span class="or"><?php echo $this->__('OR') ?></span>
+                            <?php endif; ?>
+                        <?php endif; ?>
+
+                        <?php echo $this->getChildHtml('addto') ?>
+                        <?php if ($sharingicon == '1') { ?>
+                            <div class="sharing-button">
+                                <!-- AddThis Button BEGIN -->
+                                <div class="addthis_toolbox addthis_default_style ">
+                                    <a class="addthis_button_preferred_1"></a>
+                                    <a class="addthis_button_preferred_2"></a>
+                                    <a class="addthis_button_preferred_3"></a>
+                                    <a class="addthis_button_preferred_4"></a>
+                                    <a class="addthis_button_compact"></a>
+                                    <a class="addthis_counter addthis_bubble_style"></a>
+                                </div>
+                                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-523bf1bc5cd59274"></script>
+                                <!-- AddThis Button END -->
+                            </div>
+                        <?php } ?>
+                    </div>
+            
+                    <?php echo $this->getChildHtml('extra_buttons') ?>
+                <?php elseif (!$_product->isSaleable()): ?>
+                    <div class="add-to-box">
+                        <?php echo $this->getChilzdHtml('addto') ?>
+                        <?php if ($sharingicon == '1') { ?>
+                            <div class="sharing-button">
+                                <!-- AddThis Button BEGIN -->
+                                <div class="addthis_toolbox addthis_default_style ">
+                                    <a class="addthis_button_preferred_1"></a>
+                                    <a class="addthis_button_preferred_2"></a>
+                                    <a class="addthis_button_preferred_3"></a>
+                                    <a class="addthis_button_preferred_4"></a>
+                                    <a class="addthis_button_compact"></a>
+                                    <a class="addthis_counter addthis_bubble_style"></a>
+                                </div>
+                                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-523bf1bc5cd59274"></script>
+                                <!-- AddThis Button END -->
+                            </div>
+                        <?php } ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                    <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+                    <?php // echo $this->getChildHtml('addto') ?>
+                <?php endif;?>
+                
+                <?php echo $this->getChildHtml('other');?>
+
+                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                    <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+                <?php endif;?>
+            </div>
+
+            <div class="clearer"></div>
+        </form>
+
+        <script type="text/javascript">
+        //<![CDATA[
+         <?php if($ajaxcart == '1' || $ajaxcart == '2') { ?>
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(button, url) {
+            if (this.validator.validate()) {
+                var form = this.form;
+                var oldUrl = form.action;
+                if (url) {
+                    form.action = url;
+                }
+                var e = null;
+                // Start of our new ajax code
+                if (!url) {
+                    url = jQuery('#product_addtocart_form').attr('action');
+                }
+                url = url.replace("checkout/cart","ajax/index"); // New Code
+                var data = jQuery('#product_addtocart_form').serialize();
+                data += '&isAjax=1';
+                
+                jQuery('#ajax_loader').show();
+                try {
+                    jQuery.ajax( {
+                        url : url,
+                        dataType : 'json',
+                        type : 'post',
+                        data : data,
+                        
+                        success : function(data) {
+                            //alert("dd");
+                            jQuery('#ajax_loader').hide();
+                            if(data.status == 'ERROR'){
+                                alert(data.message);
+                            }else{
+                                successMessage(data.message);
+                                if(jQuery('.block-cart')){
+                                jQuery('.block-cart').replaceWith(data.sidebar);
+                                }
+                                if(jQuery('.header .links')){
+                                jQuery('.header .links').replaceWith(data.toplink);
+                                }
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            alert("Error posting Data");
+                        }
+                    });
+                } catch (e) {
+                }
+                // End of our new ajax code
+                this.form.action = oldUrl;
+                if (e) {
+                    throw e;
+                }
+            }
+        }.bind(productAddToCartForm);
+        
+        productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+        
+        <?php } else { ?>
+        
+        var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(button, url) {
+                if (this.validator.validate()) {
+                    var form = this.form;
+                    var oldUrl = form.action;
+
+                    if (url) {
+                       form.action = url;
+                    }
+                    var e = null;
+                    try {
+                        this.form.submit();
+                    } catch (e) {
+                    }
+                    this.form.action = oldUrl;
+                    if (e) {
+                        throw e;
+                    }
+
+                    if (button && button != 'undefined') {
+                        button.disabled = true;
+                    }
+                }
+            }.bind(productAddToCartForm);
+
+            productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    // Remove custom datetime validators
+                    for (var methodName in Validation.methods) {
+                        if (methodName.match(/^validate-datetime-.*/i)) {
+                            delete Validation.methods[methodName];
+                        }
+                    }
+
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+        
+        <?php } ?>
+        //]]>
+        </script>
+    </div>
+
+    <div class="product-collateral">
+        <div class="tab">
+             <?php echo $this->getChildHtml('info_tabs') ?>
+        </div>
+        <div class="related"> 
+            <?php echo $this->getChildHtml('related1'); ?>
+        </div>
+        <div class="clear"></div>
+        <?php echo $this->getChildHtml('upsell_products1') ?>
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('detail-block2')->toHtml() ?>
+    </div>
+</div>
+
+<?php } ?>
+
+<script>
+  jQuery(function() {
+    var name = jQuery( "#name" ),
+      email = jQuery( "#email" ),
+      password = jQuery( "#password" ),
+      allFields = jQuery( [] ).add( name ).add( email ).add( password ),
+      tips = jQuery( ".validateTips" );
+ 
+    function updateTips( t ) {
+      tips
+        .text( t )
+        .addClass( "ui-state-highlight" );
+      setTimeout(function() {
+        tips.removeClass( "ui-state-highlight", 1500 );
+      }, 500 );
+    }
+ 
+    function checkLength( o, n, min, max ) {
+      if ( o.val().length > max || o.val().length < min ) {
+        o.addClass( "ui-state-error" );
+        updateTips( "Length of " + n + " must be between " +
+          min + " and " + max + "." );
+        return false;
+      } else {
+        return true;
+      }
+    }
+ 
+    jQuery( "#dialog-form" ).dialog({
+      autoOpen: false,
+      height: 500,
+      width: 650,
+      modal: true,
+      
+      close: function() {
+        var dep = jQuery("#region").val();
+        var city = jQuery("#city").val();
+
+        jQuery("#pdetail-fletes-resum" ).show();
+        jQuery("#pdetail-fletes-link" ).hide();
+        allFields.val( "" ).removeClass( "ui-state-error" );
+        jQuery.ajax({
+          url: 'http://www.ofi.com.co/ajax/flete.php?city='+city+'&region='+dep,
+          context: document.body,
+          success: function(data) {
+            jQuery('#calculo_frete').html(data);
+          }
+        });
+        
+      }
+    });
+ 
+    jQuery( "#pdetail-fletes-link" )
+      .button()
+      .click(function() {
+        jQuery( "#dialog-form" ).dialog( "open" );
+      });
+
+    jQuery( "#pdetail-fletes-resum" )
+      .button()
+      .click(function() {
+        jQuery( "#dialog-form" ).dialog( "open" );
+      });
+  });
+</script>

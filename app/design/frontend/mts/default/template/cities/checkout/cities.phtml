@@ -1,0 +1,14 @@
+<?php
+$addr=$this->getParentBlock();
+?>
+                    <label for="city" <?php if ($addr->isCityRequired()) echo ' class="required"' ?>><?php if ($addr->isCityRequired()) echo '<em>*</em>' ?><?php echo $this->__('City') ?></label><br />
+
+ 					<select id="city_id" name="estimate_city" title="<?php echo $addr->__('City') ?>" <?php echo ($addr->isCityRequired() ? ' class="validate-select"' : '') ?>>
+ 						<option value=""><?php echo $this->__('Seleccione su ciudad') ?></option>
+        			</select>
+					<script language="javascript">
+					jQuery(document).ready(function(){
+						jQuery('#city_id').attr('defaultValue',  "<?php echo $addr->getEstimateCity() ?>");
+						jQuery('#city_id').cityUpdater('#region_id', <?php echo $this->helper('cities')->getCityJson(); ?>, {disableAction:"disable"});
+					});
+					</script>

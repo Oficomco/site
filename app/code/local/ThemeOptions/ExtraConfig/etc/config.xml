@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <ThemeOptions_ExtraConfig>
+            <version>1.0.0</version>
+            <depends>
+            <!-- no dependencies -->
+            </depends>
+        </ThemeOptions_ExtraConfig>
+    </modules>
+	<global>
+		<models>
+		    <!-- ... -->
+		    <ExtraConfig>
+			<class>ThemeOptions_ExtraConfig_Model</class>
+		    </ExtraConfig>
+		    
+		    <catalog>
+			<rewrite>
+			    <observer>ThemeOptions_ExtraConfig_Model_Observer</observer>
+			    <resource_category_flat>ThemeOptions_ExtraConfig_Model_Resource_Category_Flat</resource_category_flat>
+			</rewrite>
+		    </catalog>
+		    
+		    <!-- ... -->
+		</models>
+		<helpers>
+				<ExtraConfig>
+					<class>ThemeOptions_ExtraConfig_Helper</class>
+				</ExtraConfig>
+		</helpers>
+		<resources>
+		    <add_category_attribute>
+			<setup>
+			    <module>ThemeOptions_ExtraConfig</module>
+			    <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+			</setup>
+			<connection>
+			    <use>core_setup</use>
+			</connection>
+		    </add_category_attribute>
+		    <add_category_attribute_write>
+			<connection>
+			    <use>core_write</use>
+			</connection>
+		    </add_category_attribute_write>
+		    <add_category_attribute_read>
+			<connection>
+			    <use>core_read</use>
+			</connection>
+		    </add_category_attribute_read>
+		</resources>
+		<extraconfig />
+		<blocks>
+		    <mygeneral><class>ThemeOptions_ExtraConfig_Block</class></mygeneral>
+		    <catalog>
+			<rewrite>
+			    <product_list_promotion>ThemeOptions_ExtraConfig_Block_Product_List_Promotion</product_list_promotion>
+			    <product_new>ThemeOptions_ExtraConfig_Block_Product_New</product_new>
+			    <product_popular>ThemeOptions_ExtraConfig_Block_Product_Popular</product_popular>
+			</rewrite>
+		    </catalog>
+		    <checkout>
+			<rewrite>
+			    <cart_crosssell>ThemeOptions_ExtraConfig_Block_Cart_Crosssell</cart_crosssell>
+			</rewrite>
+		    </checkout>
+		    <page>
+			<rewrite>
+			    <html_topmenu>ThemeOptions_ExtraConfig_Block_Html_Topmenu</html_topmenu>
+			</rewrite>
+			<layouts>
+			    <category module="page" translate="label">
+				    <label>Category</label>
+				    <template>page/category.phtml</template>
+				    <layout_handle>page_category</layout_handle>
+			    </category>
+			</layouts>
+		    </page>
+		    
+		</blocks>
+	</global>
+	
+	<frontend>
+	    <category>
+		<collection>
+		    <attributes>
+			<category_label /><!-- your attribute code here -->
+		    </attributes>
+		</collection>
+	    </category>
+	</frontend>
+	<!---->
+	<default>
+	    <mygeneral>
+			<menu>
+			    <homelink>1</homelink>
+			    <menuwidth>full</menuwidth>
+			</menu>
+			<header>
+			    <headerbg_pattern>pattern11</headerbg_pattern>
+			    <sticky_header>1</sticky_header>
+			</header>
+			<banner>
+			    <banner_border>1</banner_border>
+			</banner>
+			<home>
+			    <default_product>15</default_product>
+			    <loader>clickable</loader>
+			</home>
+			<product_list>
+			    <productlayout>default</productlayout>
+			    <ajaxcart>2</ajaxcart>
+			    <ajaxpopup>1</ajaxpopup>
+			    <newsaleicon>1</newsaleicon>
+			    <show_border>1</show_border>
+			    <homeproduct>1</homeproduct>
+			    <productimage>1</productimage>
+			    <productcontent>0</productcontent>
+			    <sharingicon>1</sharingicon>
+			    <brandlogo>1</brandlogo>
+			</product_list>
+			
+			<category>
+			    <displaycategorysidebar>left</displaycategorysidebar>
+			    <sidebarmenu>1</sidebarmenu>
+			</category>
+			<extra_settings>
+			    <backtotop>1</backtotop>
+			    <instock>1</instock>
+			    <responsiveness>1</responsiveness>
+			    <boxlayout>3</boxlayout>
+			    <animation>1</animation>
+			</extra_settings>
+	    </mygeneral>
+		
+	</default>
+	<!---->
+    <adminhtml>   
+        <layout>
+            <updates>
+                <ExtraConfig>
+                    <file>options.xml</file>
+                </ExtraConfig>
+            </updates>
+        </layout>
+    </adminhtml>     
+</config>

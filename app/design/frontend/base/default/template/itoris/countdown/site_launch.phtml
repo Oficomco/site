@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<head>
+<?php echo $this->getChildHtml('head') ?>
+	<style>
+		html, body {margin:0px; padding:0px; position:absolute; left:0px; top:0px; width:100%; bottom:0px; font-family:Arial; font-size:14px;}
+	</style>
+</head>
+<?php
+	/** @var $siteLaunch Itoris_Countdown_Block_Countdown_SiteLaunch */
+	$siteLaunch = $this->getChild('site_launch');
+?>
+<body class="<?php echo $this->getBodyClass()? $this->getBodyClass():'' ?> ">
+	<img src="<?php echo Mage::getDesign()->getSkinBaseUrl(array('_package' => 'base', '_theme' => 'default')) . 'itoris/countdown/site_launch_background.jpg' ?>" class="itoris_countdown_sitelaunch_background"/>
+	<div id="itoris_countdown_container">
+		<div id="itoris_countdown_header">
+			<!-- HEADER CONTENT -->
+			<?php echo $siteLaunch->getHeader() ?>
+			<!-- END OF HEADER CONTENT -->
+		</div>
+		<div id="itoris_countdown_counter_container">
+			<?php echo $this->getChildHtml('site_launch') ?>
+		</div>
+		<div id="itoris_countdown_subscribe_container">
+			<?php if ($siteLaunch->isSubscribingActive()): ?>
+				<div class="itoris_countdown_sitelaunch_subscribing">
+					<?php echo $this->getChildHtml('global_messages') ?>
+					<form id="itoris_countdown_subscribing_form" method="post" action="<?php echo Mage::getUrl('newsletter/subscriber/new') ?>">
+						<span><?php echo Mage::helper('itoris_countdown')->__('Newsletter Signup') ?></span><br/>
+						<div class="itoris_countdown_sitelaunch_subscribing_input">
+							<input id="itoris_countdown_email" type="text" class="input-text required-entry validate-email itoris_countdown_email_default" name="email" />
+							<div id="itoris_countdown_sitelaunch_subscribing_button" class="itoris_countdown_sitelaunch_subscribing_button">
+								<div class="itoris_countdown_sitelaunch_subscribing_button_bg_left"></div>
+								<div class="itoris_countdown_sitelaunch_subscribing_button_bg_right"></div>
+								<p><?php echo Mage::helper('itoris_countdown')->__('Subscribe') ?></p>
+							</div>
+						</div>
+						<script type="text/javascript">
+							var defaultSubscribingText = '<?php echo addslashes(Mage::helper('itoris_countdown')->__('Enter your email address...')) ?>';
+							$('itoris_countdown_email').value = defaultSubscribingText;
+							Event.observe($('itoris_countdown_sitelaunch_subscribing_button'), 'click', function() {
+								if ($('itoris_countdown_email').value == defaultSubscribingText) {
+									$('itoris_countdown_email').value = '';
+									var updateEmailValueToDefault = true;
+								}
+								var subscribingForm = new Validation('itoris_countdown_subscribing_form');
+								if (subscribingForm.validate()) {
+									$('itoris_countdown_subscribing_form').submit();
+								}
+								if (updateEmailValueToDefault) {
+									$('itoris_countdown_email').value = defaultSubscribingText;
+								}
+							});
+							Event.observe($('itoris_countdown_email'), 'click', function() {
+								if ($('itoris_countdown_email').value == defaultSubscribingText) {
+									$('itoris_countdown_email').value = '';
+									$('itoris_countdown_email').removeClassName('itoris_countdown_email_default');
+								}
+							});
+							Event.observe($('itoris_countdown_email'), 'change', function() {
+								if ($('itoris_countdown_email').value == '') {
+									$('itoris_countdown_email').value = defaultSubscribingText;
+									$('itoris_countdown_email').addClassName('itoris_countdown_email_default');
+								}
+							});
+						</script>
+					</form>
+				</div>
+			<?php endif; ?>
+		</div>
+		<div id="itoris_countdown_footer">
+			<!-- FOOTER CONTENT -->
+			<?php echo $siteLaunch->getFooter() ?>
+			<!-- END OF FOOTER CONTENT -->
+		</div>
+	</div>
+	<script type="text/javascript">
+		function itoris_countdown_page_resize() {
+			//bind body's events 'onload', 'onresize' via prototype observer
+			var container = $('itoris_countdown_container');
+			var header = $('itoris_countdown_header'), counter = $('itoris_countdown_counter_container');
+			var subscribe = $('itoris_countdown_subscribe_container'), footer = $('itoris_countdown_footer');
+
+			var counterHeight = counter.select('div')[0] ? counter.select('div')[0].getHeight() : 0;
+			var subscribeHeight = subscribe.select('div')[0] ? subscribe.select('div')[0].getHeight() : 0;
+			//check footer position
+			if (header.offsetHeight + 10 + counterHeight + subscribeHeight + footer.offsetHeight < container.offsetHeight) {
+				footer.style.position = 'absolute';
+			} else {
+				footer.style.position = 'relative';
+			}
+
+			//check counter position
+			if (header.offsetHeight + 10 + counterHeight / 2 < container.offsetHeight / 2 && footer.style.position == 'absolute') {
+				counter.style.position = 'absolute';
+				counter.style.top = container.offsetHeight / 2 - counterHeight / 2 + 'px';
+			} else {
+				counter.style.position = 'relative';
+				counter.style.top = '0px';
+			}
+
+			//check subscribe position
+			if (subscribeHeight < footer.offsetTop - counter.offsetTop - counterHeight && footer.style.position == 'absolute') {
+				subscribe.style.position = 'absolute';
+				subscribe.style.top = (footer.offsetTop + counter.offsetTop + counterHeight) / 2 - subscribeHeight / 2  + 'px';
+			} else {
+				if (footer.style.position == 'absolute') {
+					subscribe.style.position = 'absolute';
+					subscribe.style.top = footer.offsetTop - subscribeHeight + 'px';
+					counter.style.top = subscribe.offsetTop - counterHeight - 20 + 'px';
+				} else {
+					subscribe.style.position = 'relative';
+					subscribe.style.top = '0px';
+				}
+			}
+		}
+
+		Event.observe(document, 'dom:loaded', function() {itoris_countdown_page_resize();});
+		Event.observe(window, 'resize', function() {itoris_countdown_page_resize();});
+	</script>
+</body>
+</html>

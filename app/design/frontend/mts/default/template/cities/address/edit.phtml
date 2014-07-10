@@ -1,0 +1,24 @@
+<?php
+$addr=$this->getParentBlock();
+?>
+
+<?php 
+    $checkout = Mage::getSingleton('checkout/session')->getQuote();
+    $billing = $checkout->getBillingAddress();
+    $billing->getCity();
+ ?>
+				<div class="">
+                    <label for="city" class="required"><em>*</em><?php echo $this->__('City') ?></label>
+                    <div class="input-box">
+                        <select id="city" name="city" title="<?php echo $addr->__('City') ?>" class="validate-select">
+                                <option value=""><?php echo $this->__('Seleccione su ciudad') ?></option>
+						</select>
+                    </div>
+                </div>
+                    <script language="javascript">
+					//var j = jQuery.noConflict();
+					jQuery(document).ready(function(){
+						jQuery('#city').attr('defaultValue',  "<?php echo $billing->getCity() ?>");
+						jQuery('#city').cityUpdater('#region_id', <?php echo $this->helper('cities')->getCityJson(); ?>, {disableAction:"disable"});
+					});
+					</script>

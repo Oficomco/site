@@ -1,0 +1,165 @@
+@media screen and (max-width: 782px) {
+
+.container {
+    
+    margin: 10px auto;
+}
+
+.toggleMenu {
+font-family: 'FontAwesome';
+text-decoration: none;
+text-align: left;
+float: left;
+padding: 0px 28px;
+text-transform: uppercase;
+border-left: 1px solid #e5e5e5;
+color: #FF4629;
+font-size: 18px;
+line-height: 49px;
+height: 49px;
+}
+.toggleMenu.active { background: #E6E6E6;}
+.toggleMenu:hover{text-decoration:none;background: #E6E6E6;}
+.toggleMenu span {padding-left: 10px;display: inline-block;font-family: 'oswaldregular';font-size: 13px;color: #444444;margin-right: 8px;}
+#nav {
+    list-style: none;
+    margin-top: 49px;
+    margin-bottom: 10px;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+    border: 1px solid #e5e5e5;
+    }
+.menu-contain a span.icon{
+    border-right: 5px solid #444444;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    padding-left: 0px !important;
+    top: 2px;
+    left: -9px;
+}
+.menu-contain a span.label{
+    top: -2px;
+    right: auto;
+    position: relative;
+    margin-left: 10px;
+    display: inline-block;
+    padding-left: 0px !important;
+}
+#nav:before,
+#nav:after {
+    content: " "; 
+    display: table; 
+}
+#nav:after {
+    clear: both;
+}
+#nav ul {
+    list-style: none;
+    width: 9em;
+}
+#nav a {
+    padding: 10px 15px;
+    text-align: left;
+    text-decoration:none;
+}
+#nav a:hover{background:#FFF;}
+#nav a.over{}
+#nav li {
+    position: relative;
+    background-color: #e5e5e5;
+}
+#nav > li {
+    float: left;
+    border-top: 1px solid #E4E4E4;
+    list-style-type:none;
+}
+#nav > li > .parent {
+    background-image: url("http://webdesigntutsplus.s3.amazonaws.com/tuts/378_tessa/tessa-lt-dropdowns-21c7868/images/downArrow.png");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+#nav > li > a {
+    display: block;
+    font-family: 'oswaldregular';
+}
+#nav li  ul {
+    position: absolute;
+    left: -9999px;
+}
+#nav > li.hover > ul {
+    left: 0;
+}
+#nav li li.hover ul {
+    left: 100%;
+    top: 0;
+}
+
+#nav li li a {
+    display: block;
+    position: relative;
+    z-index:100;
+    padding-left: 30px;
+    text-decoration:none;
+    font-family: 'oswaldregular';
+}
+    
+#nav li li a span{padding-left:10px;}
+#nav li li a span.errow{height: 13px;font-family: 'FontAwesome';width: 15px;border-radius: 100%;display: inline-block;text-align: center;padding: 2px 0 0 0;}
+#nav li li{background-color: #E4E4E4; border-top: 1px solid #e5e5e5;}
+#nav li li li a {
+    padding-left: 50px;
+    z-index:200;
+    
+}
+#nav li li li{background-color: #f1f1f1; border-top: 1px solid #e5e5e5;}
+}
+@media screen and (max-width: 782px) {
+    #nav .active {
+        display: block;
+       
+    }
+    #nav > li {
+        float: none;
+    }
+    #nav > li > .parent {
+        background-position: 95% 50%;
+    }
+  
+    #nav > li > .parent {
+   background-image: none; 
+  }
+  
+    #nav li .more {
+    background:url("http://webdesigntutsplus.s3.amazonaws.com/tuts/378_tessa/tessa-lt-dropdowns-21c7868/images/downArrow.png");
+    background-repeat: no-repeat;
+    background-position: 55% 50%;
+    float: right;
+    width: 62px;
+    padding: 10px 0px;
+    cursor: pointer;
+    z-index: 200;
+    position: relative;
+    }
+  #nav li .more:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -2px;
+  }
+
+  
+  
+    #nav ul {
+        display: block;
+        width: 100%;
+    }
+   #nav > li.hover > ul , #nav li li.hover ul {
+        position: static;
+    }
+   
+
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+	<customer_address_form>
+		<reference name="customer_address_edit">
+			<block type="core/template" name="cities.address" template="cities/address/edit.phtml"/>
+		</reference>
+		<!-- <reference name="head">
+        	<action method="addJs"><script>jquery/cityUpdater/jquery.cityUpdater.js</script></action>
+	</ref erence> -->
+	</customer_address_form>
+	<checkout_onepage_index>
+		<reference name="checkout.onepage.billing">
+	            <block type="core/template" name="cities.billing" template="cities/address/billing.phtml"/>
+		</reference>
+		<reference name="checkout.onepage.shipping">
+	            <block type="core/template" name="cities.shipping" template="cities/address/shipping.phtml"/>
+		</reference>
+		<!-- <reference name="head">
+        	<action method="addJs"><script>jquery/cityUpdater/jquery.cityUpdater.js</script></action>
+	</reference> -->
+    </checkout_onepage_index>
+    <checkout_cart_index>
+    	<reference name="checkout.cart.shipping">
+	            <block type="core/template" name="cities.cart" template="cities/checkout/cities.phtml"/>
+		</reference>
+		<!-- <reference name="head">
+        	<action method="addJs"><script>jquery/cityUpdater/jquery.cityUpdater.js</script></action>
+		</reference> -->
+    </checkout_cart_index>
+</layout>

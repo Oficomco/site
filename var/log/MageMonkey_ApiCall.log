@@ -1,0 +1,1089 @@
+2014-07-09T15:17:12+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 6333
+)
+
+2014-07-09T15:17:12+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 6333
+)
+
+2014-07-09T15:17:12+00:00 DEBUG (7): Array
+(
+    [0] => listMemberInfo
+    [__pid] => 6333
+)
+
+2014-07-09T15:17:12+00:00 DEBUG (7): Array
+(
+    [0] => 3d8e25d85e
+    [1] => typsuministros.ventas8@gmail.com
+    [__pid] => 6333
+)
+
+2014-07-09T15:17:12+00:00 DEBUG (7): Array
+(
+    [success] => 0
+    [errors] => 1
+    [data] => Array
+        (
+            [0] => Array
+                (
+                    [email_address] => typsuministros.ventas8@gmail.com
+                    [error] => The email address passed does not exist on this list
+                )
+
+        )
+
+    [__pid] => 6333
+)
+
+2014-07-09T15:17:12+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 6333
+)
+
+2014-07-09T15:17:12+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 6333
+)
+
+2014-07-09T15:17:12+00:00 DEBUG (7): Array
+(
+    [0] => listSubscribe
+    [__pid] => 6333
+)
+
+2014-07-09T15:17:12+00:00 DEBUG (7): Array
+(
+    [0] => 3d8e25d85e
+    [1] => typsuministros.ventas8@gmail.com
+    [2] => Array
+        (
+            [FNAME] => lina marcela 
+            [LNAME] => ardila ramirez
+            [STOREID] => 1
+            [WEBSITE] => 1
+            [STORECRED] => 
+            [CGROUP] => General
+            [GROUPINGS] => Array
+                (
+                )
+
+        )
+
+    [3] => html
+    [4] => 
+    [__pid] => 6333
+)
+
+2014-07-09T15:17:12+00:00 DEBUG (7): Array
+(
+    [0] => 1
+    [__pid] => 6333
+)
+
+2014-07-09T15:17:13+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 6333
+)
+
+2014-07-09T15:17:13+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 6333
+)
+
+2014-07-09T15:17:13+00:00 DEBUG (7): Array
+(
+    [0] => listMemberInfo
+    [__pid] => 6333
+)
+
+2014-07-09T15:17:13+00:00 DEBUG (7): Array
+(
+    [0] => 3d8e25d85e
+    [1] => typsuministros.ventas8@gmail.com
+    [__pid] => 6333
+)
+
+2014-07-09T15:17:13+00:00 DEBUG (7): Array
+(
+    [success] => 1
+    [errors] => 0
+    [data] => Array
+        (
+            [0] => Array
+                (
+                    [email] => typsuministros.ventas8@gmail.com
+                    [id] => 7623513b9d
+                    [euid] => 7623513b9d
+                    [email_type] => html
+                    [ip_signup] => 
+                    [timestamp_signup] => 
+                    [ip_opt] => 54.186.202.132
+                    [timestamp_opt] => 2014-07-09 15:17:12
+                    [member_rating] => 2
+                    [info_changed] => 2014-07-09 15:17:12
+                    [web_id] => 173322413
+                    [leid] => 173322413
+                    [language] => 
+                    [list_id] => 3d8e25d85e
+                    [list_name] => Test MailChimp
+                    [merges] => Array
+                        (
+                            [EMAIL] => typsuministros.ventas8@gmail.com
+                            [FNAME] => lina marcela
+                            [LNAME] => ardila ramirez
+                            [CGROUP] => General
+                        )
+
+                    [status] => subscribed
+                    [timestamp] => 2014-07-09 15:17:12
+                    [is_gmonkey] => 
+                    [lists] => Array
+                        (
+                            [c9b82ac27d] => subscribed
+                        )
+
+                    [geo] => Array
+                        (
+                        )
+
+                    [clients] => Array
+                        (
+                        )
+
+                    [static_segments] => Array
+                        (
+                        )
+
+                    [notes] => Array
+                        (
+                        )
+
+                )
+
+        )
+
+    [__pid] => 6333
+)
+
+2014-07-09T20:41:57+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 7358
+)
+
+2014-07-09T20:41:57+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 7358
+)
+
+2014-07-09T20:41:57+00:00 DEBUG (7): Array
+(
+    [0] => listsForEmail
+    [__pid] => 7358
+)
+
+2014-07-09T20:41:57+00:00 DEBUG (7): Array
+(
+    [0] => typsuministros.ventas8@gmail.com
+    [__pid] => 7358
+)
+
+2014-07-09T20:41:57+00:00 DEBUG (7): Array
+(
+    [0] => 3d8e25d85e
+    [1] => c9b82ac27d
+    [__pid] => 7358
+)
+
+2014-07-09T20:41:57+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 7358
+)
+
+2014-07-09T20:41:57+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 7358
+)
+
+2014-07-09T20:41:57+00:00 DEBUG (7): Array
+(
+    [0] => listMemberActivity
+    [__pid] => 7358
+)
+
+2014-07-09T20:41:57+00:00 DEBUG (7): Array
+(
+    [0] => 3d8e25d85e
+    [1] => typsuministros.ventas8@gmail.com
+    [__pid] => 7358
+)
+
+2014-07-09T20:41:57+00:00 DEBUG (7): Array
+(
+    [success] => 1
+    [errors] => 
+    [data] => Array
+        (
+            [0] => Array
+                (
+                )
+
+        )
+
+    [__pid] => 7358
+)
+
+2014-07-09T20:41:57+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 7358
+)
+
+2014-07-09T20:41:57+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 7358
+)
+
+2014-07-09T20:41:57+00:00 DEBUG (7): Array
+(
+    [0] => listMemberActivity
+    [__pid] => 7358
+)
+
+2014-07-09T20:41:57+00:00 DEBUG (7): Array
+(
+    [0] => c9b82ac27d
+    [1] => typsuministros.ventas8@gmail.com
+    [__pid] => 7358
+)
+
+2014-07-09T20:41:57+00:00 DEBUG (7): Array
+(
+    [success] => 1
+    [errors] => 
+    [data] => Array
+        (
+            [0] => Array
+                (
+                )
+
+        )
+
+    [__pid] => 7358
+)
+
+2014-07-09T20:42:00+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 6514
+)
+
+2014-07-09T20:42:00+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 6514
+)
+
+2014-07-09T20:42:00+00:00 DEBUG (7): Array
+(
+    [0] => listsForEmail
+    [__pid] => 6514
+)
+
+2014-07-09T20:42:00+00:00 DEBUG (7): Array
+(
+    [0] => typsuministros.ventas8@gmail.com
+    [__pid] => 6514
+)
+
+2014-07-09T20:42:00+00:00 DEBUG (7): Array
+(
+    [0] => 3d8e25d85e
+    [1] => c9b82ac27d
+    [__pid] => 6514
+)
+
+2014-07-09T20:42:00+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 6514
+)
+
+2014-07-09T20:42:00+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 6514
+)
+
+2014-07-09T20:42:00+00:00 DEBUG (7): Array
+(
+    [0] => listMemberActivity
+    [__pid] => 6514
+)
+
+2014-07-09T20:42:00+00:00 DEBUG (7): Array
+(
+    [0] => 3d8e25d85e
+    [1] => typsuministros.ventas8@gmail.com
+    [__pid] => 6514
+)
+
+2014-07-09T20:42:00+00:00 DEBUG (7): Array
+(
+    [success] => 1
+    [errors] => 
+    [data] => Array
+        (
+            [0] => Array
+                (
+                )
+
+        )
+
+    [__pid] => 6514
+)
+
+2014-07-09T20:42:00+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 6514
+)
+
+2014-07-09T20:42:00+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 6514
+)
+
+2014-07-09T20:42:00+00:00 DEBUG (7): Array
+(
+    [0] => listMemberActivity
+    [__pid] => 6514
+)
+
+2014-07-09T20:42:00+00:00 DEBUG (7): Array
+(
+    [0] => c9b82ac27d
+    [1] => typsuministros.ventas8@gmail.com
+    [__pid] => 6514
+)
+
+2014-07-09T20:42:00+00:00 DEBUG (7): Array
+(
+    [success] => 1
+    [errors] => 
+    [data] => Array
+        (
+            [0] => Array
+                (
+                )
+
+        )
+
+    [__pid] => 6514
+)
+
+2014-07-09T20:44:05+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 6309
+)
+
+2014-07-09T20:44:05+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 6309
+)
+
+2014-07-09T20:44:05+00:00 DEBUG (7): Array
+(
+    [0] => listsForEmail
+    [__pid] => 6309
+)
+
+2014-07-09T20:44:05+00:00 DEBUG (7): Array
+(
+    [0] => zumexcolombiaventas@gmail.com
+    [__pid] => 6309
+)
+
+2014-07-09T20:44:05+00:00 DEBUG (7): Array
+(
+    [0] => 
+    [__pid] => 6309
+)
+
+2014-07-09T20:44:05+00:00 DEBUG (7): Array
+(
+    [0] => Error: There is no record of the email address "zumexcolombiaventas@gmail.com" in your account, code 232
+    [__pid] => 6309
+)
+
+2014-07-09T20:44:08+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 6299
+)
+
+2014-07-09T20:44:08+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 6299
+)
+
+2014-07-09T20:44:08+00:00 DEBUG (7): Array
+(
+    [0] => listsForEmail
+    [__pid] => 6299
+)
+
+2014-07-09T20:44:08+00:00 DEBUG (7): Array
+(
+    [0] => zumexcolombiaventas@gmail.com
+    [__pid] => 6299
+)
+
+2014-07-09T20:44:08+00:00 DEBUG (7): Array
+(
+    [0] => 
+    [__pid] => 6299
+)
+
+2014-07-09T20:44:08+00:00 DEBUG (7): Array
+(
+    [0] => Error: There is no record of the email address "zumexcolombiaventas@gmail.com" in your account, code 232
+    [__pid] => 6299
+)
+
+2014-07-09T20:46:36+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 6296
+)
+
+2014-07-09T20:46:36+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 6296
+)
+
+2014-07-09T20:46:36+00:00 DEBUG (7): Array
+(
+    [0] => listsForEmail
+    [__pid] => 6296
+)
+
+2014-07-09T20:46:36+00:00 DEBUG (7): Array
+(
+    [0] => zumexcolombiaventas@gmail.com
+    [__pid] => 6296
+)
+
+2014-07-09T20:46:36+00:00 DEBUG (7): Array
+(
+    [0] => 
+    [__pid] => 6296
+)
+
+2014-07-09T20:46:36+00:00 DEBUG (7): Array
+(
+    [0] => Error: There is no record of the email address "zumexcolombiaventas@gmail.com" in your account, code 232
+    [__pid] => 6296
+)
+
+2014-07-09T20:46:39+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 6309
+)
+
+2014-07-09T20:46:39+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 6309
+)
+
+2014-07-09T20:46:39+00:00 DEBUG (7): Array
+(
+    [0] => listsForEmail
+    [__pid] => 6309
+)
+
+2014-07-09T20:46:39+00:00 DEBUG (7): Array
+(
+    [0] => zumexcolombiaventas@gmail.com
+    [__pid] => 6309
+)
+
+2014-07-09T20:46:39+00:00 DEBUG (7): Array
+(
+    [0] => 
+    [__pid] => 6309
+)
+
+2014-07-09T20:46:39+00:00 DEBUG (7): Array
+(
+    [0] => Error: There is no record of the email address "zumexcolombiaventas@gmail.com" in your account, code 232
+    [__pid] => 6309
+)
+
+2014-07-09T20:57:31+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 6300
+)
+
+2014-07-09T20:57:31+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 6300
+)
+
+2014-07-09T20:57:31+00:00 DEBUG (7): Array
+(
+    [0] => listsForEmail
+    [__pid] => 6300
+)
+
+2014-07-09T20:57:31+00:00 DEBUG (7): Array
+(
+    [0] => amatorr18@gmail.com
+    [__pid] => 6300
+)
+
+2014-07-09T20:57:31+00:00 DEBUG (7): Array
+(
+    [0] => 
+    [__pid] => 6300
+)
+
+2014-07-09T20:57:31+00:00 DEBUG (7): Array
+(
+    [0] => Error: There is no record of the email address "amatorr18@gmail.com" in your account, code 232
+    [__pid] => 6300
+)
+
+2014-07-09T20:57:34+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 6514
+)
+
+2014-07-09T20:57:34+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 6514
+)
+
+2014-07-09T20:57:34+00:00 DEBUG (7): Array
+(
+    [0] => listsForEmail
+    [__pid] => 6514
+)
+
+2014-07-09T20:57:34+00:00 DEBUG (7): Array
+(
+    [0] => amatorr18@gmail.com
+    [__pid] => 6514
+)
+
+2014-07-09T20:57:34+00:00 DEBUG (7): Array
+(
+    [0] => 
+    [__pid] => 6514
+)
+
+2014-07-09T20:57:34+00:00 DEBUG (7): Array
+(
+    [0] => Error: There is no record of the email address "amatorr18@gmail.com" in your account, code 232
+    [__pid] => 6514
+)
+
+2014-07-09T20:59:29+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 7358
+)
+
+2014-07-09T20:59:29+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 7358
+)
+
+2014-07-09T20:59:29+00:00 DEBUG (7): Array
+(
+    [0] => listsForEmail
+    [__pid] => 7358
+)
+
+2014-07-09T20:59:29+00:00 DEBUG (7): Array
+(
+    [0] => anminaor22@hotmail.com
+    [__pid] => 7358
+)
+
+2014-07-09T20:59:29+00:00 DEBUG (7): Array
+(
+    [0] => c9b82ac27d
+    [__pid] => 7358
+)
+
+2014-07-09T20:59:29+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 7358
+)
+
+2014-07-09T20:59:29+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 7358
+)
+
+2014-07-09T20:59:29+00:00 DEBUG (7): Array
+(
+    [0] => listUpdateMember
+    [__pid] => 7358
+)
+
+2014-07-09T20:59:29+00:00 DEBUG (7): Array
+(
+    [0] => c9b82ac27d
+    [1] => anminaor22@hotmail.com
+    [2] => Array
+        (
+            [FNAME] => ana milena
+            [LNAME] => navarro ortiz
+            [BILLING] => Array
+                (
+                    [addr1] => calle 12  No. 17-32 segundo piso Barrio La Popa
+                    [addr2] => 
+                    [city] => 663
+                    [state] => Norte de Santander
+                    [zip] => 
+                    [country] => CO
+                )
+
+            [TELEPHONE] => 5624571
+            [SHIPPING] => Array
+                (
+                    [addr1] => calle 12  No. 17-32 segundo piso Barrio La Popa
+                    [addr2] => 
+                    [city] => 663
+                    [state] => Norte de Santander
+                    [zip] => 
+                    [country] => CO
+                )
+
+            [STOREID] => 1
+            [WEBSITE] => 1
+            [STORECRED] => 
+            [CGROUP] => General
+            [EMAIL] => anminaor22@hotmail.com
+            [GROUPINGS] => Array
+                (
+                )
+
+        )
+
+    [__pid] => 7358
+)
+
+2014-07-09T20:59:29+00:00 DEBUG (7): Array
+(
+    [0] => 1
+    [__pid] => 7358
+)
+
+2014-07-09T21:03:28+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 6297
+)
+
+2014-07-09T21:03:28+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 6297
+)
+
+2014-07-09T21:03:28+00:00 DEBUG (7): Array
+(
+    [0] => listsForEmail
+    [__pid] => 6297
+)
+
+2014-07-09T21:03:28+00:00 DEBUG (7): Array
+(
+    [0] => anminaor22@hotmail.com
+    [__pid] => 6297
+)
+
+2014-07-09T21:03:28+00:00 DEBUG (7): Array
+(
+    [0] => c9b82ac27d
+    [__pid] => 6297
+)
+
+2014-07-09T21:03:28+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 6297
+)
+
+2014-07-09T21:03:28+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 6297
+)
+
+2014-07-09T21:03:28+00:00 DEBUG (7): Array
+(
+    [0] => listUpdateMember
+    [__pid] => 6297
+)
+
+2014-07-09T21:03:28+00:00 DEBUG (7): Array
+(
+    [0] => c9b82ac27d
+    [1] => anminaor22@hotmail.com
+    [2] => Array
+        (
+            [FNAME] => ana milena
+            [LNAME] => navarro ortiz
+            [BILLING] => Array
+                (
+                    [addr1] => calle 12  No. 17-32 segundo piso Barrio La Popa
+                    [addr2] => 
+                    [city] => 663
+                    [state] => Norte de Santander
+                    [zip] => 
+                    [country] => CO
+                )
+
+            [TELEPHONE] => 5624571
+            [SHIPPING] => Array
+                (
+                    [addr1] => calle 12  No. 17-32 segundo piso Barrio La Popa
+                    [addr2] => 
+                    [city] => 663
+                    [state] => Norte de Santander
+                    [zip] => 
+                    [country] => CO
+                )
+
+            [STOREID] => 1
+            [WEBSITE] => 1
+            [DOP] => 9/07/14
+            [STORECRED] => 
+            [CGROUP] => General
+            [EMAIL] => anminaor22@hotmail.com
+            [GROUPINGS] => Array
+                (
+                )
+
+        )
+
+    [__pid] => 6297
+)
+
+2014-07-09T21:03:29+00:00 DEBUG (7): Array
+(
+    [0] => 1
+    [__pid] => 6297
+)
+
+2014-07-09T21:44:44+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 6300
+)
+
+2014-07-09T21:44:44+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 6300
+)
+
+2014-07-09T21:44:44+00:00 DEBUG (7): Array
+(
+    [0] => listsForEmail
+    [__pid] => 6300
+)
+
+2014-07-09T21:44:44+00:00 DEBUG (7): Array
+(
+    [0] => anminaor22@hotmail.com
+    [__pid] => 6300
+)
+
+2014-07-09T21:44:44+00:00 DEBUG (7): Array
+(
+    [0] => c9b82ac27d
+    [__pid] => 6300
+)
+
+2014-07-09T21:44:44+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 6300
+)
+
+2014-07-09T21:44:44+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 6300
+)
+
+2014-07-09T21:44:44+00:00 DEBUG (7): Array
+(
+    [0] => listMemberActivity
+    [__pid] => 6300
+)
+
+2014-07-09T21:44:44+00:00 DEBUG (7): Array
+(
+    [0] => c9b82ac27d
+    [1] => anminaor22@hotmail.com
+    [__pid] => 6300
+)
+
+2014-07-09T21:44:45+00:00 DEBUG (7): Array
+(
+    [success] => 1
+    [errors] => 
+    [data] => Array
+        (
+            [0] => Array
+                (
+                )
+
+        )
+
+    [__pid] => 6300
+)
+
+2014-07-09T21:44:47+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 6912
+)
+
+2014-07-09T21:44:47+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 6912
+)
+
+2014-07-09T21:44:47+00:00 DEBUG (7): Array
+(
+    [0] => listsForEmail
+    [__pid] => 6912
+)
+
+2014-07-09T21:44:47+00:00 DEBUG (7): Array
+(
+    [0] => anminaor22@hotmail.com
+    [__pid] => 6912
+)
+
+2014-07-09T21:44:47+00:00 DEBUG (7): Array
+(
+    [0] => c9b82ac27d
+    [__pid] => 6912
+)
+
+2014-07-09T21:44:47+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 6912
+)
+
+2014-07-09T21:44:47+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 6912
+)
+
+2014-07-09T21:44:47+00:00 DEBUG (7): Array
+(
+    [0] => listMemberActivity
+    [__pid] => 6912
+)
+
+2014-07-09T21:44:47+00:00 DEBUG (7): Array
+(
+    [0] => c9b82ac27d
+    [1] => anminaor22@hotmail.com
+    [__pid] => 6912
+)
+
+2014-07-09T21:44:48+00:00 DEBUG (7): Array
+(
+    [success] => 1
+    [errors] => 
+    [data] => Array
+        (
+            [0] => Array
+                (
+                )
+
+        )
+
+    [__pid] => 6912
+)
+
+2014-07-09T21:47:13+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 6296
+)
+
+2014-07-09T21:47:13+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 6296
+)
+
+2014-07-09T21:47:13+00:00 DEBUG (7): Array
+(
+    [0] => listsForEmail
+    [__pid] => 6296
+)
+
+2014-07-09T21:47:13+00:00 DEBUG (7): Array
+(
+    [0] => anminaor22@hotmail.com
+    [__pid] => 6296
+)
+
+2014-07-09T21:47:13+00:00 DEBUG (7): Array
+(
+    [0] => c9b82ac27d
+    [__pid] => 6296
+)
+
+2014-07-09T21:47:13+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 6296
+)
+
+2014-07-09T21:47:13+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 6296
+)
+
+2014-07-09T21:47:13+00:00 DEBUG (7): Array
+(
+    [0] => listMemberActivity
+    [__pid] => 6296
+)
+
+2014-07-09T21:47:13+00:00 DEBUG (7): Array
+(
+    [0] => c9b82ac27d
+    [1] => anminaor22@hotmail.com
+    [__pid] => 6296
+)
+
+2014-07-09T21:47:13+00:00 DEBUG (7): Array
+(
+    [success] => 1
+    [errors] => 
+    [data] => Array
+        (
+            [0] => Array
+                (
+                )
+
+        )
+
+    [__pid] => 6296
+)
+
+2014-07-09T21:47:17+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 6300
+)
+
+2014-07-09T21:47:17+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 6300
+)
+
+2014-07-09T21:47:17+00:00 DEBUG (7): Array
+(
+    [0] => listsForEmail
+    [__pid] => 6300
+)
+
+2014-07-09T21:47:17+00:00 DEBUG (7): Array
+(
+    [0] => anminaor22@hotmail.com
+    [__pid] => 6300
+)
+
+2014-07-09T21:47:17+00:00 DEBUG (7): Array
+(
+    [0] => c9b82ac27d
+    [__pid] => 6300
+)
+
+2014-07-09T21:47:17+00:00 DEBUG (7): Array
+(
+    [0] => us3.api.mailchimp.com
+    [__pid] => 6300
+)
+
+2014-07-09T21:47:17+00:00 DEBUG (7): Array
+(
+    [0] => 91f8f6111372b7b309caf3eec4b7dff8-us3
+    [__pid] => 6300
+)
+
+2014-07-09T21:47:17+00:00 DEBUG (7): Array
+(
+    [0] => listMemberActivity
+    [__pid] => 6300
+)
+
+2014-07-09T21:47:17+00:00 DEBUG (7): Array
+(
+    [0] => c9b82ac27d
+    [1] => anminaor22@hotmail.com
+    [__pid] => 6300
+)
+
+2014-07-09T21:47:17+00:00 DEBUG (7): Array
+(
+    [success] => 1
+    [errors] => 
+    [data] => Array
+        (
+            [0] => Array
+                (
+                )
+
+        )
+
+    [__pid] => 6300
+)
+

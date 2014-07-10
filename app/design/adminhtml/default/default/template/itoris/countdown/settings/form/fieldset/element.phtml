@@ -1,0 +1,79 @@
+<?php 
+/**
+ * ITORIS
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the ITORIS's Magento Extensions License Agreement
+ * which is available through the world-wide-web at this URL:
+ * http://www.itoris.com/magento-extensions-license.html
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to sales@itoris.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade the extensions to newer
+ * versions in the future. If you wish to customize the extension for your
+ * needs please refer to the license agreement or contact sales@itoris.com for more information.
+ *
+ * @category   ITORIS
+ * @package    ITORIS_COUNTDOWN
+ * @copyright  Copyright (c) 2012 ITORIS INC. (http://www.itoris.com)
+ * @license    http://www.itoris.com/magento-extensions-license.html  Commercial License
+ */
+?>
+
+<?php
+/** @var $this Mage_Adminhtml_Block_Catalog_Form_Renderer_Fieldset_Element */
+$_element = $this->getElement();
+$_note    = $_element->getNote();
+$_trId    = $_element->getHtmlContainerId();
+$_class   = $_element->getFieldsetHtmlClass();
+?>
+<?php if (!$_element->getNoDisplay()): ?>
+<tr<?php if($_trId): ?> id="<?php echo $_trId ?>"<?php endif; ?>>
+    <?php if ($_element->getType()=='hidden'): ?>
+    <td colspan="2" class="hidden"><?php echo trim($_element->getElementHtml()) ?></td>
+    <?php else: ?>
+    <td class="label<?php echo $_class ? " {$_class}-label" : ''?>"><?php echo trim($_element->getLabelHtml()) ?></td>
+    <td class="<?php echo $_element->hasValueClass() ? $_element->getValueClass() : 'value' ?><?php echo $_class ? " {$_class}-value" : ''?> itoris-value">
+        <?php echo trim($_element->getElementHtml()) ?>
+        <?php if ($_note): ?>
+            <p class="note<?php echo $_class ? " {$_class}-note" : ''?>" id="note_<?php echo $_element->getId()?>"><span><?php echo $_note ?></span></p>
+        <?php endif ?>
+		<?php
+			$whatUse = $_element->getUseScope();
+		?>
+    </td>
+	<td>
+		<?php if($_element->getUseParent() && $whatUse):?>
+			<script> disableFieldEditMode('<?php echo $_element->getId() ?>');</script>
+		<?php
+			endif;
+			if($whatUse):
+		?>
+				<input type="checkbox" id="check_<?php echo $_element->getId() ?>" name="settings[<?php echo $_element->getId() ?>][use_parent]"
+				    onclick="
+						<?php if ($_element->getWysiwyg()): ?>
+							ItorisHelper.toogleEditor(this, '<?php echo $_element->getId() ?>')
+						<?php else: ?>
+							ItorisHelper.toogleFieldEditMode(this, '<?php echo $_element->getId() ?>', '<?php echo $_element->getDepends() ?>')
+						<?php endif; ?>
+					"
+					<?php if($_element->getUseParent()):?>
+					   checked="checked"
+					<?php endif; ?>
+				/>
+		<?php
+			echo $whatUse;
+			endif;
+			if ($_element->getDepends()) :?>
+				<script>ItorisHelper.checkParentEditMode('<?php echo $_element->getDepends() ?>','<?php echo $_element->getId() ?>', true);</script>
+			<?php endif;
+		?>
+	</td>
+    <?php endif; ?>
+</tr>
+<?php echo $_element->getAfterRowHtml() ?>
+<?php endif; ?>

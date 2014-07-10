@@ -1,0 +1,73 @@
+/********** < Navigation */
+.menu-contain{
+    float: none;
+    box-shadow: 0px 3px 3px -4px rgba(0, 0, 0, 0.25), 0px -3px 3px -4px rgba(0, 0, 0, 0.25);
+    border: 1px solid #FFFFFF;
+    border-left: 0;
+    border-right: 0;
+    position: relative;
+    /* background: #FF4629; */
+	background: url(../images/bg_mobile.png) repeat-x scroll 0 0 #292929;
+    height:49px;
+}
+.nav{width: 1200px;margin: 0 auto;position: relative;max-width: 100%;display: inline-block;}
+@media only screen and (min-width: 783px)  {
+
+#nav li { float:left; }
+#nav li { text-align:left;}
+#nav a,
+#nav a:hover { display:block; line-height:1.3em; text-decoration:none;  }
+#nav span { display:inline-block;  }
+#nav li ul li a {}
+
+/* 2nd Level */
+#nav  ul { top: 46px; left:-10000px;  background:#ffffff;border:1px solid #e5e5e5;}
+#nav li ul li { width: 200px; margin:0 20px 0 0; }
+#nav ul.level0 { position:absolute; z-index: 1501; padding: 20px 32px 15px 32px; }
+
+
+
+/********** Navigation > */
+/* ======================================================================================= */
+
+/* Default Navigation ***********/
+.default-container{float:left;}
+.default-container #nav {  float:left; /*padding:0px 0px 0px 14px;*/ position: relative;text-transform:capitalize;}
+.default-container #nav a {  }
+.default-container #nav li a{color: #fff;}
+.default-container #nav li:hover{}
+.default-container #nav li, .default-container #nav li:hover{position: relative;}
+.default-container #nav a{position: relative;z-index: 99;padding: 16px 28px 17px 28px;border-left: 1px solid #e5e5e5;font-family: 'oswaldregular';text-transform: uppercase;}
+.default-container #nav li a.over,
+.default-container #nav a:hover,
+.default-container #nav li.level0.active a.level-top{background:#444;}
+
+/* 2nd Level */
+.default-container #nav ul,
+.default-container #nav div { position:absolute; width:200px; top:50px; left:-10000px;  }
+.default-container #nav div ul { position:static; width:auto;  }
+
+.default-container #nav li ul li a{color: #444;font-size:13px;display:block;border: 1px solid transparent;margin:0 10px;box-shadow: 0 0 5px transparent;padding:7px 0px;border-bottom:1px solid #e5e5e5;}
+.default-container #nav li ul li a span.errow{font-family: 'FontAwesome';}
+.default-container #nav li ul li a.over{color:#FF4629;background:none;}
+.default-container #nav li ul li a:hover{color:#FF4629;background:none;}
+.default-container #nav li ul li ,.default-container #nav li ul li:hover{margin:0px;}
+.default-container #nav li ul li:last-child a{}
+.default-container #nav li ul li.last a{}
+.default-container #nav li ul li a span{}
+
+
+
+/*/* 3rd+ Level */
+.default-container #nav ul ul,
+.default-container #nav ul div { top:0px; }
+.default-container #nav ul span,
+.default-container #nav ul li.last li span {}
+.default-container #nav li ul li ul.shown-sub {left:202px;}
+.default-container #nav li ul.shown-sub, #nav li .shown-sub {left:0px;padding:0px;}
+.default-container #nav li ul.shown-sub {padding-top:10px;padding-bottom:10px;}
+
+
+/* ======================================================================================= */
+
+ }

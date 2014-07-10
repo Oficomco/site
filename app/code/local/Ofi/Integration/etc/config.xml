@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Ofi_Integration>
+			<version>1.0.0</version>
+		</Ofi_Integration>
+	</modules>
+	<global>
+		<models>
+			<integration>
+                <class>Ofi_Integration_Model</class>
+                <resourceModel>integration_mysql4</resourceModel>
+            </integration>
+            <integration_mysql4>
+                <class>Ofi_Integration_Model_Mysql4</class>
+                <entities>
+                    <integration>
+						<table>ofi_integration_json</table>
+                    </integration>
+                </entities>
+            </integration_mysql4>
+		</models>
+		<helpers>
+			<integration>
+				<class>Ofi_Integration_Helper</class>
+			</integration>
+		</helpers>
+		<template>
+	      <email>
+	        <email_template>
+	          <label>Integracion</label>
+	          <file>blank.html</file>
+	          <type>html</type>
+	        </email_template>
+	       </email>
+      	</template>
+	</global>
+	<crontab>
+        <jobs>
+            <ofi_products_loader>
+                <schedule><cron_expr>0 1 * * *</cron_expr></schedule>
+                <run><model>integration/observer::startimportActionProductsBatch</model></run>
+            </ofi_products_loader>
+            <ofi_orders_loader>
+                <schedule><cron_expr>0 3 * * *</cron_expr></schedule>
+                <run><model>integration/observer::startimportActionOrdersBatch</model></run>
+            </ofi_orders_loader>
+            <ofi_clients_exporter>
+                <schedule><cron_expr>*/5 * * * *</cron_expr></schedule>
+                <run><model>integration/observer::startexportActionClientsBatch</model></run>
+            </ofi_clients_exporter>
+            <ofi_orders_exporter>
+                <schedule><cron_expr>*/5 * * * *</cron_expr></schedule>
+                <run><model>integration/observer::startexportActionOrdersBatch</model></run>
+            </ofi_orders_exporter>
+        </jobs>
+    </crontab>
+</config> 

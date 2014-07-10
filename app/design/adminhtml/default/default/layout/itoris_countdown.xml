@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<itoris_countdown_admin_settings_index>
+		<update handle="editor"/>
+		<reference name="head">
+			<action method="addJs"><name>itoris/countdown/validation.js</name></action>
+			<action method="addJs"><name>itoris/countdown/admin/helper.js</name></action>
+			<action method="addCss"><file>itoris/countdown/settings.css</file></action>
+			<action method="setTitle">
+				<params>Settings / Countdown Anywhere / Itoris Extensions / Magento Admin</params>
+			</action>
+		</reference>
+		<reference name="content">
+			<block type="itoris_countdown/admin_settings_edit" name="settings_edit" template="itoris/countdown/settings/edit.phtml"/>
+		</reference>
+		<reference name="left">
+			<block type="adminhtml/system_config_switcher" name="store_switcher" template="itoris/countdown/settings/switcher.phtml"/>
+			<block type="itoris_countdown/admin_settings_tabs" name="settings_tabs"/>
+		</reference>
+		<reference name="menu">
+			<action method="setActive">
+				<params>system/itoris_extensions/countdown</params>
+			</action>
+		</reference>
+	</itoris_countdown_admin_settings_index>
+
+	<adminhtml_cms_page_edit>
+		<reference name="head">
+			<action method="addJs"><name>itoris/countdown/validation.js</name></action>
+		</reference>
+		<reference name="cms_page_edit_tabs">
+			<block type="itoris_countdown/admin_cms_page_tab_alternativeContent" name="cms_page_edit_tab_alternative_content"/>
+			<action method="addTab"><name>alternative_content_section</name><block>cms_page_edit_tab_alternative_content</block></action>
+		</reference>
+	</adminhtml_cms_page_edit>
+
+	<adminhtml_cms_block_edit>
+		<reference name="head">
+			<action method="addJs"><name>itoris/countdown/validation.js</name></action>
+		</reference>
+	</adminhtml_cms_block_edit>
+
+	<adminhtml_catalog_product_edit>
+		<reference name="head">
+			<action method="addJs"><name>itoris/countdown/validation.js</name></action>
+		</reference>
+	</adminhtml_catalog_product_edit>
+</layout>

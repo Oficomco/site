@@ -1,0 +1,49 @@
+<h4><?php echo $this->__('Module List') ?></h4>
+            <?php
+
+                /*
+                    This shows how to load specific fields from a record in the database.
+                    1) Note the load(15), this corresponds to saying "select * from table where table_id = 15"
+                    2) You can then just use the get(fieldname) to pull specific data from the table.
+                    3) If you have a field named news_id, then it becomes getNewsId, etc.
+                */
+
+                $news = Mage::getModel('cities/cities')->load(1);
+                echo $news->getCityId();
+                echo $news->getDefaultName();
+                echo $news->getCode();
+
+
+                /*
+                    This shows an alternate way of loading datas from a record using the database the "Magento Way" (using blocks and controller).
+ 					Uncomment blocks in /app/code/local/Namespace/Module/controllers/IndexController.php if you want to use it.
+
+               */
+
+                $object = $this->getCities();
+                echo 'id: '.$object['city_id'].'<br/>';
+				echo 'default_name: '.$object['default_name'].'<br/>';
+				echo 'code: '.$object['code'].'<br/>';
+
+
+
+                /*
+                    This shows how to load multiple rows in a collection and save a change to them.
+                    1) The setPageSize function will load only 5 records per page and you can set the current Page with the setCurPage function.
+                    2) The $collection->walk('save') allows you to save everything in the collection after all changes have been made.
+                */
+
+                $i = 0;
+
+                $collection = Mage::getModel('cities/cities')->getCollection();
+                $collection->setPageSize(5);
+                $collection->setCurPage(2);
+                $size = $collection->getSize();
+                $cnt = count($collection);
+                foreach ($collection as $item) {
+                    echo $item->getDefaultName();
+                }
+
+
+
+            ?>
